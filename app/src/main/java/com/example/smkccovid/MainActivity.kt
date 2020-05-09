@@ -8,8 +8,8 @@ import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrate
 
 import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
-//    val menuTeks = arrayOf("Stats", "Dashboard")
-    val menuIcon = arrayOf(R.drawable.ic_stats, R.drawable.ic_dashboard)
+//    val menuTeks = arrayOf(R.string.stats, R.string.dashboard, R.string.settings)
+    val menuIcon = arrayOf(R.drawable.ic_stats, R.drawable.ic_dashboard, R.drawable.ic_settings_black_24dp)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         view_pager.setAdapter(adapter);
         TabLayoutMediator(tab_layout, view_pager,
             TabConfigurationStrategy { tab, position ->
-//                tab.text = menuTeks[position]
+//                tab.text = getString(menuTeks[position])
                 tab.icon = ResourcesCompat.getDrawable(resources, menuIcon[position], null)
 
             }).attach()

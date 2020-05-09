@@ -14,17 +14,19 @@
         android:layout_centerInParent="true"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:tint="#ffffff"/>
+        android:tint="?attr/accentColor2"/>
 
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_smkc"
+        android:src="@drawable/abelherl"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:tint="@color/white"
+        android:alpha="0.7"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="50dp"/>
 
 </RelativeLayout>

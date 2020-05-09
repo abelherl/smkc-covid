@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="?attr/onAccent"
+    android:clipToPadding="false">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
@@ -17,10 +19,17 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/tab_bg"
         android:backgroundTint="?attr/primaryColor"
-        android:elevation="9dp"
+        android:foregroundTint="@color/white"
+        app:tabIconTint="@color/white"
+        app:tabIndicatorColor="@color/hint"
+        app:tabIndicatorAnimationDuration="500"
+        app:tabIndicatorFullWidth="false"
+        app:tabGravity="fill"
+        android:elevation="10dp"
         style="@style/MyCustomTabTextAppearance"
         />
 

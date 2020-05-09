@@ -22,6 +22,8 @@ class DashboardFragment : Fragment() {
     private fun tampilTeman() {
         rv_main.layoutManager = LinearLayoutManager(activity)
         rv_main.adapter = CountryAdapter(activity!!, listTeman)
+        rv_news.layoutManager = LinearLayoutManager(activity)
+        rv_news.adapter = NewsAdapter(activity!!, listTeman)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
