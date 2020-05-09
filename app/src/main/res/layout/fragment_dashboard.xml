@@ -9,90 +9,103 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="30dp">
-            <RelativeLayout
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/rounded"
-                android:backgroundTint="@color/red"
-                android:padding="15dp">
-                <TextView
-                    android:id="@+id/num"
+                android:orientation="horizontal">
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="921"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:textColor="#EAEAEA"/>
-                <TextView
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded"
+                    android:backgroundTint="@color/orange"
+                    android:padding="15dp">
+                    <TextView
+                        android:id="@+id/num2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="921"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#EAEAEA"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/num2"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:text="DEATHS"
+                        android:textColor="#EAEAEA"/>
+                </RelativeLayout>
+                <androidx.legacy.widget.Space
+                    android:layout_width="10dp"
+                    android:layout_height="1dp"/>
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/num"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:text="DEATHS"
-                    android:textColor="#EAEAEA"/>
-            </RelativeLayout>
-            <RelativeLayout
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded"
+                    android:backgroundTint="@color/green"
+                    android:padding="15dp">
+                    <TextView
+                        android:id="@+id/num3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="921"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#EAEAEA"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/num3"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:text="DEATHS"
+                        android:textColor="#EAEAEA"/>
+                </RelativeLayout>
+                <androidx.legacy.widget.Space
+                    android:layout_width="10dp"
+                    android:layout_height="1dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded"
+                    android:backgroundTint="@color/red"
+                    android:padding="15dp">
+                    <TextView
+                        android:id="@+id/num"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="921"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#EAEAEA"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/num"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:text="DEATHS"
+                        android:textColor="#EAEAEA"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/rounded"
-                android:backgroundTint="@color/orange"
-                android:padding="15dp">
-                <TextView
-                    android:id="@+id/num2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="921"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:textColor="#EAEAEA"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/num2"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:text="DEATHS"
-                    android:textColor="#EAEAEA"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/rounded"
-                android:backgroundTint="@color/green"
-                android:padding="15dp">
-                <TextView
-                    android:id="@+id/num3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="921"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:textColor="#EAEAEA"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/num3"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:text="DEATHS"
-                    android:textColor="#EAEAEA"/>
-            </RelativeLayout>
+                android:layout_marginTop="30dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

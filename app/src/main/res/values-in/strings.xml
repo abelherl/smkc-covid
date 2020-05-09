@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMKC Covid</string>
+    <string name="dashboard">Beranda</string>
+    <string name="positive">Positif</string>
+    <string name="recovered">Sembuh</string>
+    <string name="deaths">Meninggal</string>
+    <string name="settings">Pengaturan</string>
+    <string name="language">Bahasa</string>
+    <string name="latest_news">Berita Terkini</string>
+    <string name="what_is_covid">Apa itu COVID-19?</string>
+    <string name="what_symptoms">Apa saja gejalanya?</string>
+    <string name="how_to_prevent">Bagaimana cara mengantisipasinya?</string>
+    <string name="notification">Notifikasi</string>
+    <string name="total">Total Sedunia</string>
+</resources>

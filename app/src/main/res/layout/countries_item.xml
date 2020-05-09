@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/rounded"
+    android:backgroundTint="?attr/primaryColor2"
+    android:padding="15dp"
+    android:layout_marginBottom="15dp">
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Za Warudo"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/tv_confirmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12404 cases"
+        android:layout_below="@id/tv_name"
+        android:textColor="@color/hint"
+        android:textSize="16sp"/>
+</RelativeLayout>
