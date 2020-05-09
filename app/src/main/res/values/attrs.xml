@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="da">
+        <attr name="primaryColor" format="color" />
+        <attr name="primaryColor2" format="color" />
+        <attr name="accentColor" format="color" />
+        <attr name="accentColor2" format="color" />
+        <attr name="onPrimary" format="color" />
+        <attr name="onAccent" format="color" />
+        <attr name="red" format="color" />
+        <attr name="orange" format="color" />
+        <attr name="green" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="FontText">
+        <attr name="typefaceAsset" format="string"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,133 @@
+<resources>
+
+    <!-- Base application theme_primary. -->
+
+    <style name="AppTheme" parent="MainTheme">
+        <item name="primaryColor">#0779e4</item>
+        <item name="primaryColor2">#215D92</item>
+        <item name="accentColor">#77d8d8</item>
+        <item name="accentColor2">#4cbbb9</item>
+        <item name="onPrimary">#eff3c6</item>
+        <item name="onAccent">#2D323D</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/onPrimary</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="Pangelyn.dark" parent="MainTheme">
+        <item name="primaryColor">#353535</item>
+        <item name="primaryColor2">#272727</item>
+        <item name="accentColor">#536DFE</item>
+        <item name="accentColor2">#7C4DFF</item>
+        <item name="onPrimary">#EAEAEA</item>
+        <item name="onAccent">#EAEAEA</item>
+    </style>
+
+    <style name="Theme2" parent="MainTheme">
+        <item name="accentColor2">#FFC999</item>
+        <item name="accentColor">#F3D3BD</item>
+        <item name="primaryColor">#48E5C2</item>
+        <item name="primaryColor2">#3F51B5</item>
+        <item name="onPrimary">#333333</item>
+        <item name="onAccent">#333333</item>
+    </style>
+
+    <style name="Theme3" parent="MainTheme">
+        <item name="accentColor2">#FC7FAA</item>
+        <item name="accentColor">#B49FCC</item>
+        <item name="primaryColor">#6D466B</item>
+        <item name="primaryColor2">#412234</item>
+        <item name="onPrimary">#F8F8F8</item>
+        <item name="onAccent">#222222</item>
+    </style>
+
+    <style name="Theme4" parent="MainTheme">
+        <item name="primaryColor">#5E7382</item>
+        <item name="primaryColor2">#465661</item>
+        <item name="accentColor">#EBC7B5</item>
+        <item name="accentColor2">#C19D8B</item>
+        <item name="onPrimary">#F7F7F7</item>
+        <item name="onAccent">#292828</item>
+    </style>
+
+    <style name="ActiveMint" parent="MainTheme">
+        <item name="accentColor">#048B9C</item>
+        <item name="accentColor2">#115979</item>
+        <item name="primaryColor">#5CDB95</item>
+        <item name="primaryColor2">#379683</item>
+        <item name="onPrimary">#05386B</item>
+        <item name="onAccent">#8EE4AF</item>
+    </style>
+
+    <style name="PinkAsh" parent="MainTheme">
+        <item name="accentColor">#F1D6CB</item>
+        <item name="accentColor2">#E9CBA4</item>
+        <item name="primaryColor">#C86769</item>
+        <item name="primaryColor2">#E4A89D</item>
+        <item name="onPrimary">#333333</item>
+        <item name="onAccent">#333333</item>
+    </style>
+
+    <style name="BoldGold" parent="MainTheme">
+        <item name="primaryColor">#353535</item>
+        <item name="primaryColor2">#272727</item>
+        <item name="accentColor">#EFCA54</item>
+        <item name="accentColor2">#DBB256</item>
+        <item name="onPrimary">#F7F7F7</item>
+        <item name="onAccent">#292828</item>
+    </style>
+
+    <style name="TameFlame" parent="MainTheme">
+        <item name="primaryColor">#F4BC6A</item>
+        <item name="primaryColor2">#F3976B</item>
+        <item name="accentColor">#F3654B</item>
+        <item name="accentColor2">#DB3264</item>
+        <item name="onPrimary">#333333</item>
+        <item name="onAccent">#333333</item>
+    </style>
+
+    <style name="PacificOcean" parent="MainTheme">
+        <item name="primaryColor">#304B78</item>
+        <item name="primaryColor2">#2C3157</item>
+        <item name="accentColor">#ECC759</item>
+        <item name="accentColor2">#E9AD31</item>
+        <item name="onPrimary">#EAEAEA</item>
+        <item name="onAccent">#2C3157</item>
+    </style>
+
+    <style name="RoyalBlue" parent="MainTheme">
+        <item name="primaryColor">#2C51D3</item>
+        <item name="primaryColor2">#213786</item>
+        <item name="accentColor">#65B5FC</item>
+        <item name="accentColor2">#4C70AC</item>
+        <item name="onPrimary">#EAEAEA</item>
+        <item name="onAccent">#EAEAEA</item>
+    </style>
+
+<!--    <style name="CustomBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">-->
+<!--        <item name="android:background">#339966</item>-->
+<!--        <item name="android:titleTextStyle">@style/CustomBarTitleText</item>-->
+<!--        <item name="background">#339966</item>-->
+<!--        <item name="titleTextStyle">@style/CustomBarTitleText</item>-->
+<!--    </style>-->
+
+
+<!--    <style name="CustomBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">-->
+<!--        <item name="android:textColor">?attr/onPrimary</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">-->
+<!--        <item name="android:textColor">?attr/onPrimary</item>-->
+<!--    </style>-->
+
+
+    <style name="MainTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+</resources>

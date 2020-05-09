@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">?attr/onPrimary</color>
+    <color name="colorPrimaryDark">?attr/onPrimary</color>
+    <color name="colorAccent">?attr/onPrimary</color>
+    <color name="red">#CE5656</color>
+    <color name="orange">#DA8043</color>
+    <color name="green">#35AD6F</color>
+</resources>
