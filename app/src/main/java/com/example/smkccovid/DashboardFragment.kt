@@ -12,10 +12,20 @@ import androidx.annotation.Nullable
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import data.CovidService
+import data.apiRequest
+import data.httpClient
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import render.animations.*
+import retrofit2.Call
+import retrofit2.Response
+import util.dismissLoading
+import util.showLoading
+import util.tampilToast
+import javax.security.auth.callback.Callback
 
 
 class DashboardFragment : Fragment() {
@@ -68,6 +78,8 @@ class DashboardFragment : Fragment() {
     }
 
     private fun buttonSync() {
+        callApiGetSummary()
+
         bt_sync.animate().rotation(bt_sync.rotation-360).start()
 
         val render1 = Render(activity!!)
@@ -103,5 +115,33 @@ class DashboardFragment : Fragment() {
         }, 500)
 
         ViewCompat.setNestedScrollingEnabled(rv_news, false)
+    }
+
+    private fun callApiGetSummary() {
+        showLoading(context!!, swipeRefreshLayout)
+        val httpClient = httpClient()
+        val apiRequest = apiRequest<CovidService>(httpClient)
+
+        val call = apiRequest.getGlobal()
+        call.enqueue(object : retrofit2.Callback<Summary> {
+            override fun onFailure(call: Call<Summary>, t: Throwable) {
+                dismissLoading(swipeRefreshLayout)
+            }
+            override fun onResponse(call: Call<Summary>, response:
+            Response<Summary>) {
+                dismissLoading(swipeRefreshLayout)
+                when {
+                    response.isSuccessful -> tampilSummary(response.body()?.globalSummary.toString()!!)
+
+                    else -> {
+                        tampilToast(context!!, "Gagal")
+                    }
+                }
+            }
+        })
+    }
+
+    private fun tampilSummary(globalSummary: String) {
+        tampilToast(context!!, globalSummary)
     }
 }
