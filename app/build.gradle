@@ -44,6 +44,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.github.gayanvoice:android-animations-kotlin:1.0.1'
     implementation 'com.chauthai.overscroll:overscroll-bouncy:0.1.1'
+    implementation 'me.everything:overscroll-decor-android:1.0.4'
 
     //GSON
     implementation 'com.google.code.gson:gson:2.8.2'

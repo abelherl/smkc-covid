@@ -7,8 +7,10 @@
     android:background="?attr/onAccent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/sv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="always"
         android:padding="20dp"
         android:clipChildren="false"
         android:clipToPadding="false">
@@ -135,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/ll_total"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

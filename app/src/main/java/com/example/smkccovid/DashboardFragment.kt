@@ -2,6 +2,7 @@ package com.example.smkccovid
 
 import android.content.Context
 import android.content.Intent
+import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import render.animations.*
 
 
@@ -72,17 +74,33 @@ class DashboardFragment : Fragment() {
 
         render1.setDuration(300)
 
-        render1.setAnimation(Fade().OutDown(ll_summary))
+        render1.setAnimation(Fade().OutLeft(ll_summary))
         render1.start()
 
+        val render2 = Render(activity!!)
+
+        render2.setDuration(400)
+
+        render2.setAnimation(Fade().OutLeft(ll_total))
+        render2.start()
+
         Handler().postDelayed({
-            val render2 = Render(activity!!)
+            val render3 = Render(activity!!)
 
-            render2.setDuration(500)
+            render3.setDuration(500)
 
-            render2.setAnimation(Bounce().InDown(ll_summary))
-            render2.start()
+            render3.setAnimation(Bounce().InLeft(ll_summary))
+            render3.start()
         }, 400)
+
+        Handler().postDelayed({
+            val render4 = Render(activity!!)
+
+            render4.setDuration(500)
+
+            render4.setAnimation(Bounce().InLeft(ll_total))
+            render4.start()
+        }, 500)
 
         ViewCompat.setNestedScrollingEnabled(rv_news, false)
     }

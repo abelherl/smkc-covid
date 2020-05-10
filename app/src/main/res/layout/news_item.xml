@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="This is the title of the news"
                 android:lines="2"
-                android:textStyle="bold"
+                android:gravity="bottom"
                 style="@style/BodyWhite"/>
             <TextView
                 android:layout_width="match_parent"
