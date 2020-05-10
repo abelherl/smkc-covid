@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:padding="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:paddingRight="20dp"
     android:clipChildren="false"
     android:clipToPadding="false">
     <RelativeLayout
@@ -11,34 +13,38 @@
         android:clipChildren="false">
         <ImageView
             android:id="@+id/iv_news"
-            android:layout_width="250dp"
-            android:layout_height="150dp"
+            android:layout_width="260dp"
+            android:layout_height="200dp"
             android:background="@drawable/rounded"
             android:layout_marginEnd="-20dp"
             android:src="@drawable/abelherl"/>
         <LinearLayout
-            android:layout_width="250dp"
-            android:layout_height="80dp"
+            android:layout_width="260dp"
+            android:layout_height="150dp"
             android:layout_alignBottom="@id/iv_news"
+            android:gravity="bottom"
             android:background="@drawable/gradient_transparent"
-            android:padding="10dp"
+            android:padding="15dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_news_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This is the title of the news"
-                android:lines="2"
+                android:text="Lockdown: Eastern Cape MEC's bodyguard among 5 arrests for illegal hunting on London"
+                android:lines="3"
+                android:ellipsize="end"
                 android:gravity="bottom"
                 style="@style/BodyWhite"/>
             <TextView
+                android:id="@+id/tv_news_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="5 hours ago"
-                android:lines="2"
+                android:lines="1"
                 android:textStyle="bold"
                 android:gravity="bottom"
-                style="@style/SmallLabelWhite"
+                style="@style/SmallLabelHint"
                 android:textSize="11sp"/>
         </LinearLayout>
     </RelativeLayout>

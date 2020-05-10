@@ -10,6 +10,6 @@
     <color name="lightOrange">#FFAC74</color>
     <color name="lightGreen">#54CE8F</color>
     <color name="hint">#99FFFFFF</color>
-    <color name="white">#eaeaea</color>
+    <color name="white">#e8e8e8</color>
     <color name="black">#282828</color>
 </resources>

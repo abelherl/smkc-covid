@@ -20,5 +20,5 @@
     <string name="summary">Summary</string>
     <string name="world">(World)</string>
     <string name="general">General</string>
-    <string name="country">Country for dashboard</string>
+    <string name="country">Country</string>
 </resources>

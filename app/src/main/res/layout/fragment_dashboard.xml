@@ -67,18 +67,14 @@
                         android:id="@+id/num_orange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="142"
-                        android:textSize="30sp"
-                        android:textColor="#EAEAEA"/>
+                        android:text="112.411"
+                        style="@style/BodyWhite"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/num_orange"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
                         android:text="@string/cases"
-                        android:textColor="#EAEAEA"/>
+                        style="@style/SmallLabelWhite"/>
                 </RelativeLayout>
                 <androidx.legacy.widget.Space
                     android:layout_width="10dp"
@@ -93,18 +89,14 @@
                         android:id="@+id/num_green"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="214"
-                        android:textSize="30sp"
-                        android:textColor="#EAEAEA"/>
+                        android:text="53.574"
+                        style="@style/BodyWhite"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/num_green"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:text="@string/recovered"
-                        android:textColor="#EAEAEA"/>
+                        style="@style/SmallLabelWhite"
+                        android:text="@string/recovered"/>
                 </RelativeLayout>
                 <androidx.legacy.widget.Space
                     android:layout_width="10dp"
@@ -119,87 +111,124 @@
                         android:id="@+id/num_red"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="24"
-                        android:textSize="30sp"
-                        android:textColor="#EAEAEA"/>
+                        android:text="6.154"
+                        style="@style/BodyWhite"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/num_red"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:text="@string/deaths"
-                        android:textColor="#EAEAEA"/>
+                        style="@style/SmallLabelWhite"
+                        android:text="@string/deaths"/>
                 </RelativeLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ll_total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:clipToPadding="false"
-                android:clipChildren="false">
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
                 <LinearLayout
-                    android:id="@+id/ll_total"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
+                    android:orientation="horizontal"
                     android:clipToPadding="false"
-                    android:clipChildren="false">
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:clipChildren="false"
+                    android:layout_marginTop="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/total_cases"
-                        style="@style/SmallLabelHint"
-                        android:layout_marginTop="10dp"/>
+                        android:orientation="vertical"
+                        android:gravity="center_vertical|end"
+                        android:layout_weight="2"
+                        android:clipToPadding="false"
+                        android:clipChildren="false">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/total_cases"
+                            style="@style/SmallLabelHint"/>
+                    </LinearLayout>
+                    <androidx.legacy.widget.Space
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/world"
-                        style="@style/SmallLabelHint"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:text="5.140.124"
                         style="@style/BodyWhite"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:layout_marginTop="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/total_recovered"
-                        style="@style/SmallLabelHint"
-                        android:layout_marginTop="10dp"/>
+                        android:orientation="vertical"
+                        android:gravity="center_vertical|end"
+                        android:layout_weight="2"
+                        android:clipToPadding="false"
+                        android:clipChildren="false">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:gravity="end"
+                            android:textAlignment="viewEnd"
+                            android:text="@string/total_recovered"
+                            style="@style/SmallLabelHint"/>
+                    </LinearLayout>
+                    <androidx.legacy.widget.Space
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/world"
-                        style="@style/SmallLabelHint"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="6.042.450"
-                        style="@style/BodyWhite"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/total_deaths"
-                        style="@style/SmallLabelHint"
-                        android:layout_marginTop="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/world"
-                        style="@style/SmallLabelHint"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="346.428"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="3.124.147"
                         style="@style/BodyWhite"/>
                 </LinearLayout>
-                <androidx.legacy.widget.Space
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:layout_marginTop="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical|end"
+                        android:layout_weight="2"
+                        android:clipToPadding="false"
+                        android:clipChildren="false">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/total_deaths"
+                            style="@style/SmallLabelHint"/>
+                    </LinearLayout>
+                    <androidx.legacy.widget.Space
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="440.141"
+                        style="@style/BodyWhite"/>
+                </LinearLayout>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -222,8 +251,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingEnd="20dp"
                     android:layout_marginBottom="50dp"
+                    android:paddingStart="20dp"
                     android:clipToPadding="false"/>
             </RelativeLayout>
 <!--            <androidx.recyclerview.widget.RecyclerView-->
