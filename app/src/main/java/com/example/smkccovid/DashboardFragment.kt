@@ -81,7 +81,7 @@ class DashboardFragment : Fragment() {
 
         render2.setDuration(400)
 
-        render2.setAnimation(Fade().OutLeft(ll_total))
+        render2.setAnimation(Fade().Out(ll_total))
         render2.start()
 
         Handler().postDelayed({
@@ -98,7 +98,7 @@ class DashboardFragment : Fragment() {
 
             render4.setDuration(500)
 
-            render4.setAnimation(Bounce().InLeft(ll_total))
+            render4.setAnimation(Fade().In(ll_total))
             render4.start()
         }, 500)
 
