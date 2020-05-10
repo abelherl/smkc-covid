@@ -1,5 +1,6 @@
 package com.example.smkccovid
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
+
 class DashboardFragment : Fragment() {
 
     lateinit var listTeman : ArrayList<Country>
@@ -17,13 +19,20 @@ class DashboardFragment : Fragment() {
         listTeman = ArrayList()
         listTeman.add(Country("Fakhry", "1932"))
         listTeman.add(Country("Amdo", "121"))
+        listTeman.add(Country("Fakhry", "1932"))
+        listTeman.add(Country("Amdo", "121"))
     }
 
     private fun tampilTeman() {
         rv_main.layoutManager = LinearLayoutManager(activity)
         rv_main.adapter = CountryAdapter(activity!!, listTeman)
-        rv_news.layoutManager = LinearLayoutManager(activity)
+        rv_news.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rv_news.adapter = NewsAdapter(activity!!, listTeman)
+    }
+
+    private fun configureRv() {
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

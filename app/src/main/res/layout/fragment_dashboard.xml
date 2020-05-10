@@ -20,17 +20,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dashboard"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginBottom="30dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_news"
+                style="@style/Title"
+                android:layout_marginTop="10dp"/>
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginStart="-20dp"
-                android:layout_marginEnd="-20dp"
-                android:orientation="horizontal"/>
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                style="@style/SubTitle"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,11 +115,32 @@
                         android:textColor="#EAEAEA"/>
                 </RelativeLayout>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/latest_news"
+                style="@style/SubTitle"
+                android:layout_marginTop="20dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-20dp"
+                android:layout_marginEnd="-20dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:background="@drawable/gradient_transparent2"
+                    android:translationZ="10dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
+            </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_main"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

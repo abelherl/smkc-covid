@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:background="?attr/onAccent"
+    android:background="#00000000"
     android:clipToPadding="false">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"/>
 
     <com.google.android.material.tabs.TabLayout
@@ -21,16 +21,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/tab_bg"
-        android:backgroundTint="?attr/primaryColor"
-        android:foregroundTint="@color/white"
-        app:tabIconTint="@color/white"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentBottom="true"
+        app:tabIconTint="?attr/accentColor2"
         app:tabIndicatorColor="@color/hint"
         app:tabIndicatorAnimationDuration="500"
         app:tabIndicatorFullWidth="false"
         app:tabGravity="fill"
-        android:elevation="10dp"
+        android:elevation="15dp"
         style="@style/MyCustomTabTextAppearance"
         />
 
-</LinearLayout>
+</RelativeLayout>
