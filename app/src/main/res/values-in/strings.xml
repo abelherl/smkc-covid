@@ -3,8 +3,8 @@
     <string name="app_name">SMKC Covid</string>
     <string name="dashboard">Beranda</string>
     <string name="positive">Positif</string>
-    <string name="recovered">Sembuh</string>
-    <string name="deaths">Meninggal</string>
+    <string name="recovered">Sembuh hari ini</string>
+    <string name="deaths">Meninggal hari ini</string>
     <string name="settings">Pengaturan</string>
     <string name="language">Bahasa</string>
     <string name="latest_news">Berita Terkini</string>
@@ -14,5 +14,8 @@
     <string name="notification">Notifikasi</string>
     <string name="total">Total Sedunia</string>
     <string name="stats">Statistik</string>
-    <string name="confirmed">Terkonfirmasi</string>
+    <string name="cases">Kasus baru</string>
+    <string name="total_cases">Total kasus</string>
+    <string name="total_deaths">Total kematian</string>
+    <string name="total_recovered">Total sembuh</string>
 </resources>

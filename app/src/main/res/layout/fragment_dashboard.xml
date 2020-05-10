@@ -22,98 +22,129 @@
                 android:text="@string/dashboard"
                 style="@style/Title"
                 android:layout_marginTop="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/total"
-                style="@style/SubTitle"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:clipToPadding="false"
+                android:clipChildren="false">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:backgroundTint="@color/orange"
-                    android:padding="15dp">
+                    android:background="@drawable/gradient_orange"
+                    android:padding="15dp"
+                    android:clipToPadding="false"
+                    android:clipChildren="false">
                     <TextView
-                        android:id="@+id/num2"
+                        android:id="@+id/num_orange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="921"
+                        android:text="142"
                         android:textSize="30sp"
-                        android:textStyle="bold"
                         android:textColor="#EAEAEA"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num2"
+                        android:layout_below="@+id/num_orange"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:textAllCaps="true"
-                        android:text="DEATHS"
+                        android:text="@string/cases"
                         android:textColor="#EAEAEA"/>
                 </RelativeLayout>
                 <androidx.legacy.widget.Space
                     android:layout_width="10dp"
-                    android:layout_height="1dp"/>
+                    android:layout_height="10dp"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:backgroundTint="@color/green"
+                    android:background="@drawable/gradient_green"
                     android:padding="15dp">
                     <TextView
-                        android:id="@+id/num3"
+                        android:id="@+id/num_green"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="921"
+                        android:text="214"
                         android:textSize="30sp"
-                        android:textStyle="bold"
                         android:textColor="#EAEAEA"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num3"
+                        android:layout_below="@+id/num_green"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:textAllCaps="true"
-                        android:text="DEATHS"
+                        android:text="@string/recovered"
                         android:textColor="#EAEAEA"/>
                 </RelativeLayout>
                 <androidx.legacy.widget.Space
                     android:layout_width="10dp"
-                    android:layout_height="1dp"/>
+                    android:layout_height="10dp"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:backgroundTint="@color/red"
+                    android:background="@drawable/gradient_red"
                     android:padding="15dp">
                     <TextView
-                        android:id="@+id/num"
+                        android:id="@+id/num_red"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="921"
+                        android:text="24"
                         android:textSize="30sp"
-                        android:textStyle="bold"
                         android:textColor="#EAEAEA"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num"
+                        android:layout_below="@+id/num_red"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:textAllCaps="true"
-                        android:text="DEATHS"
+                        android:text="@string/deaths"
                         android:textColor="#EAEAEA"/>
                 </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_cases"
+                    style="@style/BodyHint"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5.140.124"
+                    style="@style/BodyWhite"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_recovered"
+                    style="@style/BodyHint"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6.042.450"
+                    style="@style/BodyWhite"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_deaths"
+                    style="@style/BodyHint"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="346.428"
+                    style="@style/BodyWhite"/>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
