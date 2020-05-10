@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SMKC Covid</string>
     <string name="dashboard">Dashboard</string>
-    <string name="cases">Recovered today</string>
+    <string name="cases">New cases</string>
     <string name="recovered">Recovered today</string>
     <string name="deaths">Deaths today</string>
     <string name="total_cases">Total cases</string>
@@ -17,4 +17,6 @@
     <string name="total">Worldwide Total</string>
     <string name="stats">Statistics</string>
     <string name="positive">Positive</string>
+    <string name="summary">Summary</string>
+    <string name="world">(World)</string>
 </resources>

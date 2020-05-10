@@ -22,16 +22,39 @@
                 android:text="@string/dashboard"
                 style="@style/Title"
                 android:layout_marginTop="10dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/tv_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Summary (World)"
+                    style="@style/SubTitle"
+                    android:layout_centerVertical="true"/>
+                <ImageButton
+                    android:id="@+id/bt_sync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_sync_black_24dp"
+                    android:background="#00000000"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
             <LinearLayout
+                android:id="@+id/ll_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:clipToPadding="false"
                 android:clipChildren="false">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_orange"
                     android:padding="15dp"
@@ -59,7 +82,7 @@
                     android:layout_height="10dp"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_green"
                     android:padding="15dp">
@@ -85,7 +108,7 @@
                     android:layout_height="10dp"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_red"
                     android:padding="15dp">
@@ -110,41 +133,65 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-                <TextView
+                android:orientation="horizontal">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/total_cases"
-                    style="@style/BodyHint"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="5.140.124"
-                    style="@style/BodyWhite"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/total_recovered"
-                    style="@style/BodyHint"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="6.042.450"
-                    style="@style/BodyWhite"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/total_deaths"
-                    style="@style/BodyHint"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="346.428"
-                    style="@style/BodyWhite"/>
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_cases"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/world"
+                        style="@style/SmallLabelHint"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5.140.124"
+                        style="@style/BodyWhite"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_recovered"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/world"
+                        style="@style/SmallLabelHint"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6.042.450"
+                        style="@style/BodyWhite"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_deaths"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/world"
+                        style="@style/SmallLabelHint"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="346.428"
+                        style="@style/BodyWhite"/>
+                </LinearLayout>
+                <androidx.legacy.widget.Space
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"/>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -162,16 +209,19 @@
                     android:layout_height="190dp"
                     android:background="@drawable/gradient_transparent2"
                     android:translationZ="10dp"/>
-                <androidx.recyclerview.widget.RecyclerView
+                <com.chauthai.overscroll.RecyclerViewBouncy
                     android:id="@+id/rv_news"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp"
+                    android:layout_marginBottom="50dp"
+                    android:clipToPadding="false"/>
             </RelativeLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rv_main"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -20,7 +20,7 @@
     <style name="SubTitle" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="BodyWhite" parent="TextAppearance.AppCompat">
@@ -28,8 +28,20 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="BodyHint" parent="TextAppearance.AppCompat">
+    <style name="BigLabelWhite" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="SmallLabelHint" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/hint</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="SmallLabelWhite" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>

@@ -18,4 +18,6 @@
     <string name="total_cases">Total kasus</string>
     <string name="total_deaths">Total kematian</string>
     <string name="total_recovered">Total sembuh</string>
+    <string name="summary">Rangkuman</string>
+    <string name="world">(Dunia)</string>
 </resources>
