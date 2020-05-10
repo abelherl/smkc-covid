@@ -1,14 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment"
+    tools:context=".DashboardFragment"
     android:background="?attr/onAccent">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/settings" />
+        android:overScrollMode="always"
+        android:padding="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                style="@style/Title"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="?attr/onAccent"
+                android:elevation="15dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/general"
+                    style="@style/SmallLabelHint"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/language"
+                        android:gravity="center_vertical"
+                        style="@style/BodyWhite"/>
+                    <ImageButton
+                        android:id="@+id/ib_language"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/usa"
+                        android:scaleType="centerInside"
+                        android:background="#00000000"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=">"
+                        android:gravity="center_vertical"
+                        android:layout_alignParentEnd="true"
+                        style="@style/BodyWhite"/>
+                </RelativeLayout>
 
-</FrameLayout>
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notification"
+                    style="@style/BodyWhite"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard"
+                    style="@style/SmallLabelHint"
+                    android:layout_marginTop="20dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/country"
+                        android:gravity="center_vertical"
+                        style="@style/BodyWhite"/>
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/indonesia"
+                        android:scaleType="centerInside"
+                        android:background="#00000000"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=">"
+                        android:gravity="center_vertical"
+                        android:layout_alignParentEnd="true"
+                        style="@style/BodyWhite"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

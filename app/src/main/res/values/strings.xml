@@ -19,4 +19,6 @@
     <string name="positive">Positive</string>
     <string name="summary">Summary</string>
     <string name="world">(World)</string>
+    <string name="general">General</string>
+    <string name="country">Country for dashboard</string>
 </resources>

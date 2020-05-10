@@ -20,4 +20,6 @@
     <string name="total_recovered">Total sembuh</string>
     <string name="summary">Rangkuman</string>
     <string name="world">(Dunia)</string>
+    <string name="general">Umum</string>
+    <string name="country">Negara untuk beranda</string>
 </resources>
