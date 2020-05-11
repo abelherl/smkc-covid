@@ -26,6 +26,7 @@ import util.dismissLoading
 import util.showLoading
 import util.tampilToast
 import javax.security.auth.callback.Callback
+import id.voela.actrans.AcTrans
 
 
 class DashboardFragment : Fragment() {
@@ -71,6 +72,7 @@ class DashboardFragment : Fragment() {
         tampilTeman()
 
         bt_sync.setOnClickListener { buttonSync() }
+        bt_what.setOnClickListener { buttonWhat() }
     }
     override fun onDestroy() {
         super.onDestroy()
@@ -146,6 +148,12 @@ class DashboardFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun buttonWhat() {
+        val intent = Intent(activity, WhatActivity::class.java)
+        startActivity(intent)
+        AcTrans.Builder(context!!).performFade()
     }
 
     private fun tampilSummary(globalSummary: String) {

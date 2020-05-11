@@ -3,6 +3,7 @@
     <!-- Base application theme_primary. -->
 
     <style name="AppTheme" parent="MainTheme">
+        <item name="android:windowActivityTransitions">true</item>
         <item name="primaryColor">#0771D5</item>
         <item name="primaryColor2">#2D6494</item>
         <item name="accentColor">#77d8d8</item>

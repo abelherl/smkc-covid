@@ -3,14 +3,12 @@
     android:layout_width="wrap_content" android:layout_height="wrap_content"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:paddingRight="20dp"
-    android:clipChildren="false"
-    android:clipToPadding="false">
+    android:paddingRight="20dp">
     <RelativeLayout
         android:layout_width="260dp"
         android:layout_height="200dp"
-        android:clipToPadding="false"
-        android:elevation="15dp"
+        android:clipToPadding="true"
+        android:clipChildren="true"
         android:gravity="bottom">
         <ImageView
             android:id="@+id/iv_news"
@@ -18,7 +16,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:background="@drawable/rounded"
-            android:src="@drawable/pic"/>
+            android:src="@drawable/pic" />
         <LinearLayout
             android:layout_width="260dp"
             android:layout_height="match_parent"

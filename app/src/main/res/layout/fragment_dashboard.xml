@@ -35,12 +35,16 @@
                 android:background="@drawable/gradient"
                 android:gravity="bottom"
                 android:elevation="20dp">
-                <ImageView
+                <ImageButton
+                    android:id="@+id/bt_what"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:src="@drawable/bg_art2"
+                    android:clickable="true"
                     android:scaleType="fitXY"
                     android:alpha="0.6"
+                    android:background="?selectableItemBackground"
+                    android:backgroundTint="@color/green"
                     android:adjustViewBounds="true"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -59,17 +63,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/learn"
-                        android:layout_marginEnd="5dp"
                         style="@style/BodyWhiteSmall"/>
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/iv_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:alpha="0"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_keyboard_arrow_right_white_24dp"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"

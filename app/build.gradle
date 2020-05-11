@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.chauthai.overscroll:overscroll-bouncy:0.1.1'
     implementation 'me.everything:overscroll-decor-android:1.0.4'
     implementation 'me.grantland:autofittextview:0.2.+'
+    implementation 'com.github.pahlevikun:actrans:0.0.2'
 
     //GSON
     implementation 'com.google.code.gson:gson:2.8.2'
