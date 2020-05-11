@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardFragment"
-    android:background="?attr/onAccent">
+    android:background="?onAccent">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/sv_main"
@@ -27,20 +27,42 @@
                 android:layout_marginTop="10dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="140dp"
                 android:layout_marginTop="20dp"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:background="@drawable/gradient"
                 android:gravity="bottom"
                 android:elevation="20dp">
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_art2"
+                    android:scaleType="fitStart"
+                    android:alpha="0.8"
+                    android:adjustViewBounds="false"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:text="@string/what_is_covid"
-                    android:gravity="bottom"
-                    style="@style/SubTitle"/>
+                    android:orientation="vertical"
+                    android:background="@drawable/gradient_transparent"
+                    android:backgroundTint="?primaryColor"
+                    android:padding="20dp"
+                    android:layout_alignParentBottom="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/what_is_covid"
+                        android:layout_above="@id/tv_learn"
+                        style="@style/SubTitle"/>
+                    <TextView
+                        android:id="@+id/tv_learn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/learn"
+                        android:layout_alignParentBottom="true"
+                        style="@style/BodyWhiteSmall"/>
+                </LinearLayout>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -57,7 +79,7 @@
                     android:id="@+id/bt_sync"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_sync_black_24dp"
+                    android:src="@drawable/ic_swap_horiz_white_24dp"
                     android:background="#00000000"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
@@ -76,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/gradient_orange"
+                    android:background="@drawable/gradient_blue"
                     android:padding="15dp"
                     android:clipToPadding="false"
                     android:clipChildren="false"
@@ -86,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="112.411"
-                        style="@style/BodyWhite"/>
+                        style="@style/BodyWhiteBold"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -109,7 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="53.574"
-                        style="@style/BodyWhite"/>
+                        style="@style/BodyWhiteBold"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -132,7 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="6.154"
-                        style="@style/BodyWhite"/>
+                        style="@style/BodyWhiteBold"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

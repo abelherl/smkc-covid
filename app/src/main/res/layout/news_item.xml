@@ -7,24 +7,25 @@
     android:clipChildren="false"
     android:clipToPadding="false">
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
         android:clipToPadding="false"
-        android:clipChildren="false"
-        android:elevation="15dp">
+        android:elevation="15dp"
+        android:gravity="bottom">
         <ImageView
             android:id="@+id/iv_news"
-            android:layout_width="260dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:background="@drawable/rounded"
-            android:layout_marginEnd="-20dp"
-            android:src="@drawable/abelherl"/>
+            android:src="@drawable/pic"/>
         <LinearLayout
             android:layout_width="260dp"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:layout_alignBottom="@id/iv_news"
             android:gravity="bottom"
             android:background="@drawable/gradient_transparent"
+            android:backgroundTint="?primaryColor"
             android:padding="15dp"
             android:orientation="vertical">
             <TextView
@@ -35,7 +36,7 @@
                 android:lines="3"
                 android:ellipsize="end"
                 android:gravity="bottom"
-                style="@style/BodyWhite"/>
+                style="@style/BodyWhiteBold"/>
             <TextView
                 android:id="@+id/tv_news_time"
                 android:layout_width="match_parent"

@@ -80,7 +80,14 @@ class DashboardFragment : Fragment() {
     private fun buttonSync() {
         callApiGetSummary()
 
-        bt_sync.animate().rotation(bt_sync.rotation-360).start()
+//        bt_sync.animate().rotation(bt_sync.rotation-360).start()
+
+        val render = Render(activity!!)
+
+        render.setDuration(500)
+
+        render.setAnimation(Attention().Wobble(bt_sync))
+        render.start()
 
         val render1 = Render(activity!!)
 

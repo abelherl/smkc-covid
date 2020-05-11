@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="?attr/onAccent">
+    android:background="?primaryColor">
 
     <ImageView
         android:layout_width="100dp"
@@ -14,19 +14,18 @@
         android:layout_centerInParent="true"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:tint="?attr/accentColor2"/>
+        android:tint="@color/white"/>
 
 
     <ImageView
-        android:layout_width="60dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:src="@drawable/abelherl"
         android:layout_centerHorizontal="true"
+        android:tint="@color/white"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:tint="@color/white"
-        android:alpha="0.7"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="30dp"/>
 
 </RelativeLayout>
