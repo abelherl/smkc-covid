@@ -109,7 +109,7 @@
                         android:singleLine="true"
                         android:text="112.412"
                         android:maxLines="1"
-                        style="@style/BodyWhiteBold"/>
+                        style="@style/BigLabelWhite"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                         android:singleLine="true"
                         android:text="78.295"
                         android:maxLines="1"
-                        style="@style/BodyWhiteBold"/>
+                        style="@style/BigLabelWhite"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                         android:singleLine="true"
                         android:text="6.154"
                         android:maxLines="1"
-                        style="@style/BodyWhiteBold"/>
+                        style="@style/BigLabelWhite"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
