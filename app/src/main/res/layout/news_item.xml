@@ -32,7 +32,7 @@
                 android:id="@+id/tv_news_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lockdown: Eastern Cape MEC's bodyguard among 5 arrests for illegal hunting on London"
+                android:text="This is the news layout and it will be fully implemented for challenge 3"
                 android:lines="3"
                 android:ellipsize="end"
                 android:gravity="bottom"
