@@ -27,6 +27,23 @@
                 android:layout_marginTop="10dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:background="@drawable/gradient"
+                android:gravity="bottom"
+                android:elevation="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="@string/what_is_covid"
+                    android:gravity="bottom"
+                    style="@style/SubTitle"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
                 <TextView
@@ -62,7 +79,8 @@
                     android:background="@drawable/gradient_orange"
                     android:padding="15dp"
                     android:clipToPadding="false"
-                    android:clipChildren="false">
+                    android:clipChildren="false"
+                    android:elevation="20dp">
                     <TextView
                         android:id="@+id/num_orange"
                         android:layout_width="match_parent"
@@ -84,7 +102,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_green"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:elevation="20dp">
                     <TextView
                         android:id="@+id/num_green"
                         android:layout_width="match_parent"
@@ -106,7 +125,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_red"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:elevation="20dp">
                     <TextView
                         android:id="@+id/num_red"
                         android:layout_width="match_parent"
@@ -240,7 +260,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-20dp"
-                android:layout_marginEnd="-20dp">
+                android:layout_marginEnd="-20dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
@@ -253,7 +275,8 @@
                     android:orientation="horizontal"
                     android:layout_marginBottom="50dp"
                     android:paddingStart="20dp"
-                    android:clipToPadding="false"/>
+                    android:clipToPadding="false"
+                    android:clipChildren="false"/>
             </RelativeLayout>
 <!--            <androidx.recyclerview.widget.RecyclerView-->
 <!--                android:id="@+id/rv_main"-->
