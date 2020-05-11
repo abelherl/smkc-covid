@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -53,10 +54,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/what_is_covid"
-                        android:layout_above="@id/tv_learn"
                         style="@style/SubTitle"/>
                     <TextView
-                        android:id="@+id/tv_learn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/learn"
@@ -72,7 +71,7 @@
                     android:id="@+id/tv_summary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Summary (World)"
+                    android:text="@string/global"
                     style="@style/SubTitle"
                     android:layout_centerVertical="true"/>
                 <ImageButton
@@ -103,16 +102,18 @@
                     android:clipToPadding="false"
                     android:clipChildren="false"
                     android:elevation="20dp">
-                    <TextView
-                        android:id="@+id/num_orange"
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_blue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="112.411"
+                        android:singleLine="true"
+                        android:text="112.412"
+                        android:maxLines="1"
                         style="@style/BodyWhiteBold"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num_orange"
+                        android:layout_below="@+id/num_blue"
                         android:text="@string/cases"
                         style="@style/SmallLabelWhite"/>
                 </RelativeLayout>
@@ -126,11 +127,13 @@
                     android:background="@drawable/gradient_green"
                     android:padding="15dp"
                     android:elevation="20dp">
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_green"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="53.574"
+                        android:singleLine="true"
+                        android:text="78.295"
+                        android:maxLines="1"
                         style="@style/BodyWhiteBold"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -149,11 +152,13 @@
                     android:background="@drawable/gradient_red"
                     android:padding="15dp"
                     android:elevation="20dp">
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_red"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         android:text="6.154"
+                        android:maxLines="1"
                         style="@style/BodyWhiteBold"/>
                     <TextView
                         android:layout_width="match_parent"
