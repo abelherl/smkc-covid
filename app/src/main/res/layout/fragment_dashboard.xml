@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/gradient_blue"
+                    android:background="@drawable/gradient_orange"
                     android:padding="15dp"
                     android:clipToPadding="false"
                     android:clipChildren="false"

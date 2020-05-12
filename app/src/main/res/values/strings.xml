@@ -22,4 +22,5 @@
     <string name="general">General</string>
     <string name="country">Country</string>
     <string name="learn">Tap here to learn about COVID-19 and ways to protect yourself and others around you.</string>
+    <string name="what2"><b>Coronavirus disease (COVID-19)</b> is a <b>highly infectious disease</b> caused by a newly discovered coronavirus.\n\nMost people who fall sick with COVID-19 will experience <b>mild to moderate symptoms</b> and recover without special treatment.</string>
 </resources>
