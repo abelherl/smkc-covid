@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dashboard"
                 style="@style/Title"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="15dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -35,17 +35,19 @@
                 android:background="@drawable/gradient"
                 android:gravity="bottom"
                 android:elevation="20dp">
-                <ImageButton
-                    android:id="@+id/bt_what"
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:src="@drawable/bg_art2"
-                    android:clickable="true"
                     android:scaleType="fitXY"
                     android:alpha="0.6"
-                    android:background="?selectableItemBackground"
-                    android:backgroundTint="@color/green"
                     android:adjustViewBounds="true"/>
+                <Button
+                    android:id="@+id/bt_what"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:background="?selectableItemBackground"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

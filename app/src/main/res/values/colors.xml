@@ -14,4 +14,5 @@
     <color name="hint">#99FFFFFF</color>
     <color name="white">#e8e8e8</color>
     <color name="black">#222222</color>
+    <color name="transparent">#00000000</color>
 </resources>

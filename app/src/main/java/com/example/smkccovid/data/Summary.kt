@@ -1,4 +1,4 @@
-package com.example.smkccovid
+package com.example.smkccovid.data
 
 
 import com.google.gson.annotations.SerializedName

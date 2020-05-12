@@ -1,31 +1,27 @@
 package com.example.smkccovid
 
-import android.content.Context
 import android.content.Intent
-import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.Nullable
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.smkccovid.adapter.NewsAdapter
+import com.example.smkccovid.data.Summary
 import data.CovidService
 import data.apiRequest
 import data.httpClient
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import render.animations.*
 import retrofit2.Call
 import retrofit2.Response
 import util.dismissLoading
 import util.showLoading
 import util.tampilToast
-import javax.security.auth.callback.Callback
 import id.voela.actrans.AcTrans
 
 
