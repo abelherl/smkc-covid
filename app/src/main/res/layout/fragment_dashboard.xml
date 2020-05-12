@@ -26,48 +26,55 @@
                 android:text="@string/dashboard"
                 style="@style/Title"
                 android:layout_marginTop="15dp"/>
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginTop="20dp"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:background="@drawable/gradient"
+                autofit:cardCornerRadius="15dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
                 android:gravity="bottom"
                 android:elevation="20dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/bg_art2"
-                    android:scaleType="fitXY"
-                    android:alpha="0.6"
-                    android:adjustViewBounds="true"/>
-                <Button
-                    android:id="@+id/bt_what"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:background="?selectableItemBackground"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/gradient_transparent"
-                    android:backgroundTint="?primaryColor"
-                    android:padding="20dp"
-                    android:layout_alignParentBottom="true">
-                    <TextView
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient">
+                    <ImageView
                         android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/bg_art2"
+                        android:scaleType="fitXY"
+                        android:alpha="0.6"
+                        android:adjustViewBounds="true"/>
+                    <Button
+                        android:id="@+id/bt_what"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="?selectableItemBackground"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/what_is_covid"
-                        style="@style/SubTitle"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/learn"
-                        style="@style/BodyWhiteSmall"/>
-                </LinearLayout>
-            </RelativeLayout>
+                        android:orientation="vertical"
+                        android:background="@drawable/gradient_transparent"
+                        android:backgroundTint="?primaryColor"
+                        android:padding="20dp"
+                        android:layout_alignParentBottom="true">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/what_is_covid"
+                            style="@style/SubTitle"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/learn"
+                            style="@style/BodyWhiteSmall"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
