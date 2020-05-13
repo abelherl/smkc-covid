@@ -98,8 +98,6 @@ class DashboardFragment : Fragment() {
         num_green3.text = prettyCount(1741)
         num_red3.text = prettyCount(271)
 
-        (Thread(Runnable { sv_main.fullScroll(View.FOCUS_UP) })).start()
-
         FlingBehavior.apply { sv_main }
 //        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
     }
