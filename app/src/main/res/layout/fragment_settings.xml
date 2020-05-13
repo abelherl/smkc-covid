@@ -87,13 +87,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_marginTop="10dp">
+                    <Button
+                        android:id="@+id/bt_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/country"
                         android:gravity="center_vertical"
                         style="@style/BodyWhite"/>
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/indonesia"

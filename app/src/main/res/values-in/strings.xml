@@ -24,4 +24,8 @@
     <string name="country">Negara untuk beranda</string>
     <string name="learn">Tekan disini untuk kenali COVID-19 dan cara untuk melindungi diri anda dan orang-orang disekitar anda.</string>
     <string name="what2"><b>Penyakit Coronavirus (COVID-19)</b> adalah <b>penyakit yang sangat menular</b> yang diakibatkan oleh virus baru Coronavirus.\n\nSebagian besar orang yang terjangkit COVID-19 akan mengalami <b>gejala ringan hingga menengah</b> dan sembuh tanpa membutuhkan bantuan medis.</string>
+    <string name="how">Bagaimana cara penyebarannya?</string>
+    <string name="prevent">Bagaimana cara mencegahnya?</string>
+    <string name="select_country">Pilih Negara</string>
+    <string name="select_language">Pilih Bahasa</string>
 </resources>

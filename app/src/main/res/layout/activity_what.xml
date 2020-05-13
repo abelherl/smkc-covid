@@ -7,10 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".WhatActivity"
     android:paddingTop="40dp"
-    android:paddingEnd="20dp"
-    android:paddingStart="20dp"
+    android:paddingEnd="25dp"
+    android:paddingStart="25dp"
     android:paddingBottom="30dp"
-    android:background="?onAccent"
     android:clipChildren="false"
     android:clipToPadding="false">
     <ScrollView
@@ -20,65 +19,220 @@
         android:scrollbars="none"
         android:scrollIndicators="none"
         android:elevation="20dp">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="true"
-            android:clipChildren="true"
-            android:background="@drawable/gradient">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/bg_what"
-                android:scaleType="fitXY"
-                android:alpha="0.4"
-                android:adjustViewBounds="true" />
-            <LinearLayout
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp"
+                android:clipChildren="true"
                 android:clipToPadding="true"
-                android:clipChildren="true">
-                <ImageButton
-                    android:id="@+id/bt_back"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:scaleType="fitStart"
-                    android:src="@drawable/ic_arrow_back_black_24dp"
-                    android:background="@color/transparent"/>
+                app:cardCornerRadius="15dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
+                    android:clipToPadding="true"
+                    android:clipChildren="true"
+                    android:background="@drawable/gradient">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/bg_what2"
+                        android:scaleType="fitXY"
+                        android:alpha="0.4"
+                        android:adjustViewBounds="true" />
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:clipToPadding="true"
+                        android:clipChildren="true">
+                        <ImageButton
+                            android:id="@+id/bt_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="15dp"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/ic_arrow_back_black_24dp"
+                            android:background="@color/transparent"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            style="@style/SubTitle"
-                            android:text="@string/what_is_covid"/>
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginBottom="50dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    style="@style/SubTitle"
+                                    android:text="@string/what_is_covid"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/BodyWhite"
+                                    android:text="@string/what2"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            style="@style/BodyWhite"
-                            android:text="@string/what2"/>
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginBottom="50dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    style="@style/SubTitle"
+                                    android:text="@string/how"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/BodyWhite"
+                                    android:text="@string/what3"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginBottom="50dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    style="@style/SubTitle"
+                                    android:text="@string/what_symptoms"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/BodyWhite"
+                                    android:text="@string/what4"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginBottom="50dp">
+                            <ImageView
+                                android:id="@+id/iv_wash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="160dp"
+                                android:scaleType="fitCenter"
+                                android:adjustViewBounds="true"
+                                android:foregroundGravity="center"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:src="@drawable/ic_wash"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toStartOf="@+id/iv_wash"
+                                android:layout_marginEnd="20dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    style="@style/SubTitle"
+                                    android:text="@string/prevent"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/BodyWhite"
+                                    android:text="@string/what5"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginBottom="50dp">
+                            <ImageView
+                                android:id="@+id/iv_sofa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:scaleType="fitCenter"
+                                android:adjustViewBounds="true"
+                                android:foregroundGravity="center"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentBottom="true"
+                                android:src="@drawable/ic_sofa"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/iv_sofa"
+                                android:layout_marginStart="20dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/BodyWhite"
+                                    android:text="@string/what6"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginBottom="50dp">
+                            <ImageView
+                                android:id="@+id/iv_distance"
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:scaleType="fitCenter"
+                                android:adjustViewBounds="true"
+                                android:foregroundGravity="center"
+                                android:layout_alignParentTop="true"
+                                android:src="@drawable/ic_distancing"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/iv_distance"
+                                android:layout_marginTop="30dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/BodyWhite"
+                                    android:text="@string/what7"/>
+                            </LinearLayout>
+                        </RelativeLayout>
                     </LinearLayout>
                 </RelativeLayout>
-<!--                <ImageView-->
-<!--                    android:id="@+id/iv_wash"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="190dp"-->
-<!--                    android:scaleType="fitXY"-->
-<!--                    android:adjustViewBounds="true"-->
-<!--                    android:src="@drawable/ic_wash"/>-->
-            </LinearLayout>
-        </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        <ImageButton
+            android:id="@+id/bt_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circle"
+            android:src="@drawable/ic_close_black_24dp"
+            android:scaleType="fitXY"
+            android:scaleX="0.6"
+            android:scaleY="0.6"/>
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

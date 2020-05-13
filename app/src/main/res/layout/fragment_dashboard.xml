@@ -42,6 +42,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/gradient">
                     <ImageView
+                        android:id="@+id/iv_what"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:src="@drawable/bg_art2"

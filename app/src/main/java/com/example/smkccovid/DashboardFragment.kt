@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.Summary
 import data.CovidService
@@ -69,6 +70,8 @@ class DashboardFragment : Fragment() {
 
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
+
+//        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
     }
     override fun onDestroy() {
         super.onDestroy()
