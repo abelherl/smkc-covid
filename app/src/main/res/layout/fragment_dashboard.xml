@@ -118,6 +118,7 @@
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_blue"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -126,12 +127,13 @@
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_blue2"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="+92.841"
                         android:maxLines="1"
-                        style="@style/SmallLabelHint"
+                        style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -154,6 +156,7 @@
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_green"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -162,12 +165,13 @@
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_green2"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="+12.841"
                         android:maxLines="1"
-                        style="@style/SmallLabelHint"
+                        style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -190,6 +194,7 @@
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_red"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -198,12 +203,13 @@
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_red2"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="+3.441"
                         android:maxLines="1"
-                        style="@style/SmallLabelHint"
+                        style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -254,6 +260,7 @@
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_blue3"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -262,12 +269,13 @@
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_blue4"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="+2.421"
                         android:maxLines="1"
-                        style="@style/SmallLabelHint"
+                        style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -290,6 +298,7 @@
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_green3"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -298,12 +307,13 @@
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_green4"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="+747"
                         android:maxLines="1"
-                        style="@style/SmallLabelHint"
+                        style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -326,6 +336,7 @@
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_red3"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -334,12 +345,13 @@
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_red4"
+                        android:gravity="bottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="+23"
                         android:maxLines="1"
-                        style="@style/SmallLabelHint"
+                        style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"

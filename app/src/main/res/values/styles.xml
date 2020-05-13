@@ -72,6 +72,13 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="SmallLabelHint2" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/hint</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">?attr/onPrimary</item>
