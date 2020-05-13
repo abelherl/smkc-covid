@@ -14,11 +14,9 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
         <activity android:name=".ChooseActivity"
-            android:screenOrientation="nosensor"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".WhatActivity"
-            android:screenOrientation="nosensor"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".SplashActivity"
@@ -29,8 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="nosensor" />
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

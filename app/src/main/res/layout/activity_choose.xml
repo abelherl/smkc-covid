@@ -14,8 +14,9 @@
     android:clipToPadding="false">
     <ScrollView
         android:id="@+id/sv_choose"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:scrollbars="none"
         android:scrollIndicators="none"
         android:elevation="20dp">
