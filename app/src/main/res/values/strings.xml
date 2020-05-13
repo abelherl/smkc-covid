@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">SMKC Covid</string>
     <string name="dashboard">Dashboard</string>
-    <string name="cases">New cases</string>
-    <string name="recovered">Recovered today</string>
-    <string name="deaths">Deaths today</string>
+    <string name="cases">Cases</string>
+    <string name="recovered">Recovered</string>
+    <string name="deaths">Deaths</string>
     <string name="total_cases">Total cases</string>
     <string name="total_recovered">Total recovered</string>
     <string name="total_deaths">Total deaths</string>
@@ -48,4 +48,5 @@
     <string name="what5">Proper hand washing means washing your hands for at least <b>20-30 seconds with soap and water.</b> The constant rubbing action helps soap break down the grease and dirt that carry most germs.</string>
     <string name="what6">The simplest thing you can do is to <b>stay at home</b> to avoid physical contact and only go outside when it is <b>truly necessary.</b></string>
     <string name="what7">When you`re outside, wear a mask, avoid crowds, and maintain at least 1-meter away from others to prevent the spread.</string>
+    <string name="today">today</string>
 </resources>

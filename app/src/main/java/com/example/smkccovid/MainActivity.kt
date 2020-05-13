@@ -2,11 +2,7 @@ package com.example.smkccovid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import com.example.smkccovid.adapter.ViewPagerAdapter
-import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 
 import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
@@ -33,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavMain.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.menuStats -> {
-                    loadFragment(FriendsFragment())
+                    loadFragment(StatsFragment())
                 }
                 R.id.menuDashboard -> {
                     loadFragment(DashboardFragment())

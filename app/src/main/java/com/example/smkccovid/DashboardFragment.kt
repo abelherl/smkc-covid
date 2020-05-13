@@ -1,6 +1,8 @@
 package com.example.smkccovid
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -9,22 +11,26 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.Summary
 import data.CovidService
 import data.apiRequest
 import data.httpClient
+import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import render.animations.*
+import render.animations.Attention
+import render.animations.Bounce
+import render.animations.Fade
+import render.animations.Render
 import retrofit2.Call
 import retrofit2.Response
 import util.dismissLoading
 import util.showLoading
 import util.tampilToast
-import id.voela.actrans.AcTrans
-import kotlinx.android.synthetic.main.activity_main.*
+import java.text.DecimalFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DashboardFragment : Fragment() {
@@ -69,11 +75,52 @@ class DashboardFragment : Fragment() {
         simulasiDataTeman()
         tampilTeman()
 
+        val test by lazy { context!!.getSharedPreferences("test", Context.MODE_PRIVATE) }
+        val edit = test.edit()
+        val lang = Locale.getDefault().language
+        edit.putString("lang", lang)
+        edit.apply()
+
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
+        bt_edit.setOnClickListener { buttonCountry() }
+
+        num_blue.text = prettyCount(1811942)
+        num_green.text = prettyCount(592741)
+        num_red.text = prettyCount(38142)
+
+        num_blue3.text = prettyCount(15942)
+        num_green3.text = prettyCount(1741)
+        num_red3.text = prettyCount(271)
+
+        (Thread(Runnable { sv_main.fullScroll(View.FOCUS_UP) })).start()
 
         FlingBehavior.apply { sv_main }
 //        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
+    }
+    fun prettyCount(number: Number): String? {
+        val sharedPref = context!!.getSharedPreferences("test", 0)
+        val lang = sharedPref.getString("lang", "en")
+
+        var suffix = arrayOf("", "K", "M", "B")
+
+        if (lang == "id") {
+            suffix = arrayOf("", "Rb", "Jt", "M")
+        }
+
+        val numValue: Long = number.toLong()
+        val value = Math.floor(Math.log10(numValue.toDouble())).toInt()
+        val base = value / 3
+        return if (value >= 3 && base < suffix.size) {
+            DecimalFormat("#0.0").format(
+                numValue / Math.pow(
+                    10.0,
+                    base * 3.toDouble()
+                )
+            ) + suffix[base]
+        } else {
+            DecimalFormat("#,##0").format(numValue)
+        }
     }
 
     override fun onDestroy() {
@@ -154,6 +201,12 @@ class DashboardFragment : Fragment() {
 
     private fun buttonWhat() {
         val intent = Intent(activity, WhatActivity::class.java)
+        startActivity(intent)
+        AcTrans.Builder(context!!).performFade()
+    }
+
+    private fun buttonCountry() {
+        val intent = Intent(activity, ChooseActivity::class.java)
         startActivity(intent)
         AcTrans.Builder(context!!).performFade()
     }

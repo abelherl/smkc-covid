@@ -90,7 +90,7 @@
                 <ImageButton
                     android:id="@+id/bt_sync"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="0dp"
                     android:src="@drawable/ic_swap_horiz_white_24dp"
                     android:background="#00000000"
                     android:scaleType="fitXY"
@@ -106,12 +106,13 @@
                 android:layout_marginTop="15dp"
                 android:clipToPadding="false"
                 android:clipChildren="false">
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_orange"
                     android:padding="15dp"
+                    android:orientation="vertical"
                     android:clipToPadding="false"
                     android:clipChildren="false"
                     android:elevation="20dp">
@@ -123,68 +124,253 @@
                         android:text="112.412"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_blue2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="+92.841"
+                        android:maxLines="1"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num_blue"
                         android:text="@string/cases"
                         style="@style/SmallLabelWhite"/>
-                </RelativeLayout>
+                </LinearLayout>
                 <androidx.legacy.widget.Space
                     android:layout_width="10dp"
                     android:layout_height="10dp"/>
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_green"
                     android:padding="15dp"
+                    android:orientation="vertical"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_green"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="78.295"
+                        android:text="112.412"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_green2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="+12.841"
+                        android:maxLines="1"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num_green"
-                        style="@style/SmallLabelWhite"
-                        android:text="@string/recovered"/>
-                </RelativeLayout>
+                        android:text="@string/recovered"
+                        style="@style/SmallLabelWhite"/>
+                </LinearLayout>
                 <androidx.legacy.widget.Space
                     android:layout_width="10dp"
                     android:layout_height="10dp"/>
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_red"
                     android:padding="15dp"
+                    android:orientation="vertical"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
                     android:elevation="20dp">
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/num_red"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="6.154"
+                        android:text="112.412"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_red2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="+3.441"
+                        android:maxLines="1"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginBottom="5dp"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/num_red"
-                        style="@style/SmallLabelWhite"
-                        android:text="@string/deaths"/>
-                </RelativeLayout>
+                        android:text="@string/deaths"
+                        style="@style/SmallLabelWhite"/>
+                </LinearLayout>
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Philippines"
+                    style="@style/SubTitle"
+                    android:layout_centerVertical="true"/>
+                <ImageButton
+                    android:id="@+id/bt_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_edit_black_24dp"
+                    android:background="#00000000"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/ll_summary2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp"
+                android:clipToPadding="false"
+                android:clipChildren="false">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_orange"
+                    android:padding="15dp"
+                    android:orientation="vertical"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:elevation="20dp">
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_blue3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="112.412"
+                        android:maxLines="1"
+                        style="@style/BigLabelWhite"/>
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_blue4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="+2.421"
+                        android:maxLines="1"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cases"
+                        style="@style/SmallLabelWhite"/>
+                </LinearLayout>
+                <androidx.legacy.widget.Space
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_green"
+                    android:padding="15dp"
+                    android:orientation="vertical"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:elevation="20dp">
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_green3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="112.412"
+                        android:maxLines="1"
+                        style="@style/BigLabelWhite"/>
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_green4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="+747"
+                        android:maxLines="1"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recovered"
+                        style="@style/SmallLabelWhite"/>
+                </LinearLayout>
+                <androidx.legacy.widget.Space
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_red"
+                    android:padding="15dp"
+                    android:orientation="vertical"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:elevation="20dp">
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_red3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="112.412"
+                        android:maxLines="1"
+                        style="@style/BigLabelWhite"/>
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/num_red4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="+23"
+                        android:maxLines="1"
+                        style="@style/SmallLabelHint"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/deaths"
+                        style="@style/SmallLabelWhite"/>
+                </LinearLayout>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                autofit:cardCornerRadius="10dp"
+                android:elevation="15dp"
+                autofit:cardElevation="15dp"
+                android:background="@color/transparent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/transparent">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/hintBlack"
+                        android:src="@drawable/ic_add_circle_outline_black_24dp"
+                        android:alpha="1"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:id="@+id/ll_total"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp">
                 <LinearLayout
@@ -205,7 +391,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="@string/total_cases"
+                            android:text="@string/cases"
                             style="@style/SmallLabelHint"/>
                     </LinearLayout>
                     <androidx.legacy.widget.Space
@@ -241,7 +427,7 @@
                             android:layout_gravity="end"
                             android:gravity="end"
                             android:textAlignment="viewEnd"
-                            android:text="@string/total_recovered"
+                            android:text="@string/recovered"
                             style="@style/SmallLabelHint"/>
                     </LinearLayout>
                     <androidx.legacy.widget.Space
@@ -274,7 +460,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="@string/total_deaths"
+                            android:text="@string/deaths"
                             style="@style/SmallLabelHint"/>
                     </LinearLayout>
                     <androidx.legacy.widget.Space
