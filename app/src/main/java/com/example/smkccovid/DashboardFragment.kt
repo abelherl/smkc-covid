@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.Summary
 import data.CovidService
@@ -36,6 +37,8 @@ import kotlin.collections.ArrayList
 class DashboardFragment : Fragment() {
 
     lateinit var listTeman : ArrayList<Country>
+    lateinit var listCountry : List<NewCountryItem>
+
     private fun simulasiDataTeman() {
         listTeman = ArrayList()
         listTeman.add(Country("Fakhry", "1932"))
@@ -85,6 +88,8 @@ class DashboardFragment : Fragment() {
         bt_what.setOnClickListener { buttonWhat() }
         bt_edit.setOnClickListener { buttonCountry() }
 
+        swipeRefreshLayout.setOnRefreshListener { onRefresh() }
+
         num_blue.text = prettyCount(1811942)
         num_green.text = prettyCount(592741)
         num_red.text = prettyCount(38142)
@@ -98,6 +103,12 @@ class DashboardFragment : Fragment() {
         FlingBehavior.apply { sv_main }
 //        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
     }
+
+    fun onRefresh() {
+        tampilToast(context!!, "Refreshed")
+        dismissLoading(swipeRefreshLayout)
+    }
+
     fun prettyCount(number: Number): String? {
         val sharedPref = context!!.getSharedPreferences("test", 0)
         val lang = sharedPref.getString("lang", "en")
@@ -129,7 +140,6 @@ class DashboardFragment : Fragment() {
     }
 
     private fun buttonSync() {
-        callApiGetSummary()
 
 //        bt_sync.animate().rotation(bt_sync.rotation-360).start()
 
@@ -175,30 +185,6 @@ class DashboardFragment : Fragment() {
         ViewCompat.setNestedScrollingEnabled(rv_news, false)
     }
 
-    private fun callApiGetSummary() {
-        showLoading(context!!, swipeRefreshLayout)
-        val httpClient = httpClient()
-        val apiRequest = apiRequest<CovidService>(httpClient)
-
-        val call = apiRequest.getGlobal()
-        call.enqueue(object : retrofit2.Callback<Summary> {
-            override fun onFailure(call: Call<Summary>, t: Throwable) {
-                dismissLoading(swipeRefreshLayout)
-            }
-            override fun onResponse(call: Call<Summary>, response:
-            Response<Summary>) {
-                dismissLoading(swipeRefreshLayout)
-                when {
-                    response.isSuccessful -> tampilSummary(response.body()?.globalSummary.toString()!!)
-
-                    else -> {
-                        tampilToast(context!!, "Gagal")
-                    }
-                }
-            }
-        })
-    }
-
     private fun buttonWhat() {
         val intent = Intent(activity, WhatActivity::class.java)
         startActivity(intent)
@@ -211,7 +197,7 @@ class DashboardFragment : Fragment() {
         AcTrans.Builder(context!!).performFade()
     }
 
-    private fun tampilSummary(globalSummary: String) {
-        tampilToast(context!!, globalSummary)
+    private fun tampilSummary(test: List<NewCountryItem>) {
+        tampilToast(context!!, test[0].country)
     }
 }

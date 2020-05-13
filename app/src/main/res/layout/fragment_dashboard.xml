@@ -245,7 +245,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="0dp"
                 android:clipToPadding="false"
                 android:clipChildren="false">
                 <LinearLayout
