@@ -24,6 +24,7 @@ import util.dismissLoading
 import util.showLoading
 import util.tampilToast
 import id.voela.actrans.AcTrans
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class DashboardFragment : Fragment() {
@@ -71,8 +72,10 @@ class DashboardFragment : Fragment() {
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
 
+        FlingBehavior.apply { sv_main }
 //        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
     }
+
     override fun onDestroy() {
         super.onDestroy()
         this.clearFindViewByIdCache()

@@ -26,6 +26,7 @@ class SettingsFragment : Fragment() {
 
     private fun initView() {
         bt_country.setOnClickListener { buttonCountry() }
+        bt_language.setOnClickListener { buttonCountry() }
 //        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
     }
 

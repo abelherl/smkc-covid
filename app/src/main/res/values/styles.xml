@@ -6,7 +6,7 @@
         <item name="android:windowActivityTransitions">true</item>
         <item name="primaryColor">#0771D5</item>
         <item name="primaryColor2">#2D6494</item>
-        <item name="accentColor">#77d8d8</item>
+        <item name="accentColor">#88ECEC</item>
         <item name="accentColor2">#4cbbb9</item>
         <item name="onPrimary">#eaeaea</item>
         <item name="onAccent">#1F232C</item>

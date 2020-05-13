@@ -9,28 +9,33 @@
     android:background="#00000000"
     android:clipToPadding="false">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <FrameLayout
+        android:id="@+id/fl_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
+        android:clipChildren="true"
+        android:clipToPadding="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/gradient_blue"
-        android:layout_alignParentBottom="true"
-        app:tabIconTint="@color/white"
-        app:tabIndicatorColor="@color/white"
-        app:tabIndicatorAnimationDuration="500"
-        app:tabIndicatorFullWidth="false"
-        app:tabGravity="fill"
-        android:elevation="15dp"
-        style="@style/MyCustomTabTextAppearance"
-        />
+        android:padding="20dp"
+        android:layout_alignParentBottom="true">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavMain"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:itemRippleColor="@color/green"
+            android:background="@drawable/gradient_blue"
+            app:itemIconTint="@drawable/item_foreground"
+            app:itemTextColor="@drawable/item_foreground"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu_bottom_nav_main" />
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
