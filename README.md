@@ -1,9 +1,10 @@
-# SMKC Covid
+# SMKC COVID
 An android app to monitor and get information about COVID-19 and its growth.
 
 ## APK
-Not yet done smh
+Stable APK at May 17th
 
 ## Acknowledgments
-* Hat tip to anyone whose code was used
+* Hat tip to anyone who's code was used
 * Icons by Kiran Shastry and Freepik
+* Mimi ko for the testing and some ideas
