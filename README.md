@@ -1,5 +1,5 @@
 # SMKC COVID
-An android app to monitor and get information about COVID-19 and its growth. Graph for the growth in last 7 days are included in this app. SMKC COVID currently support 2 languages:
+An android app to monitor and get information about COVID-19 and its growth in nearly all countries. Graph for the growth in last 7 days are included in this app. SMKC COVID currently support 2 languages:
 * English
 * Bahasa Indonesia
 
