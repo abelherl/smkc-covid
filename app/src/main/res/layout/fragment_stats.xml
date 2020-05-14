@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StatsFragment"
-    android:background="?attr/onAccent">
-
-    <TextView
-        android:layout_width="match_parent"
+    android:background="?attr/onAccent"
+    android:layout_gravity="center">
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_stats"
         android:layout_height="match_parent"
-        android:text="@string/stats" />
-
-</FrameLayout>
+        android:layout_width="match_parent"
+        android:layout_below="@+id/rl_stats"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/rl_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_horizontal"
+        android:background="?onAccent"
+        android:translationZ="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stats"
+            style="@style/Title"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tl_stats"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/transparent"
+            app:tabTextColor="@color/white"
+            app:tabMode="fixed"
+            app:tabIconTint="@color/white"
+            app:tabIndicatorAnimationDuration="500"
+            app:tabMaxWidth="0dp"/>
+    </com.google.android.material.appbar.AppBarLayout>
+</RelativeLayout>

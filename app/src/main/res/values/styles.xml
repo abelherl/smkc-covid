@@ -31,6 +31,13 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="SubTitle2" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:alpha">0.75</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="BodyWhite" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>

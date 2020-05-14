@@ -20,7 +20,6 @@ class ChooseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.example.smkccovid.R.layout.activity_choose)
-
         initView()
     }
 
@@ -63,7 +62,6 @@ class ChooseActivity : AppCompatActivity() {
     }
 
     fun setRv(listCountry: List<NewCountryItem>) {
-
         val list = listCountry.sortedBy { it.slug }
 
         rv_select.layoutManager = LinearLayoutManager(this)

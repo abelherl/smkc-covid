@@ -2,7 +2,7 @@ package com.example.smkccovid
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -11,12 +11,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.smkccovid.adapter.NewsAdapter
-import com.example.smkccovid.data.Summary
-import data.CovidService
-import data.apiRequest
-import data.httpClient
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
@@ -24,10 +19,8 @@ import render.animations.Attention
 import render.animations.Bounce
 import render.animations.Fade
 import render.animations.Render
-import retrofit2.Call
-import retrofit2.Response
-import util.dismissLoading
-import util.showLoading
+import util.loadLocale
+import util.setLocale
 import util.tampilToast
 import java.text.DecimalFormat
 import java.util.*
@@ -57,10 +50,10 @@ class DashboardFragment : Fragment() {
 
     private fun configureRv() {
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setSharedPref()
         super.onCreate(savedInstanceState)
     }
 
@@ -74,21 +67,19 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
     }
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        loadLocale(context!!)
+        super.onConfigurationChanged(newConfig)
+    }
     private fun initView() {
         simulasiDataTeman()
         tampilTeman()
-
-        val test by lazy { context!!.getSharedPreferences("test", Context.MODE_PRIVATE) }
-        val edit = test.edit()
-        val lang = Locale.getDefault().language
-        edit.putString("lang", lang)
-        edit.apply()
 
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
         bt_edit.setOnClickListener { buttonCountry() }
 
-        swipeRefreshLayout.setOnRefreshListener { onRefresh() }
+//        swipeRefreshLayout.setOnRefreshListener { onRefresh() }
 
         num_blue.text = prettyCount(1811942)
         num_green.text = prettyCount(592741)
@@ -98,14 +89,34 @@ class DashboardFragment : Fragment() {
         num_green3.text = prettyCount(1741)
         num_red3.text = prettyCount(271)
 
-        FlingBehavior.apply { sv_main }
+//        FlingBehavior.apply { sv_main }
 //        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
     }
 
-    fun onRefresh() {
-        tampilToast(context!!, "Refreshed")
-        dismissLoading(swipeRefreshLayout)
+    fun setSharedPref() {
+        val test by lazy { context!!.getSharedPreferences("test", Context.MODE_PRIVATE) }
+        val edit = test.edit()
+        val lang = Locale.getDefault().language
+        setLocale(context!!, "id")
+        loadLocale(context!!)
+        edit.putString("lang", "id")
+        edit.apply()
     }
+
+    fun changelanguage(context: Context) {
+        //String lang = "hi_IN";
+        //  Locale locale = new Locale(lang);
+        val locale = Locale("id")
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        context.resources.configuration.setLocale(locale)
+    }
+
+//    fun onRefresh() {
+//        tampilToast(context!!, "Refreshed")
+//        dismissLoading(swipeRefreshLayout)
+//    }
 
     fun prettyCount(number: Number): String? {
         val sharedPref = context!!.getSharedPreferences("test", 0)
@@ -114,7 +125,7 @@ class DashboardFragment : Fragment() {
         var suffix = arrayOf("", "K", "M", "B")
 
         if (lang == "id") {
-            suffix = arrayOf("", "Rb", "Jt", "M")
+            suffix = arrayOf("", "rb", "jt", "m")
         }
 
         val numValue: Long = number.toLong()

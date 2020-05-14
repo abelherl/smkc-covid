@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.github.pahlevikun:actrans:0.0.2'
     implementation 'com.github.richimf:Alphabetik:1.0.3'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //GSON
     implementation 'com.google.code.gson:gson:2.8.2'

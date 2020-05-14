@@ -1,30 +1,37 @@
 package com.example.smkccovid.adapter
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.smkccovid.CountryFragment
 import com.example.smkccovid.DashboardFragment
-import com.example.smkccovid.StatsFragment
+import com.example.smkccovid.GlobalFragment
 import com.example.smkccovid.SettingsFragment
 
-class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
-    private val JUMLAH_MENU = 3
+class ViewPagerAdapter(fragment : Fragment) : FragmentStateAdapter(fragment) {
+
+    private val tabCount = 3
+
+    override fun getItemCount(): Int {
+        return tabCount
+    }
+
     override fun createFragment(position: Int): Fragment {
-
-        when (position) {
-            0 -> { return StatsFragment()
+        return when (position){
+            0 -> {
+                GlobalFragment()
             }
-            1 -> { return DashboardFragment()
+            1 -> {
+                GlobalFragment()
             }
-            2 -> { return SettingsFragment()
+            2 -> {
+                CountryFragment()
             }
             else -> {
-                return DashboardFragment()
+                DashboardFragment()
             }
         }
-    }
-    override fun getItemCount(): Int {
-        return JUMLAH_MENU
     }
 }

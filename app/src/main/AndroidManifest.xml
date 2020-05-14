@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".LoadingActivity"
-            android:theme="@style/Theme.AppCompat.Translucent"></activity>
+        <activity android:name=".GlobalActivity"></activity>
+        <activity
+            android:name=".LoadingActivity"
+            android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".ChooseActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
