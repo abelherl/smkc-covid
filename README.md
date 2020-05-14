@@ -10,6 +10,7 @@ An android app to monitor and get information about COVID-19 and its growth in n
   * Implementing RecyclerView
   * Taking data from REST API
   * Glide, Retrofit, and Gson
+  * MPAndroidChart
   * Localization (Multiple languages)
   * Using SharedPreferences
 
