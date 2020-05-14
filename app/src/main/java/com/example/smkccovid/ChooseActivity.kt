@@ -1,9 +1,8 @@
 package com.example.smkccovid
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.app.ProgressDialog
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smkccovid.adapter.NewCountryAdapter
 import data.CovidService
@@ -11,24 +10,18 @@ import data.apiRequest
 import data.httpClient
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_choose.*
-import kotlinx.android.synthetic.main.fragment_dashboard.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import retrofit2.Call
 import retrofit2.Response
-import util.dismissLoading
-import util.showLoading
 import util.tampilToast
+
 
 class ChooseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose)
-//        OverScrollDecoratorHelper.setUpOverScroll(sv_choose)
+        setContentView(com.example.smkccovid.R.layout.activity_choose)
 
-        callApiGetSummary()
-
-        bt_back2.setOnClickListener { buttonBack() }
+        initView()
     }
 
     override fun onBackPressed() {
@@ -38,6 +31,12 @@ class ChooseActivity : AppCompatActivity() {
     private fun buttonBack() {
         super.onBackPressed()
         AcTrans.Builder(this).performFade()
+    }
+
+    private fun initView() {
+//        OverScrollDecoratorHelper.setUpOverScroll(sv_choose)
+        bt_back2.setOnClickListener { buttonBack() }
+        callApiGetSummary()
     }
 
     private fun callApiGetSummary() {
@@ -69,5 +68,12 @@ class ChooseActivity : AppCompatActivity() {
 
         rv_select.layoutManager = LinearLayoutManager(this)
         rv_select.adapter = NewCountryAdapter(this, list)
+
+        dismissLoading()
+    }
+
+    fun dismissLoading() {
+        val alpha = 0F
+        spin_kit.alpha = alpha
     }
 }

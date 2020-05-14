@@ -12,8 +12,19 @@
     android:paddingBottom="30dp"
     android:clipChildren="false"
     android:clipToPadding="false">
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.MultiplePulse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        app:SpinKit_Color="@color/lightBlue"
+        android:translationZ="10dp"/>
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+        android:foregroundGravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/black"
         android:layout_marginBottom="-40dp"

@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".ChooseActivity"
+        <activity android:name=".LoadingActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"></activity>
+        <activity
+            android:name=".ChooseActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".WhatActivity"
@@ -27,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
