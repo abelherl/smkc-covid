@@ -4,7 +4,7 @@ An android app to monitor and get information about COVID-19 and its growth. Gra
 * Bahasa Indonesia
 
 #### What can you learn from this app?
-  * ViewPager, TabLayout, BottomNav
+  * Fragments, ViewPager, TabLayout, BottomNav
   * Implementing RecyclerView
   * Taking data from REST API
   * Localization (Multiple languages)
