@@ -5,17 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@drawable/gradient_bg">
+    android:background="?onAccent">
 
     <ImageView
+        android:id="@+id/iv_splash"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_covid"
         android:layout_centerInParent="true"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:tint="@color/white"/>
+        android:tint="@color/white"
+        android:translationZ="10dp"/>
 
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/iv_splash_spin"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:SpinKit_Color="@color/blue"
+        android:layout_alignTop="@id/iv_splash"
+        android:layout_marginTop="-85dp"
+        style="@style/SpinKitView.MultiplePulse"
+        android:layout_centerInParent="true"/>
 
     <ImageView
         android:layout_width="60dp"
@@ -26,6 +37,6 @@
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp" />
 
 </RelativeLayout>

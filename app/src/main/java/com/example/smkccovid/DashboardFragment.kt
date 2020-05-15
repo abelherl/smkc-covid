@@ -97,9 +97,9 @@ class DashboardFragment : Fragment() {
         val test by lazy { context!!.getSharedPreferences("test", Context.MODE_PRIVATE) }
         val edit = test.edit()
         val lang = Locale.getDefault().language
-        setLocale(context!!, "id")
+        setLocale(context!!, lang)
         loadLocale(context!!)
-        edit.putString("lang", "id")
+        edit.putString("lang", lang)
         edit.apply()
     }
 

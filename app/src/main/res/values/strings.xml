@@ -50,4 +50,7 @@
     <string name="what7">When you`re outside, wear a mask, avoid crowds, and maintain at least 1-meter away from others to prevent the spread.</string>
     <string name="today">today</string>
     <string name="presented">*The presented data are from last 7 days</string>
+    <string name="close">Try again</string>
+    <string name="offline">It looks like you don\'t have any internet connection right now. Might want to try again later.</string>
+    <string name="offline_title">You seemed to be offline</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.smkccovid
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +9,9 @@ import data.apiRequest
 import data.httpClient
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_choose.*
+import render.animations.Fade
+import render.animations.Render
+import render.animations.Zoom
 import retrofit2.Call
 import retrofit2.Response
 import util.tampilToast
@@ -71,7 +73,11 @@ class ChooseActivity : AppCompatActivity() {
     }
 
     fun dismissLoading() {
-        val alpha = 0F
-        spin_kit.alpha = alpha
+        val render = Render(this)
+
+        render.setDuration(1300)
+
+        render.setAnimation(Zoom().Out(spin_kit))
+        render.start()
     }
 }
