@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMKC COVID</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="cases">Kaso</string>
+    <string name="recovered">Gumaling</string>
+    <string name="deaths">Namatay</string>
+    <string name="total_cases">Kabuuang kaso </string>
+    <string name="total_recovered">Kabuuuang gumaling</string>
+    <string name="total_deaths">Kabuuang namatay</string>
+    <string name="settings">Settings</string>
+    <string name="language">Lenggwahe</string>
+    <string name="latest_news">Mga balita</string>
+    <string name="what_is_covid">Ano ang COVID-19?</string>
+    <string name="notification">Notification</string>
+    <string name="stats">Ranking</string>
+    <string name="summary">Summary</string>
+    <string name="global">Global</string>
+    <string name="general">General</string>
+    <string name="country">Bansa</string>
+    <string name="select_country">Pumili ng bansa</string>
+    <string name="select_language">Pumili ng lenggwahe</string>
+    <string name="learn">Pindutin nang malaman ang mga impormasyon tungkol sa COVID-19 at mga hakbang upang maging ligtas ang sarili at ang mga taong nakapaligid sayo.</string>
+
+    <string name="how">Paano ito kumakalat?</string>
+    <string name="prevent">Paano ko mapipigilan ang pagkalat nito?</string>
+    <string name="what2"><b>Ang coronavirus disease (COVID-19)</b>ay isang <b>malala at nakakahawang sakit</b> sanhi ng bagong diskubreng coronavirus.\n\nKadalasan ng mga taong nadapuan ng sakit na COVID-19 ay nakakaranas ng <b>di gaanong malalalang sintomas</b> at gumagaling ng walang espesyal na panggagamot.</string>
+    <string name="what3">Ang virus na siyang sanhi ng COVID-19 ay madalas naipapasa sa pamamagitan ng mga droplets tuwing <b>ang isang taong nagdadala ng virus na ito ay umubo, bumahing o kaya ay huminga.</b>\n\nMaaari ka ring mahawaan ng sakit na ito sa pamamagitan ng <b> paglanghap ng virus na ito kung ikaw ay masyadong malapit sa taong nakakaranas ng COVID-19, o kaya sa pamamagitan ng paghawak sa mga kontaminadong mga bagay bago nahawakan ang iyong mga mata, ilong at bibig.</b></string>
+    <string name="what4">Kadalasang mga sintomas nito ay:
+<b>\n- lagnat
+\n- ubo
+\n- pagkaramdam ng pagod</b>
+\n\nIba pang mga sintomas:
+<b>\n- pananakit ng katawan
+\n- pananakit ng lalamunan
+\n- pagtatae
+\n- sakit ng ulo
+\n- pagkawala ng panlasa at pang-amoy</b>
+\n\nMalalang sintomas:
+<b>\n- mahirap at kinakapos na paghinga
+\n- paninikip ng dibdib
+\n- hirap sa pagsasalita at paggalaw
+\n\nAgarang humingi ng tulong medikal kung kayo ay nakakaranas ng nasabing malalalang sintomas.</b> Maaaring tumawag muna sa emergency hotlines at ipaalam ang kondisyon. ago bumisita sa inyong doctor o sa malapit na hospital.
+\n\nSa mga taong may hindi malalalang sintomas, dapat panatilihin ang pagkakaroon ng malusog na pangangatawan at <b>bigyang lunas ang nasabing sintomas sa loob ng bahay.</b>
+</string>
+    <string name="what5">Ugaliin ang tamang paghugas ng mga kamay na tumatagal ng <b>20-30 segundo gamit ang sabon at malinis na tubig.</b> Ang prosesong ito ay nakatutulong upang maalis ang mga dumi na siyang kinakapitan ng mga mikrobyo.</string>
+    <string name="what6">Ang pinakamabisang paraan na pwede nating gawin ay <b>manatili sa bahay</b> upang maiwasan ang pakikisalamuha sa maraming tao at <b>lumabas lamang kung kinakailangan.</b></string>
+    <string name="what7">Kung ikaw ay nasa labas ng bahay, magsuot ng mask, umiwas sa matataong lugar at panatilihin ang isang metrong layo mula sa ibang tao upang maiwasan ang pagkalat ng virus.</string>
+    <string name="today">ngayon </string>
+    <string name="presented">*Ang mga impormasyon na ito ay mula sa huling pitong araw na datos.</string>
+    <string name="close">Subukang muli</string>
+    <string name="offline">Mukhang wala kang internet connection. Maaring subukan muli maya-maya..</string>
+    <string name="offline_title">Ikaw ay offline.</string>
+
+    <string name="yesterday">kahapon</string>
+    <string name="more_info">*Pindutin para sa karagdagang impormasyon</string>
+    <string name="january">Enero</string>
+    <string name="february">Pebrero</string>
+    <string name="march">Marso</string>
+    <string name="april">Abril</string>
+    <string name="may">Mayo</string>
+    <string name="june">Hunyo</string>
+    <string name="july">Hulyo</string>
+    <string name="august">Agosto</string>
+    <string name="september">Setyembre</string>
+    <string name="october">Oktubre</string>
+    <string name="november">Nobyembre</string>
+    <string name="december">Disyembre</string>
+
+    <string name="updated">Na-update:</string>
+    <string name="morning">Magandang umaga</string>
+    <string name="afternoon">Magandang hapon</string>
+    <string name="evening">Magandang gabi</string>
+</resources>

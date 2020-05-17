@@ -8,6 +8,12 @@
     android:background="?attr/onAccent"
     android:layout_gravity="center">
 
+    <FrameLayout
+        android:id="@+id/fl_load_stats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"/>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_stats"
         android:layout_height="match_parent"

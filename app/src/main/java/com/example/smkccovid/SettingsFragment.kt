@@ -49,6 +49,9 @@ class SettingsFragment : Fragment() {
         else if (locale == "en") {
             ib_language.setImageResource(R.drawable.usa)
         }
+        else {
+            ib_language.setImageResource(R.drawable.philippines)
+        }
     }
 
     private fun buttonCountry() {
@@ -60,19 +63,23 @@ class SettingsFragment : Fragment() {
     }
 
     private fun showLanguageChangeDialog() {
-        val LANGUAGES = arrayOf("English", "Bahasa Indonesia")
+        val languages = arrayOf("English", "Bahasa Indonesia", "Filipino")
         val mBuilder = AlertDialog.Builder(context!!)
         mBuilder.setTitle(getString(R.string.select_language))
         mBuilder.setSingleChoiceItems(
-            LANGUAGES, -1
+            languages, -1
         ) { dialog, which ->
             if (which == 1) {
                 val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
                 edit.putString("lang", "in")
                 edit.apply()
-            } else {
+            } else if (which == 0) {
                 val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
                 edit.putString("lang", "en")
+                edit.apply()
+            } else {
+                val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
+                edit.putString("lang", "fil")
                 edit.apply()
             }
             changeLanguage()

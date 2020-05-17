@@ -1,5 +1,6 @@
 package com.example.smkccovid.activity
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +21,19 @@ import data.apiRequest
 import data.httpClient
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail.ch_detail1
+import kotlinx.android.synthetic.main.activity_detail.rl_detail1
+import kotlinx.android.synthetic.main.activity_detail.sk_detail1
+import kotlinx.android.synthetic.main.activity_detail.tv_detail_sub1
+import kotlinx.android.synthetic.main.activity_detail.tv_detail_title1
+import kotlinx.android.synthetic.main.activity_detail.tv_detail_total1
+import kotlinx.android.synthetic.main.fragment_detail1.*
 import render.animations.Render
 import render.animations.Zoom
 import retrofit2.Call
 import retrofit2.Response
+import util.getDateNow
+import util.getTimeNow
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -211,6 +221,7 @@ class DetailActivity : AppCompatActivity() {
 
         tv_detail_total1.text = dec.format(total) + " " + string
         tv_detail_sub1.text = "+" + dec.format(sub)
+        tv_date_detail1.text = getDateNow(this, "id") + " " + getTimeNow()
     }
 
     fun setData(chart: LineChart, data: MutableList<Float>, label: String) {

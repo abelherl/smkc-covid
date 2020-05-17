@@ -18,7 +18,8 @@
         android:layout_gravity="center"
         android:layout_centerInParent="true"
         app:SpinKit_Color="@color/white"
-        android:translationZ="10dp"/>
+        android:translationZ="10dp"
+        android:translationY="-50dp"/>
     <com.chauthai.overscroll.RecyclerViewBouncy
         android:id="@+id/rv_rank1"
         android:layout_width="match_parent"

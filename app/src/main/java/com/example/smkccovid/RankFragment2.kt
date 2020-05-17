@@ -39,7 +39,6 @@ class RankFragment2 : Fragment() {
     }
 
     fun initView() {
-        disableTouch(activity!!, R.id.tl_stats, false)
         callApiGetData()
     }
 

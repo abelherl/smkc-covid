@@ -39,7 +39,7 @@ class StatsFragment : Fragment() {
         edit.putInt("loaded", 0)
         edit.apply()
 
-        disableTouch(activity!!, R.id.bottomNavMain, true)
+        disableTouch(activity!!, R.id.fl_load_stats, R.id.bottomNavMain, true)
 
         viewPagerAdapter = ViewPagerAdapter(childFragmentManager, context!!)
         tl_stats.setupWithViewPager(vp_stats)

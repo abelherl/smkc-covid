@@ -4,37 +4,35 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.graphics.Bitmap.CompressFormat
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
+import android.os.StrictMode
+import android.os.StrictMode.VmPolicy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smkccovid.activity.ChooseActivity
 import com.example.smkccovid.activity.DetailActivity
+import com.example.smkccovid.activity.MainActivity
 import com.example.smkccovid.activity.WhatActivity
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import data.CovidService
 import data.apiRequest
 import data.httpClient
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import kotlinx.android.synthetic.main.fragment_stats.*
-import render.animations.Attention
-import render.animations.Bounce
-import render.animations.Fade
-import render.animations.Render
 import retrofit2.Call
 import retrofit2.Response
 import util.*
+import java.io.File
+import java.io.FileOutputStream
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -103,7 +101,7 @@ class DashboardFragment : Fragment() {
     private fun initView() {
         setDate()
         setOnClick()
-        disableTouch(activity!!, R.id.bottomNavMain, true)
+        disableTouch(activity!!, R.id.fl_load_main, R.id.bottomNavMain, true)
 
         val sharedPreferences = context!!.getSharedPreferences("test", 0)
 
@@ -232,9 +230,10 @@ class DashboardFragment : Fragment() {
     }
 
     private fun buttonSync() {
-
         bt_sync.animate().rotation(bt_sync.rotation-360).start()
-        goTo(context)
+        Handler().postDelayed({
+            goTo(context!!, MainActivity(), true)
+        }, 300)
 //
 //        val render = Render(activity!!)
 //

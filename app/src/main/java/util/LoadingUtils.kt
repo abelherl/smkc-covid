@@ -2,10 +2,12 @@ package util
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.os.Handler
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ import com.google.android.material.tabs.TabLayout
 import id.voela.actrans.AcTrans
 import render.animations.Fade
 import render.animations.Render
+
 
 fun showLoading(context: Context, swipeRefreshLayout: SwipeRefreshLayout) {
     swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(context,
@@ -35,16 +38,23 @@ fun dismissLoading(context: Context, view: View) {
 
     view.isClickable = false
 }
-fun disableTouch(activity: FragmentActivity, id: Int, botNav: Boolean) {
+fun disableTouch(activity: FragmentActivity, idFrame: Int?, idNav: Int, botNav: Boolean) {
+    if (idFrame != null) {
+        val fl = activity.findViewById<FrameLayout>(idFrame)
+        fl.isEnabled = true
+        fl.isClickable = true
+        fl.visibility = View.VISIBLE
+    }
+
     if (botNav) {
-        val tl = activity.findViewById<BottomNavigationView>(id)
+        val tl = activity.findViewById<BottomNavigationView>(idNav)
         for (i in 0..2) {
             tl.menu.getItem(i).isEnabled = false
             tl.invalidate()
         }
     }
     else {
-        val tl = activity.findViewById<TabLayout>(id)
+        val tl = activity.findViewById<TabLayout>(idNav)
         tl.isEnabled = false
         tl.invalidate()
     }
@@ -111,4 +121,16 @@ fun goTo(context: Context, activity: AppCompatActivity, finish: Boolean, withExt
     if (finish) { intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
     context.startActivity(intent)
     AcTrans.Builder(context).performFade()
+}
+fun getBitmapFromView(view: View): Bitmap? {
+    val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+
+    val canvas = Canvas(returnedBitmap)
+
+    val bgDrawable = view.background
+    if (bgDrawable != null) bgDrawable.draw(canvas) else canvas.drawColor(Color.WHITE)
+
+    view.draw(canvas)
+
+    return returnedBitmap
 }
