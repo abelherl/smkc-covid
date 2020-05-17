@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.smkccovid.Country
+import com.example.smkccovid.data.Country
 import com.example.smkccovid.R
 import kotlinx.android.extensions.LayoutContainer
 

@@ -1,19 +1,17 @@
-package com.example.smkccovid
+package com.example.smkccovid.activity
 
-import android.content.Context
+import android.animation.AnimatorSet
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.smkccovid.R
 import id.voela.actrans.AcTrans
-import kotlinx.android.synthetic.main.activity_choose.*
 import kotlinx.android.synthetic.main.activity_splash.*
+import render.animations.Attention
 import render.animations.Render
 import render.animations.Zoom
 import util.isInternetAvailable
-import util.loadLocale
-import util.setLocale
-import java.util.*
 
 class SplashActivity : AppCompatActivity() {
     private val SPLASH_TIME_OUT:Long = 2000
@@ -26,13 +24,13 @@ class SplashActivity : AppCompatActivity() {
     override fun onBackPressed() { }
 
     fun initView() {
-        val bool = isInternetAvailable(this)
+        val view = iv_splash
         Handler().postDelayed({
+            val bool = isInternetAvailable(this)
             if (bool) {
-                dismissLoading()
-                goTo(MainActivity(), true)
+                continueTo(MainActivity(), Attention().Pulse(view), 400, true)
             } else {
-                goTo(SignalActivity(), false)
+                continueTo(SignalActivity(), Attention().Flash(view), 500, false)
             }
         }, SPLASH_TIME_OUT)
     }
@@ -43,10 +41,30 @@ class SplashActivity : AppCompatActivity() {
         AcTrans.Builder(this).performFade()
     }
 
-    fun dismissLoading() {
+    fun continueTo(activity: AppCompatActivity, animation: AnimatorSet, duration: Long, finish: Boolean) {
+        animate(animation, duration)
+        dismissLoading(duration)
+        Handler().postDelayed({
+            animate(animation, duration)
+            Handler().postDelayed({
+                goTo(activity, finish)
+            }, duration+100)
+        }, duration+100)
+    }
+
+    fun animate(animation: AnimatorSet, duration: Long) {
         val render = Render(this)
 
-        render.setDuration(500)
+        render.setDuration(duration)
+
+        render.setAnimation(animation)
+        render.start()
+    }
+
+    fun dismissLoading(duration: Long) {
+        val render = Render(this)
+
+        render.setDuration(duration)
 
         render.setAnimation(Zoom().Out(iv_splash_spin))
         render.start()

@@ -7,35 +7,51 @@
     tools:context=".StatsFragment"
     android:background="?attr/onAccent"
     android:layout_gravity="center">
-    <androidx.viewpager2.widget.ViewPager2
+
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_stats"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_below="@+id/rl_stats"/>
+        android:layout_below="@+id/tl_stats"
+        android:layout_marginTop="10dp"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/rl_stats"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:gravity="top|center_horizontal"
-        android:background="?onAccent"
-        android:translationZ="5dp">
+        android:background="@color/black"
+        android:translationZ="5dp"
+        android:elevation="0dp"
+        android:paddingTop="35dp"
+        android:paddingBottom="0dp">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="bottom"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:text="@string/stats"
             style="@style/Title"
-            android:layout_marginTop="35dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"/>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tl_stats"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/transparent"
-            app:tabTextColor="@color/white"
-            app:tabMode="fixed"
-            app:tabIconTint="@color/white"
-            app:tabIndicatorAnimationDuration="500"
-            app:tabMaxWidth="0dp"/>
+            android:layout_marginBottom="15dp"/>
     </com.google.android.material.appbar.AppBarLayout>
+    <com.kekstudio.dachshundtablayout.DachshundTabLayout
+        android:id="@+id/tl_stats"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rl_stats"
+        android:translationZ="0dp"
+        android:elevation="0dp"
+        android:background="?onAccent"
+        app:tabSelectedTextColor="@color/white"
+        app:tabRippleColor="@color/transparent"
+        app:tabTextColor="@color/white"
+        app:tabMode="fixed"
+        app:tabIconTint="@color/white"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorAnimationDuration="1000"
+        app:tabMaxWidth="0dp" />
 </RelativeLayout>

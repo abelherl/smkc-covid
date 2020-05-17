@@ -1,37 +1,34 @@
 package com.example.smkccovid.adapter
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.smkccovid.CountryFragment
-import com.example.smkccovid.DashboardFragment
-import com.example.smkccovid.GlobalFragment
-import com.example.smkccovid.SettingsFragment
+import androidx.fragment.app.FragmentPagerAdapter
+import com.example.smkccovid.*
 
 
-class ViewPagerAdapter(fragment : Fragment) : FragmentStateAdapter(fragment) {
-
+class ViewPagerAdapter(fragment : FragmentManager, nContext: Context) : FragmentPagerAdapter(fragment) {
     private val tabCount = 3
+    var context = nContext
 
-    override fun getItemCount(): Int {
+    override fun getCount(): Int {
         return tabCount
     }
 
-    override fun createFragment(position: Int): Fragment {
-        return when (position){
-            0 -> {
-                GlobalFragment()
-            }
-            1 -> {
-                GlobalFragment()
-            }
-            2 -> {
-                CountryFragment()
-            }
-            else -> {
-                DashboardFragment()
-            }
+    override fun getItem(position: Int): Fragment {
+        when (position) {
+            0 -> return RankFragment1()
+            1 -> return RankFragment2()
+            2 -> return RankFragment3()
+            else -> return RankFragment1()
+        }
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when (position) {
+            0 -> context.resources.getString(R.string.cases)
+            1 -> context.getString(R.string.recovered)
+            else -> { return context.getString(R.string.deaths) }
         }
     }
 }

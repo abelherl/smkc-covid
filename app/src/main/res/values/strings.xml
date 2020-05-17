@@ -15,12 +15,12 @@
     <string name="how_to_prevent">How can I prevent it?</string>
     <string name="notification">Notification</string>
     <string name="total">Worldwide Total</string>
-    <string name="stats">Statistics</string>
+    <string name="stats">Ranking</string>
     <string name="positive">Positive</string>
     <string name="summary">Summary</string>
-    <string name="global">Global</string>
+    <string name="global">Worldwide</string>
     <string name="general">General</string>
-    <string name="country">Country for dashboard</string>
+    <string name="country">Country</string>
     <string name="select_country">Select Country</string>
     <string name="select_language">Select Language</string>
     <string name="learn">Tap here to learn about COVID-19 and ways to protect yourself and others around you.</string>
@@ -53,4 +53,9 @@
     <string name="close">Try again</string>
     <string name="offline">It looks like you don\'t have any internet connection right now. Might want to try again later.</string>
     <string name="offline_title">You seemed to be offline</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="yesterday">" since yesterday"</string>
+    <string name="more_info">*Tap the box for more info</string>
 </resources>

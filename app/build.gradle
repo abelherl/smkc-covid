@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.github.richimf:Alphabetik:1.0.3'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.Andy671:Dachshund-Tab-Layout:v0.3.3'
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
     //GSON
     implementation 'com.google.code.gson:gson:2.8.2'

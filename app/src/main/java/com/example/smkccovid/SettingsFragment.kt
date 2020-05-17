@@ -1,17 +1,20 @@
 package com.example.smkccovid
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_settings.*
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import com.example.smkccovid.activity.MainActivity
 import id.voela.actrans.AcTrans
+import kotlinx.android.synthetic.main.fragment_settings.*
+import java.util.*
 
 class SettingsFragment : Fragment() {
+    var locale = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,15 +27,67 @@ class SettingsFragment : Fragment() {
         initView()
     }
 
+//    override fun onResume() {
+//        super.onResume();
+//        if (localeHasChanged()) {
+//            changeLanguage()
+//        }
+//    }
+
     private fun initView() {
         bt_country.setOnClickListener { buttonCountry() }
         bt_language.setOnClickListener { buttonCountry() }
-//        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
+        setFlagImage()
+    }
+
+    private fun setFlagImage() {
+        locale = Locale.getDefault().language
+
+        if (locale == "in") {
+            ib_language.setImageResource(R.drawable.indonesia)
+        }
+        else if (locale == "en") {
+            ib_language.setImageResource(R.drawable.usa)
+        }
     }
 
     private fun buttonCountry() {
-        val intent = Intent(activity, ChooseActivity::class.java)
-        startActivity(intent)
-        AcTrans.Builder(context!!).performFade()
+        showLanguageChangeDialog()
+    }
+
+    fun localeHasChanged(): Boolean {
+        return locale != Locale.getDefault().language
+    }
+
+    private fun showLanguageChangeDialog() {
+        val LANGUAGES = arrayOf("English", "Bahasa Indonesia")
+        val mBuilder = AlertDialog.Builder(context!!)
+        mBuilder.setTitle(getString(R.string.select_language))
+        mBuilder.setSingleChoiceItems(
+            LANGUAGES, -1
+        ) { dialog, which ->
+            if (which == 1) {
+                val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
+                edit.putString("lang", "in")
+                edit.apply()
+            } else {
+                val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
+                edit.putString("lang", "en")
+                edit.apply()
+            }
+            changeLanguage()
+            dialog.dismiss()
+        }
+        val mDialog = mBuilder.create()
+        mDialog.show()
+    }
+
+    private fun changeLanguage() {
+        Handler().post {
+            val intent = Intent(context, MainActivity()::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            AcTrans.Builder(context!!).performFade()
+        }
     }
 }

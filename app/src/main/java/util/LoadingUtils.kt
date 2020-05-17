@@ -5,12 +5,19 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.widget.ProgressBar
+import android.os.Handler
+import android.view.View
+import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.smkccovid.ChooseActivity
 import com.example.smkccovid.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
 import id.voela.actrans.AcTrans
+import render.animations.Fade
+import render.animations.Render
 
 fun showLoading(context: Context, swipeRefreshLayout: SwipeRefreshLayout) {
     swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(context,
@@ -18,9 +25,56 @@ fun showLoading(context: Context, swipeRefreshLayout: SwipeRefreshLayout) {
     swipeRefreshLayout.isEnabled = true
     swipeRefreshLayout.isRefreshing = true
 }
-fun dismissLoading(swipeRefreshLayout: SwipeRefreshLayout) {
-    swipeRefreshLayout.isRefreshing = false
-    swipeRefreshLayout.isEnabled = false
+fun dismissLoading(context: Context, view: View) {
+    val render = Render(context)
+
+    render.setDuration(1300)
+
+    render.setAnimation(Fade().Out(view))
+    render.start()
+
+    view.isClickable = false
+}
+fun disableTouch(activity: FragmentActivity, id: Int, botNav: Boolean) {
+    if (botNav) {
+        val tl = activity.findViewById<BottomNavigationView>(id)
+        for (i in 0..2) {
+            tl.menu.getItem(i).isEnabled = false
+            tl.invalidate()
+        }
+    }
+    else {
+        val tl = activity.findViewById<TabLayout>(id)
+        tl.isEnabled = false
+        tl.invalidate()
+    }
+}
+fun enableTouch(activity: FragmentActivity, idFrame: Int, idNav: Int, botNav: Boolean) {
+    val fl = activity.findViewById<FrameLayout>(idFrame)
+    fl.visibility = View.GONE
+
+    if (botNav) {
+        val tl = activity.findViewById<BottomNavigationView>(idNav)
+        for (i in 0..2) {
+            tl.menu.getItem(i).isEnabled = true
+            tl.invalidate()
+        }
+    }
+    else {
+        val tl = activity.findViewById<TabLayout>(idNav)
+        tl.isEnabled = true
+        tl.invalidate()
+    }
+}
+fun enableTouch(activity: FragmentActivity) {
+    val pref = activity.getSharedPreferences("test", 0).getInt("loaded", 0)
+    if (pref == 3) {
+        val tl = activity.findViewById<BottomNavigationView>(R.id.bottomNavMain)
+        for (i in 0..2) {
+            tl.menu.getItem(i).isEnabled = true
+            tl.invalidate()
+        }
+    }
 }
 fun isInternetAvailable(context: Context): Boolean {
     var result = false
@@ -49,4 +103,12 @@ fun isInternetAvailable(context: Context): Boolean {
         }
     }
     return result
+}
+
+fun goTo(context: Context, activity: AppCompatActivity, finish: Boolean, withExtra: Int? = 99) {
+    val intent = Intent(context, activity::class.java)
+    if (withExtra != 99) { intent.putExtra("id", withExtra); }
+    if (finish) { intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
+    context.startActivity(intent)
+    AcTrans.Builder(context).performFade()
 }

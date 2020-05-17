@@ -1,12 +1,11 @@
-package com.example.smkccovid
+package com.example.smkccovid.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
+import com.example.smkccovid.R
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_signal.*
-import kotlin.system.exitProcess
 
 class SignalActivity : AppCompatActivity() {
 
@@ -16,7 +15,10 @@ class SignalActivity : AppCompatActivity() {
         initView()
     }
 
-    override fun onBackPressed() { }
+    override fun onBackPressed() {
+//        super.onBackPressed()
+//        AcTrans.Builder(this).performFade()
+    }
 
     fun initView() {
         bt_exit.setOnClickListener {

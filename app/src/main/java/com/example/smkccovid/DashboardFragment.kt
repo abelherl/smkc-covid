@@ -2,26 +2,39 @@ package com.example.smkccovid
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.smkccovid.activity.ChooseActivity
+import com.example.smkccovid.activity.DetailActivity
+import com.example.smkccovid.activity.WhatActivity
 import com.example.smkccovid.adapter.NewsAdapter
+import com.example.smkccovid.data.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import data.CovidService
+import data.apiRequest
+import data.httpClient
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_stats.*
 import render.animations.Attention
 import render.animations.Bounce
 import render.animations.Fade
 import render.animations.Render
-import util.loadLocale
-import util.setLocale
-import util.tampilToast
+import retrofit2.Call
+import retrofit2.Response
+import util.*
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,23 +42,41 @@ import kotlin.collections.ArrayList
 
 class DashboardFragment : Fragment() {
 
-    lateinit var listTeman : ArrayList<Country>
     lateinit var listCountry : List<NewCountryItem>
 
-    private fun simulasiDataTeman() {
-        listTeman = ArrayList()
-        listTeman.add(Country("Fakhry", "1932"))
-        listTeman.add(Country("Amdo", "121"))
-        listTeman.add(Country("Fakhry", "1932"))
-        listTeman.add(Country("Amdo", "121"))
-        listTeman.add(Country("Amdo", "121"))
-    }
-
-    private fun tampilTeman() {
-//        rv_main.layoutManager = LinearLayoutManager(activity)
-//        rv_main.adapter = CountryAdapter(activity!!, listTeman)
+    private fun simulateNews() {
+        var listTeman = ArrayList<Country>()
+        for (i in 0..10) {
+            listTeman.add(Country("1", "2"))
+        }
         rv_news.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rv_news.adapter = NewsAdapter(activity!!, listTeman)
+    }
+
+    private fun callApiGetData(sharedPreferences: SharedPreferences) {
+        val httpClient = httpClient()
+        val apiRequest = apiRequest<CovidService>(httpClient, AppConstants.COVID_URL)
+        val call = apiRequest.getGlobal()
+
+        val slug = context!!.getSharedPreferences("test", 0).getString("slug", "indonesia")
+
+        call.enqueue(object : retrofit2.Callback<Summary> {
+            override fun onFailure(call: Call<Summary>, t: Throwable) {
+                tampilToast(context!!, "Gagal")
+                callApiGetData(sharedPreferences)
+            }
+            override fun onResponse(call: Call<Summary>, response:
+            Response<Summary>
+            ) {
+                when {
+                    response.isSuccessful -> setData(response.body()!!.globalSummary, response.body()!!.countries.find { it.slug.contains(slug!!.toLowerCase()) }!!, sharedPreferences)
+                    else -> {
+                        tampilToast(context!!, response.message())
+                        callApiGetData(sharedPreferences)
+                    }
+                }
+            }
+        })
     }
 
     private fun configureRv() {
@@ -53,7 +84,6 @@ class DashboardFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setSharedPref()
         super.onCreate(savedInstanceState)
     }
 
@@ -68,55 +98,98 @@ class DashboardFragment : Fragment() {
         initView()
     }
     override fun onConfigurationChanged(newConfig: Configuration) {
-        loadLocale(context!!)
         super.onConfigurationChanged(newConfig)
     }
     private fun initView() {
-        simulasiDataTeman()
-        tampilTeman()
+        disableTouch(activity!!, R.id.bottomNavMain, true)
+
+        val sharedPreferences = context!!.getSharedPreferences("test", 0)
+
+        val edit = sharedPreferences.edit()
+        edit.putInt("loaded", 0)
+        edit.apply()
+
+        val update: Boolean = sharedPreferences.getBoolean("update", true)
+        callApiGetData(sharedPreferences)
+        simulateNews()
 
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
         bt_edit.setOnClickListener { buttonCountry() }
 
-//        swipeRefreshLayout.setOnRefreshListener { onRefresh() }
+        ll_blue1.setOnClickListener { goToWithBoolean(true, 0) }
+        ll_blue2.setOnClickListener { goToWithBoolean(false, 0) }
 
-        num_blue.text = prettyCount(1811942)
-        num_green.text = prettyCount(592741)
-        num_red.text = prettyCount(38142)
+        ll_green1.setOnClickListener { goToWithBoolean(true, 1) }
+        ll_green2.setOnClickListener { goToWithBoolean(false, 1) }
 
-        num_blue3.text = prettyCount(15942)
-        num_green3.text = prettyCount(1741)
-        num_red3.text = prettyCount(271)
-
-//        FlingBehavior.apply { sv_main }
-//        Glide.with(this).load("https://www.countryflags.io/be/flat/32.png").into(iv_what)
+        ll_red1.setOnClickListener { goToWithBoolean(true, 2) }
+        ll_red2.setOnClickListener { goToWithBoolean(false, 2) }
     }
 
-    fun setSharedPref() {
-        val test by lazy { context!!.getSharedPreferences("test", Context.MODE_PRIVATE) }
-        val edit = test.edit()
-        val lang = Locale.getDefault().language
-        setLocale(context!!, lang)
-        loadLocale(context!!)
-        edit.putString("lang", lang)
+    private fun goToWithBoolean(boolean: Boolean, extra: Int) {
+        val edit = context!!.getSharedPreferences("test", 0).edit()
+        edit.putBoolean("global", boolean)
         edit.apply()
+        goTo(context!!, DetailActivity(), false, extra)
     }
 
     fun changelanguage(context: Context) {
         //String lang = "hi_IN";
         //  Locale locale = new Locale(lang);
-        val locale = Locale("id")
+        val locale = Locale("in")
         Locale.setDefault(locale)
         val config = Configuration()
         config.setLocale(locale)
         context.resources.configuration.setLocale(locale)
     }
 
-//    fun onRefresh() {
-//        tampilToast(context!!, "Refreshed")
-//        dismissLoading(swipeRefreshLayout)
-//    }
+    private fun setData(global: WorldWeeklyItem, country: CountrySummary, sharedPreferences: SharedPreferences) {
+        enableTouch(activity!!, R.id.fl_load_main, R.id.bottomNavMain, true)
+
+        val edit = sharedPreferences.edit()
+        edit.putInt("confirmed", global.totalConfirmed)
+        edit.putBoolean("update", false)
+        edit.apply()
+
+        tv_country_dashboard.text = country.country
+
+        num_blue.text = prettyCount(global.totalConfirmed)
+        num_green.text = prettyCount(global.totalRecovered)
+        num_red.text = prettyCount(global.totalDeaths)
+
+        num_blue2.text = "+" + global.newConfirmed
+        num_green2.text = "+" + global.newRecovered
+        num_red2.text = "+" + global.newDeaths
+
+        num_blue3.text = prettyCount(country.totalConfirmed)
+        num_green3.text = prettyCount(country.totalRecovered)
+        num_red3.text = prettyCount(country.totalDeaths)
+
+        num_blue4.text = "+" + country.newConfirmed
+        num_green4.text = "+" + country.newRecovered
+        num_red4.text = "+" + country.newDeaths
+
+        num_blue.invalidate()
+        num_blue2.invalidate()
+        num_blue3.invalidate()
+        num_blue4.invalidate()
+
+        num_green.invalidate()
+        num_green2.invalidate()
+        num_green3.invalidate()
+        num_green4.invalidate()
+
+        num_red.invalidate()
+        num_red2.invalidate()
+        num_red3.invalidate()
+        num_red4.invalidate()
+
+        tv_country_dashboard.invalidate()
+
+//        tampilToast(context!!, country.totalConfirmed.toString())
+        dismissLoading(context!!, sp_main)
+    }
 
     fun prettyCount(number: Number): String? {
         val sharedPref = context!!.getSharedPreferences("test", 0)
@@ -124,7 +197,7 @@ class DashboardFragment : Fragment() {
 
         var suffix = arrayOf("", "K", "M", "B")
 
-        if (lang == "id") {
+        if (lang == "in") {
             suffix = arrayOf("", "rb", "jt", "m")
         }
 

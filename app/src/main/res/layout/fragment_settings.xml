@@ -59,8 +59,8 @@
                         android:id="@+id/ib_language"
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/usa"
                         android:scaleType="centerInside"
+                        android:src="@drawable/usa"
                         android:background="#00000000"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="15dp"/>
@@ -107,7 +107,6 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/indonesia"
                         android:scaleType="centerInside"
                         android:background="#00000000"
                         android:layout_alignParentEnd="true"

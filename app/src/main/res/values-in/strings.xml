@@ -13,15 +13,15 @@
     <string name="how_to_prevent">Bagaimana cara mengantisipasinya?</string>
     <string name="notification">Notifikasi</string>
     <string name="total">Total Sedunia</string>
-    <string name="stats">Statistik</string>
+    <string name="stats">Ranking</string>
     <string name="cases">Kasus</string>
     <string name="total_cases">Total kasus</string>
     <string name="total_deaths">Total meninggal</string>
     <string name="total_recovered">Total sembuh</string>
     <string name="summary">Rangkuman</string>
-    <string name="global">Global</string>
+    <string name="global">Seluruh Dunia</string>
     <string name="general">Umum</string>
-    <string name="country">Negara untuk beranda</string>
+    <string name="country">Negara</string>
     <string name="learn">Tekan disini untuk kenali COVID-19 dan cara untuk melindungi diri anda dan orang-orang disekitar anda.</string>
     <string name="what2"><b>Penyakit Coronavirus (COVID-19)</b> adalah <b>penyakit yang sangat menular</b> yang diakibatkan oleh virus baru Coronavirus.\n\nSebagian besar orang yang terjangkit COVID-19 akan mengalami <b>gejala ringan hingga menengah</b> dan sembuh tanpa membutuhkan bantuan medis.</string>
     <string name="how">Bagaimana cara penyebarannya?</string>
@@ -35,7 +35,9 @@
     <string name="what5">Mencuci tangan dengan benar setidaknya <b>20-30 detik dengan sabun dan air mengalir.</b> Gerakan menggosok dengan sabun menghilangkan minyak dan kotoran yang membawa kebanyakan kuman.</string>
     <string name="what6">Tindakan paling sederhana yang bisa anda lakukan adalah dengan <b>tetap di dalam rumah dan hanya keluar saat benar benar diperlukan.</b></string>
     <string name="what7">Saat anda di luar rumah, gunakan masker, hindari keramaian, dan pertahankan jarak setidaknya 1 meter dari orang lain untuk menghindari penyebaran.</string>
-    <string name="close">Coba lagi</string>
+    <string name="close">Tutup aplikasi</string>
     <string name="offline">Sepertinya anda sedang tidak mempunyai koneksi internet. Coba lagi saat anda sudah terkoneksi.</string>
-    <string name="offline_title">Anda mungkin sedang offline</string>
+    <string name="offline_title">Sepertinya anda sedang offline</string>
+    <string name="yesterday">" dari kemarin"</string>
+    <string name="more_info">*Tekan kotak untuk info lebih lanjut</string>
 </resources>

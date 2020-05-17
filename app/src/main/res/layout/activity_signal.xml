@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignalActivity"
+    tools:context=".activity.SignalActivity"
     android:paddingTop="40dp"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"

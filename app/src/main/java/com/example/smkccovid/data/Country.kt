@@ -1,4 +1,4 @@
-package com.example.smkccovid
+package com.example.smkccovid.data
 
 data class Country (
     val name: String,

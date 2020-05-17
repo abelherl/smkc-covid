@@ -1,4 +1,4 @@
-package com.example.smkccovid
+package com.example.smkccovid.behavior
 
 import android.content.Context
 import android.util.AttributeSet

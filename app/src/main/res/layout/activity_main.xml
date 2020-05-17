@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".activity.MainActivity"
     android:background="#00000000"
     android:clipToPadding="false">
 
@@ -13,6 +13,13 @@
         android:id="@+id/fl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <FrameLayout
+        android:id="@+id/fl_load_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:translationZ="10dp"
+        android:clickable="true"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
@@ -32,7 +39,7 @@
             android:id="@+id/bottomNavMain"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:itemRippleColor="@color/green"
+            app:itemRippleColor="@color/blue"
             android:background="@drawable/gradient_blue"
             app:itemIconTint="@drawable/item_foreground"
             app:itemTextColor="@drawable/item_foreground"

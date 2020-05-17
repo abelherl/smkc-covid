@@ -1,28 +1,26 @@
 package com.example.smkccovid
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.smkccovid.adapter.ViewPagerAdapter
-import com.google.android.material.tabs.TabLayoutMediator
+import com.example.smkccovid.adapter.ViewPagerListener
+import com.example.smkccovid.behavior.ZoomOutTransition
 import kotlinx.android.synthetic.main.fragment_stats.*
+import util.disableTouch
+import util.enableTouch
 
 
 class StatsFragment : Fragment() {
 
     private lateinit var viewPagerAdapter : ViewPagerAdapter
 
-    private val titles = arrayOf("Comparison", "Global", "Philippines")
+    private var titles = arrayOf("")
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_stats, container, false)
     }
 
@@ -31,26 +29,23 @@ class StatsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun initView() {
-        viewPagerAdapter =
-            ViewPagerAdapter(this)
-        vp_stats.adapter = viewPagerAdapter
-        vp_stats.setCurrentItem(1,false)
-        TabLayoutMediator(tl_stats, vp_stats,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                if (position == 0) {
-                    tab.icon = ContextCompat.getDrawable(context!!, R.drawable.ic_pie_chart_black_24dp)
-                }
-                else {
-                    tab.text = titles[position]
-                }
-            }
-        ).attach()
+    override fun onResume() {
+        super.onResume()
+        initView()
+    }
 
-        val layout = (tl_stats.getChildAt(0) as LinearLayout).getChildAt(0) as LinearLayout
-        val layoutParams = layout.layoutParams as LinearLayout.LayoutParams
-        layoutParams.weight = 0.3F
-        layout.layoutParams = layoutParams
-        layout.invalidate()
+    fun initView() {
+        val edit = context!!.getSharedPreferences("test", 0).edit()
+        edit.putInt("loaded", 0)
+        edit.apply()
+
+        disableTouch(activity!!, R.id.bottomNavMain, true)
+
+        viewPagerAdapter = ViewPagerAdapter(childFragmentManager, context!!)
+        tl_stats.setupWithViewPager(vp_stats)
+        vp_stats.addOnPageChangeListener(ViewPagerListener())
+        vp_stats.offscreenPageLimit = 10
+        vp_stats.setPageTransformer(false, ZoomOutTransition())
+        vp_stats.adapter = viewPagerAdapter
     }
 }

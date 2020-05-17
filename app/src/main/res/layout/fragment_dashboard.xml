@@ -2,25 +2,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:autofit="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardFragment"
     android:background="?onAccent">
+    <RelativeLayout
+        android:id="@+id/sp_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:translationZ="10dp"
+        android:background="@color/hintBlack">
+        <com.github.ybq.android.spinkit.SpinKitView
+            style="@style/SpinKitView.Large.MultiplePulse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            app:SpinKit_Color="@color/lightBlue"
+            android:clickable="true"/>
+    </RelativeLayout>
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/rl_dashboard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:gravity="top|center_horizontal"
-        android:background="?onAccent"
+        android:background="@color/black"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:translationZ="5dp"
         android:paddingTop="35dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="20dp">
+        android:paddingBottom="15dp">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="bottom"
             android:text="@string/dashboard"
             style="@style/Title"/>
     </com.google.android.material.appbar.AppBarLayout>
@@ -29,7 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="always"
-        android:paddingTop="0dp"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingBottom="20dp"
@@ -39,7 +59,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="end">
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -121,6 +142,7 @@
                 android:clipToPadding="false"
                 android:clipChildren="false">
                 <LinearLayout
+                    android:id="@+id/ll_blue1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -159,6 +181,7 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"/>
                 <LinearLayout
+                    android:id="@+id/ll_green1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -197,6 +220,7 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"/>
                 <LinearLayout
+                    android:id="@+id/ll_red1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -236,19 +260,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
-                <TextView
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/tv_country_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Philippines"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/bt_edit"
+                    android:maxLines="2"
+                    android:text="@string/country"
                     style="@style/SubTitle"
                     android:layout_centerVertical="true"/>
                 <ImageButton
                     android:id="@+id/bt_edit"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_edit_black_24dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
                     android:background="#00000000"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitEnd"
                     android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"/>
@@ -263,6 +291,7 @@
                 android:clipToPadding="false"
                 android:clipChildren="false">
                 <LinearLayout
+                    android:id="@+id/ll_blue2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -301,6 +330,7 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"/>
                 <LinearLayout
+                    android:id="@+id/ll_green2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -339,6 +369,7 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"/>
                 <LinearLayout
+                    android:id="@+id/ll_red2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -374,6 +405,15 @@
                         style="@style/SmallLabelWhite"/>
                 </LinearLayout>
             </LinearLayout>
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/more_info"
+                android:textAlignment="viewEnd"
+                style="@style/SmallLabelHint"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -530,10 +570,25 @@
                     android:clipToPadding="false"
                     android:clipChildren="false"/>
             </RelativeLayout>
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/rv_main"-->
+<!--            <RelativeLayout-->
 <!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content" />-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="-60dp"-->
+<!--                android:layout_marginStart="-20dp"-->
+<!--                android:layout_marginEnd="-20dp"-->
+<!--                android:background="@drawable/gradient_blue">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:src="@drawable/ic_undraw_searching_p5ux"-->
+<!--                    android:scaleType="fitEnd"-->
+<!--                    android:layout_alignParentStart="false"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:layout_marginEnd="15dp"-->
+<!--                    android:translationZ="10dp"/>-->
+<!--            </RelativeLayout>-->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

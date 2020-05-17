@@ -8,6 +8,6 @@ data class Summary(
     val countries: List<CountrySummary>,
     @SerializedName("Date")
     val date: String,
-    @SerializedName("GlobalSummary")
-    val globalSummary: GlobalSummary
+    @SerializedName("Global")
+    val globalSummary: WorldWeeklyItem
 )
