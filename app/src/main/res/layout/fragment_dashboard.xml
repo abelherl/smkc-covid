@@ -61,6 +61,64 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="end">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginBottom="-50dp"
+                android:layout_marginStart="-30dp"
+                android:layout_marginEnd="-30dp"
+                android:background="@drawable/gradient_transparent"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/tv_greetings_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    style="@style/BigLabelWhite"
+                    android:text=""
+                    android:layout_margin="30dp"/>
+                <TextView
+                    android:id="@+id/tv_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_greetings_dashboard"
+                    style="@style/SmallLabelHint"
+                    android:text="@string/updated"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/tv_date_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_top"
+                    android:maxLines="1"
+                    style="@style/Title"
+                    android:text=""
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/tv_time_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_dashboard"
+                    android:maxLines="1"
+                    style="@style/BodyWhiteBold"
+                    android:alpha="0.6"
+                    android:text=""
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+                <ImageButton
+                    android:id="@id/bt_sync"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignTop="@id/tv_greetings_dashboard"
+                    android:layout_alignBottom="@id/tv_greetings_dashboard"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_sync_black_24dp"/>
+            </RelativeLayout>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -123,7 +181,7 @@
                     style="@style/SubTitle"
                     android:layout_centerVertical="true"/>
                 <ImageButton
-                    android:id="@+id/bt_sync"
+                    android:id="@+id/bt_sync2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:src="@drawable/ic_swap_horiz_white_24dp"

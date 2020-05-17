@@ -101,6 +101,8 @@ class DashboardFragment : Fragment() {
         super.onConfigurationChanged(newConfig)
     }
     private fun initView() {
+        setDate()
+        setOnClick()
         disableTouch(activity!!, R.id.bottomNavMain, true)
 
         val sharedPreferences = context!!.getSharedPreferences("test", 0)
@@ -112,7 +114,9 @@ class DashboardFragment : Fragment() {
         val update: Boolean = sharedPreferences.getBoolean("update", true)
         callApiGetData(sharedPreferences)
         simulateNews()
+    }
 
+    private fun setOnClick() {
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
         bt_edit.setOnClickListener { buttonCountry() }
@@ -144,6 +148,12 @@ class DashboardFragment : Fragment() {
         context.resources.configuration.setLocale(locale)
     }
 
+    private fun setDate() {
+        tv_date_dashboard.text = getDateNow(context!!, Locale.getDefault().country)
+        tv_time_dashboard.text = getTimeNow()
+        tv_greetings_dashboard.text = getGreetings(context!!)
+    }
+
     private fun setData(global: WorldWeeklyItem, country: CountrySummary, sharedPreferences: SharedPreferences) {
         enableTouch(activity!!, R.id.fl_load_main, R.id.bottomNavMain, true)
 
@@ -152,7 +162,7 @@ class DashboardFragment : Fragment() {
         edit.putBoolean("update", false)
         edit.apply()
 
-        tv_country_dashboard.text = country.country
+        tv_country_dashboard.text = country.country.capitalize()
 
         num_blue.text = prettyCount(global.totalConfirmed)
         num_green.text = prettyCount(global.totalRecovered)
@@ -223,48 +233,49 @@ class DashboardFragment : Fragment() {
 
     private fun buttonSync() {
 
-//        bt_sync.animate().rotation(bt_sync.rotation-360).start()
-
-        val render = Render(activity!!)
-
-        render.setDuration(500)
-
-        render.setAnimation(Attention().Wobble(bt_sync))
-        render.start()
-
-        val render1 = Render(activity!!)
-
-        render1.setDuration(300)
-
-        render1.setAnimation(Fade().OutLeft(ll_summary))
-        render1.start()
-
-        val render2 = Render(activity!!)
-
-        render2.setDuration(400)
-
-        render2.setAnimation(Fade().Out(ll_total))
-        render2.start()
-
-        Handler().postDelayed({
-            val render3 = Render(activity!!)
-
-            render3.setDuration(500)
-
-            render3.setAnimation(Bounce().InLeft(ll_summary))
-            render3.start()
-        }, 400)
-
-        Handler().postDelayed({
-            val render4 = Render(activity!!)
-
-            render4.setDuration(500)
-
-            render4.setAnimation(Fade().In(ll_total))
-            render4.start()
-        }, 500)
-
-        ViewCompat.setNestedScrollingEnabled(rv_news, false)
+        bt_sync.animate().rotation(bt_sync.rotation-360).start()
+        goTo(context)
+//
+//        val render = Render(activity!!)
+//
+//        render.setDuration(500)
+//
+//        render.setAnimation(Attention().Wobble(bt_sync))
+//        render.start()
+//
+//        val render1 = Render(activity!!)
+//
+//        render1.setDuration(300)
+//
+//        render1.setAnimation(Fade().OutLeft(ll_summary))
+//        render1.start()
+//
+//        val render2 = Render(activity!!)
+//
+//        render2.setDuration(400)
+//
+//        render2.setAnimation(Fade().Out(ll_total))
+//        render2.start()
+//
+//        Handler().postDelayed({
+//            val render3 = Render(activity!!)
+//
+//            render3.setDuration(500)
+//
+//            render3.setAnimation(Bounce().InLeft(ll_summary))
+//            render3.start()
+//        }, 400)
+//
+//        Handler().postDelayed({
+//            val render4 = Render(activity!!)
+//
+//            render4.setDuration(500)
+//
+//            render4.setAnimation(Fade().In(ll_total))
+//            render4.start()
+//        }, 500)
+//
+//        ViewCompat.setNestedScrollingEnabled(rv_news, false)
     }
 
     private fun buttonWhat() {

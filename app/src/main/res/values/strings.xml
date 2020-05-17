@@ -54,8 +54,24 @@
     <string name="offline">It looks like you don\'t have any internet connection right now. Might want to try again later.</string>
     <string name="offline_title">You seemed to be offline</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="yesterday">" since yesterday"</string>
     <string name="more_info">*Tap the box for more info</string>
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+
+    <string name="updated">Updated on:</string>
+    <string name="morning">Good morning</string>
+    <string name="afternoon">Good afternoon</string>
+    <string name="evening">Good evening</string>
 </resources>
