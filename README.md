@@ -5,6 +5,8 @@ An android app to monitor and get information about COVID-19 and its growth in n
 * English
 * Bahasa Indonesia
 
+###### *And oh I believe the pic above is a self-explanatory about what pages are in the app
+
 #### What can you learn from this app?
   * Fragments, ViewPager, TabLayout, BottomNav
   * Implementing RecyclerView
