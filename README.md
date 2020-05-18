@@ -1,9 +1,10 @@
 ![preview](https://github.com/abelherl/smkc-covid/blob/master/git2_new.png?raw=true)
 
 # SMKC COVID
-An android app to monitor and get information about COVID-19 and its growth in nearly all countries made with <b>Kotlin</b>. Graphs for the growth in the last 7 days are included in this app. <b>SMKC COVID</b> currently supports 2 languages:
+An android app to monitor and get information about COVID-19 and its growth in nearly all countries made with <b>Kotlin</b>. Graphs for the growth in the last 7 days are included in this app. <b>SMKC COVID</b> currently supports 3 languages:
 * English
 * Bahasa Indonesia
+* Filipino
 
 ###### *And oh I believe the pic above is a self-explanatory about what pages are in the app
 
