@@ -21,7 +21,7 @@ An android app to monitor and get information about COVID-19 and its growth in n
 
 <img src="https://github.com/abelherl/smkc-covid/blob/master/qr.png" alt="qr" width="200" height="200">
 
-or [Google Drive](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)**
+or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)**
 
 ## Acknowledgments
 * Hat tip to anyone who's code and illustration was used
