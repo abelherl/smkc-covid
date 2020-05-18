@@ -24,7 +24,7 @@ An android app to monitor and get information about COVID-19 and its growth in n
 ## Acknowledgments
 * Hat tip to anyone who's code and illustration was used
 * Icons by <i>Kiran Shastry</i> and <i>Freepik</i>
-* Mimi ko for the testing and some ideas
+* Mimi ko for the testing and some ideas (and translation lol)
 
 ## License
 [MIT License](https://github.com/abelherl/smkc-covid/blob/master/LICENSE)
