@@ -33,13 +33,14 @@ fun getDateNow(context: Context, lang: String): String {
 fun getTimeNow(): String {
     val cal = Calendar.getInstance()
     cal.time = Date()
-    val hour = cal[Calendar.HOUR].toString()
+    var hour = cal[Calendar.HOUR].toString()
     var minute = cal[Calendar.MINUTE].toString()
     val ampm = when (cal[Calendar.AM_PM]) {
         0 -> "AM"
         else -> "PM"
     }
     if (minute.toCharArray().size == 1) { minute = "0" + minute }
+    if (hour == "0") { hour = "12" }
     return  hour + ":" + minute + " " + ampm
 }
 fun getGreetings(context: Context): String {
