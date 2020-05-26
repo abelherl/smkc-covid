@@ -4,13 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.graphics.Bitmap.CompressFormat
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
-import android.os.StrictMode
-import android.os.StrictMode.VmPolicy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,8 +26,6 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
 import retrofit2.Response
 import util.*
-import java.io.File
-import java.io.FileOutputStream
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -42,14 +35,14 @@ class DashboardFragment : Fragment() {
 
     lateinit var listCountry : List<NewCountryItem>
 
-    private fun simulateNews() {
-        var listTeman = ArrayList<Country>()
-        for (i in 0..10) {
-            listTeman.add(Country("1", "2"))
-        }
-        rv_news.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        rv_news.adapter = NewsAdapter(activity!!, listTeman)
-    }
+//    private fun simulateNews() {
+//        var listTeman = ArrayList<Country>()
+//        for (i in 0..10) {
+//            listTeman.add(Country("1", "2"))
+//        }
+//        rv_news.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+//        rv_news.adapter = NewsAdapter(activity!!, listTeman)
+//    }
 
     private fun callApiGetData(sharedPreferences: SharedPreferences) {
         val httpClient = httpClient()
@@ -77,8 +70,27 @@ class DashboardFragment : Fragment() {
         })
     }
 
-    private fun configureRv() {
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+    private fun callApiGetNews(sharedPreferences: SharedPreferences) {
+        val httpClient = httpClient()
+        val apiRequest = apiRequest<CovidService>(httpClient, AppConstants.NEWSAPI_URL)
+        val call = apiRequest.getNews(getCountry(context!!), AppConstants.API_KEY, "covid", 20)
+
+        call.enqueue(object : retrofit2.Callback<NewsParent> {
+            override fun onFailure(call: Call<NewsParent>, t: Throwable) {
+                tampilToast(context!!, t.message!!)
+            }
+            override fun onResponse(call: Call<NewsParent>, response:
+            Response<NewsParent>
+            ) {
+                when {
+                    response.isSuccessful -> setNews(response.body()!!.articles)
+                    else -> {
+                        tampilToast(context!!, response.message())
+                        callApiGetNews(sharedPreferences)
+                    }
+                }
+            }
+        })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,7 +123,7 @@ class DashboardFragment : Fragment() {
 
         val update: Boolean = sharedPreferences.getBoolean("update", true)
         callApiGetData(sharedPreferences)
-        simulateNews()
+        callApiGetNews(sharedPreferences)
     }
 
     private fun setOnClick() {
@@ -147,7 +159,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setDate() {
-        tv_date_dashboard.text = getDateNow(context!!, Locale.getDefault().country)
+        tv_date_dashboard.text = getDate(context!!, Locale.getDefault().country , null)
         tv_time_dashboard.text = getTimeNow()
         tv_greetings_dashboard.text = getGreetings(context!!)
     }
@@ -196,6 +208,14 @@ class DashboardFragment : Fragment() {
         tv_country_dashboard.invalidate()
 
 //        tampilToast(context!!, country.totalConfirmed.toString())
+    }
+
+    fun setNews(listCountry: List<NewsItem>) {
+        val list = ArrayList(listCountry.sortedBy { it.publishedAt })
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        rv_news.layoutManager = layoutManager
+        rv_news.adapter = NewsAdapter(context!!, list)
         dismissLoading(context!!, sp_main)
     }
 

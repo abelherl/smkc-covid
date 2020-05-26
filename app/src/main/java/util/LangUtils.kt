@@ -27,6 +27,15 @@ fun loadLocale(context: Context) {
     context.resources.updateConfiguration(config, context.resources.displayMetrics)
 }
 
+fun getCountry(context: Context): String {
+    val language = context.getSharedPreferences("test", 0).getString("lang", "en")
+    return when (language) {
+        "in" -> "id"
+        "fil" -> "ph"
+        else -> "us"
+    }
+}
+
 //fun setLanguage(context: Context, language: String): ContextWrapper {
 //    var mContext = context
 //

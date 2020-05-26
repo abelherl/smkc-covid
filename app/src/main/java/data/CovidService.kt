@@ -1,10 +1,6 @@
 package data
 
-import com.example.smkccovid.data.NewCountryItem
-import com.example.smkccovid.data.CountryTotal
-import com.example.smkccovid.data.NewsItem
-import com.example.smkccovid.data.Summary
-import com.example.smkccovid.data.WorldWeeklyItem
+import com.example.smkccovid.data.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -27,6 +23,7 @@ interface CovidService {
     fun getNews(
         @Query("country") country: String,
         @Query("apiKey") apiKey: String,
-        @Query("q") q: String
-    ): Call<List<NewsItem>>
+        @Query("q") q: String,
+        @Query("pageSize") pageSize: Int
+    ): Call<NewsParent>
 }

@@ -2,11 +2,17 @@ package util
 
 import android.content.Context
 import com.example.smkccovid.R
+import java.text.SimpleDateFormat
 import java.util.*
 
-fun getDateNow(context: Context, lang: String): String {
-    val cal = Calendar.getInstance()
-    cal.time = Date()
+fun getDate(context: Context, lang: String, date: String?): String {
+    var cal = Calendar.getInstance()
+    if (date.isNullOrEmpty()) { cal.time = Date() }
+    else {
+        val newDate = date.split("T")[0]
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+        cal.time = sdf.parse(newDate)!!
+    }
     val monthDate = cal[Calendar.MONTH]
     var monthName = ""
 
@@ -30,6 +36,7 @@ fun getDateNow(context: Context, lang: String): String {
         else -> cal[Calendar.DAY_OF_MONTH].toString() + " " + monthName + " " + cal[Calendar.YEAR]
     }
 }
+
 fun getTimeNow(): String {
     val cal = Calendar.getInstance()
     cal.time = Date()
@@ -43,6 +50,7 @@ fun getTimeNow(): String {
     if (hour == "0") { hour = "12" }
     return  hour + ":" + minute + " " + ampm
 }
+
 fun getGreetings(context: Context): String {
     val cal = Calendar.getInstance()
     cal.time = Date()
