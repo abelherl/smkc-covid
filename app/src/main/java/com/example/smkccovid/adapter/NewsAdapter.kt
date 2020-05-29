@@ -37,7 +37,7 @@ class NewsAdapter(private val context: Context, private val items : ArrayList<Ne
         fun bindItem(context: Context, item: NewsItem) {
             tv_news_title.text = item.title
             tv_news_time.text = getDate(context, Locale.getDefault().country, item.publishedAt)
-            Glide.with(context).load(item.urlToImage).into(iv_news)
+            Glide.with(context).load(item.urlToImage).error(context.resources.getDrawable(R.drawable.ic_broken_image_black_24dp)).into(iv_news)
         }
     }
 }
