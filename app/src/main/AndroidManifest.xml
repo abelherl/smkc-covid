@@ -17,9 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.DetailActivity"
+        <activity android:name=".activity.WebViewActivity"></activity>
+        <activity
+            android:name=".activity.DetailActivity"
             android:screenOrientation="nosensor"
-            android:theme="@style/Theme.AppCompat.Translucent"/>
+            android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".activity.SignalActivity"
             android:screenOrientation="nosensor"
@@ -41,7 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="nosensor" />
     </application>
 

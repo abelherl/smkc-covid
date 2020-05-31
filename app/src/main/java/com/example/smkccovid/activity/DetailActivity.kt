@@ -297,7 +297,7 @@ class DetailActivity : AppCompatActivity() {
 //        wdi_detail.setViewPager(vp_detail)
 //    }
 //
-    fun getBundle(): Int {
+    private fun getBundle(): Int {
         val bundle = intent.extras
         return bundle!!.getInt("id")
     }

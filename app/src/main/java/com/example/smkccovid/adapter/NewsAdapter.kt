@@ -1,6 +1,7 @@
 package com.example.smkccovid.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.smkccovid.data.Country
 import com.example.smkccovid.R
+import com.example.smkccovid.activity.DetailActivity
+import com.example.smkccovid.activity.WebViewActivity
 import com.example.smkccovid.data.NewsItem
+import id.voela.actrans.AcTrans
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.news_item.*
 import util.getDate
+import util.goTo
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -37,6 +42,13 @@ class NewsAdapter(private val context: Context, private val items : ArrayList<Ne
         fun bindItem(context: Context, item: NewsItem) {
             tv_news_title.text = item.title
             tv_news_time.text = getDate(context, Locale.getDefault().country, item.publishedAt)
+            bt_news.setOnClickListener {
+                val intent = Intent(context, WebViewActivity::class.java)
+                intent.putExtra("url", item.url)
+                context.startActivity(intent)
+                AcTrans.Builder(context).performFade()
+            }
+
             Glide.with(context).load(item.urlToImage).error(context.resources.getDrawable(R.drawable.ic_broken_image_black_24dp)).into(iv_news)
         }
     }

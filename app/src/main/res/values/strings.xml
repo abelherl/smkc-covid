@@ -74,4 +74,5 @@
     <string name="morning">Good morning</string>
     <string name="afternoon">Good afternoon</string>
     <string name="evening">Good evening</string>
+    <string name="url_copied">URL copied to clipboard</string>
 </resources>

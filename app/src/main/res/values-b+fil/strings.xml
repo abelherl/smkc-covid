@@ -71,4 +71,7 @@
     <string name="morning">Magandang umaga</string>
     <string name="afternoon">Magandang hapon</string>
     <string name="evening">Magandang gabi</string>
+
+    <string name="what_symptoms">Ano ang mga sintomas nito?</string>
+    <string name="how_to_prevent">Paano ko ito maiiwasan?</string>
 </resources>
