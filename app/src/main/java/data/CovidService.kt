@@ -20,8 +20,16 @@ interface CovidService {
     fun getCountry(@Path("country") country: String): Call<List<CountryTotal>>
 
     @GET("v2/top-headlines")
-    fun getNews(
+    fun getNewsFromCountry(
         @Query("country") country: String,
+        @Query("apiKey") apiKey: String,
+        @Query("q") q: String,
+        @Query("pageSize") pageSize: Int
+    ): Call<NewsParent>
+
+    @GET("v2/top-headlines")
+    fun getNewsFromSource(
+        @Query("sources") sources: String,
         @Query("apiKey") apiKey: String,
         @Query("q") q: String,
         @Query("pageSize") pageSize: Int

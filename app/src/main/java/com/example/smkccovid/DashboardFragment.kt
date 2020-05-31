@@ -73,7 +73,11 @@ class DashboardFragment : Fragment() {
     private fun callApiGetNews(sharedPreferences: SharedPreferences) {
         val httpClient = httpClient()
         val apiRequest = apiRequest<CovidService>(httpClient, AppConstants.NEWSAPI_URL)
-        val call = apiRequest.getNews(getCountry(context!!), AppConstants.API_KEY, "covid", 20)
+        var call = apiRequest.getNewsFromCountry(getCountry(context!!), AppConstants.API_KEY, "covid", 20)
+
+        if (getCountry(context!!) == "us") {
+            call = apiRequest.getNewsFromSource(AppConstants.NEWSAPI_SOURCES, AppConstants.API_KEY, "covid", 20)
+        }
 
         call.enqueue(object : retrofit2.Callback<NewsParent> {
             override fun onFailure(call: Call<NewsParent>, t: Throwable) {

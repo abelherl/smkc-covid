@@ -4,8 +4,11 @@ import android.R.attr.label
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -39,22 +42,41 @@ class WebViewActivity : AppCompatActivity() {
         wv_webview.webChromeClient = WebChromeClient()
         wv_webview.loadUrl(url)
 
-        url = url.split("/")[2]
-
-        tv_title_webview.text = url
+        setText(url)
 
         wv_webview.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                pb_webview.visibility = View.VISIBLE
+                setText(url!!)
+            }
+
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 wv_webview.setBackgroundColor(Color.WHITE)
             }
         }
 
+        wv_webview.webChromeClient = object : WebChromeClient() {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                pb_webview.visibility = View.VISIBLE
+                pb_webview.progress = newProgress
+                if (newProgress == 100) {
+                    pb_webview.visibility = View.INVISIBLE
+                }
+            }
+        }
+
         bt_back_wv.setBackgroundColor(Color.TRANSPARENT)
         bt_copy_wv.setBackgroundColor(Color.TRANSPARENT)
 
-        bt_back_wv.setOnClickListener { buttonBack() }
+        bt_back_wv.setOnClickListener { buttonClose() }
         bt_copy_wv.setOnClickListener { buttonCopy() }
+    }
+
+    private fun setText(string: String) {
+        val url = string.split("/")[2]
+        tv_title_webview.text = url
     }
 
     private fun getBundle(): String {
@@ -75,8 +97,12 @@ class WebViewActivity : AppCompatActivity() {
             wv_webview.goBack()
         }
         else {
-            super.onBackPressed()
-            AcTrans.Builder(this).performFade()
+            buttonClose()
         }
+    }
+
+    private fun buttonClose() {
+        super.onBackPressed()
+        AcTrans.Builder(this).performFade()
     }
 }

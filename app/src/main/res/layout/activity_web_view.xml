@@ -26,10 +26,11 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="top|center_horizontal"
+        android:elevation="10dp"
         android:background="?primaryColor"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:translationZ="5dp"
+        android:translationZ="10dp"
         android:paddingTop="35dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
@@ -40,7 +41,7 @@
             android:layout_height="30dp"
             android:layout_marginEnd="15dp"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:src="@drawable/ic_close_black_24dp"
             style="@style/Widget.AppCompat.Button.Borderless"/>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -85,6 +86,17 @@
             android:scaleX="0.9"
             android:scaleY="0.9"
             style="@style/Widget.AppCompat.Button.Borderless"/>
+        <ProgressBar
+            android:id="@+id/pb_webview"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:translationZ="15dp"
+            android:progressTint="@color/white"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-10dp"
+            android:layout_marginStart="-20dp"
+            android:layout_marginEnd="-20dp"/>
     </RelativeLayout>
     <WebView
         android:id="@+id/wv_webview"
