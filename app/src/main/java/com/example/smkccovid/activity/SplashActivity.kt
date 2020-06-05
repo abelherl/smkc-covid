@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             val bool = isInternetAvailable(this)
             if (bool) {
-                continueTo(MainActivity(), Attention().Pulse(view), 400, true)
+                continueTo(LoginActivity(), Attention().Pulse(view), 400, true)
             } else {
                 continueTo(SignalActivity(), Attention().Flash(view), 500, false)
             }

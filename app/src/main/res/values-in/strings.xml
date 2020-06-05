@@ -56,4 +56,10 @@
     <string name="morning">Selamat pagi</string>
     <string name="afternoon">Selamat siang</string>
     <string name="evening">Selamat malam</string>
+
+    <string name="url_copied">URL disalin ke clipboard</string>
+    <string name="have_an_account">Punya akun?</string>
+    <string name="forgot">Lupa password?</string>
+    <string name="skip">Lewati</string>
+    <string name="tap">Tekan disini</string>
 </resources>

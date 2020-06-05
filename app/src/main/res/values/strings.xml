@@ -75,4 +75,12 @@
     <string name="afternoon">Good afternoon</string>
     <string name="evening">Good evening</string>
     <string name="url_copied">URL copied to clipboard</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="sign_in" translatable="false">Sign in</string>
+    <string name="sign_up" translatable="false">Sign up</string>
+    <string name="forgot">Forgot password?</string>
+    <string name="skip">Skip</string>
+    <string name="tap">Tap here</string>
 </resources>

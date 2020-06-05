@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.WebViewActivity"></activity>
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.WebViewActivity" />
         <activity
             android:name=".activity.DetailActivity"
             android:screenOrientation="nosensor"
