@@ -74,4 +74,11 @@
 
     <string name="what_symptoms">Ano ang mga sintomas nito?</string>
     <string name="how_to_prevent">Paano ko ito maiiwasan?</string>
+
+    <string name="url_copied">Kopyahin ang URL sa clipboard</string>
+    <string name="have_an_account">Gumawa ng account?</string>
+    <string name="forgot">Nakalimutan ang password?</string>
+    <string name="skip">I-skip</string>
+    <string name="tap">Pindutin</string>
+    <string name="name">Pangalan</string>
 </resources>

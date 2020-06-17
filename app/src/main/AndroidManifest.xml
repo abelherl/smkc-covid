@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.ForgotActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.WebViewActivity" />
         <activity
             android:name=".activity.DetailActivity"

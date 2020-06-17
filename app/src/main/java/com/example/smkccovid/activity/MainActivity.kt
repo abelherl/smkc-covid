@@ -25,9 +25,7 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
+    override fun onBackPressed() { }
 
     fun initView() {
         setSharedPref(this.getSharedPreferences("test", 0).getString("lang", "en")!!)
