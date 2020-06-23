@@ -75,10 +75,15 @@
                     android:id="@+id/tv_greetings_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
+                    android:layout_toStartOf="@id/bt_sync"
+                    android:maxLines="2"
+                    autofit:minTextSize="20dp"
                     style="@style/BigLabelWhite"
                     android:text=""
-                    android:layout_margin="30dp"/>
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginEnd="10dp"/>
                 <TextView
                     android:id="@+id/tv_top"
                     android:layout_width="match_parent"
@@ -219,7 +224,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:singleLine="true"
-                        android:text="112.412"
+                        android:text="0"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
@@ -228,7 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="+92.841"
+                        android:text="+0"
                         android:maxLines="1"
                         style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
@@ -258,7 +263,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:singleLine="true"
-                        android:text="112.412"
+                        android:text="0"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
@@ -267,7 +272,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="+12.841"
+                        android:text="+0"
                         android:maxLines="1"
                         style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
@@ -297,7 +302,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:singleLine="true"
-                        android:text="112.412"
+                        android:text="0"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
@@ -306,7 +311,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="+3.441"
+                        android:text="+0"
                         android:maxLines="1"
                         style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
@@ -368,7 +373,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:singleLine="true"
-                        android:text="112.412"
+                        android:text="0"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
@@ -377,7 +382,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="+2.421"
+                        android:text="+0"
                         android:maxLines="1"
                         style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
@@ -407,7 +412,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:singleLine="true"
-                        android:text="112.412"
+                        android:text="0"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
@@ -416,7 +421,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="+747"
+                        android:text="+0"
                         android:maxLines="1"
                         style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>
@@ -446,7 +451,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:singleLine="true"
-                        android:text="112.412"
+                        android:text="0"
                         android:maxLines="1"
                         style="@style/BigLabelWhite"/>
                     <me.grantland.widget.AutofitTextView
@@ -455,7 +460,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="+23"
+                        android:text="+0"
                         android:maxLines="1"
                         style="@style/SmallLabelHint2"
                         android:layout_marginBottom="5dp"/>

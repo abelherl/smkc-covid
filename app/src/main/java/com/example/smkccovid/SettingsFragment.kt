@@ -1,6 +1,7 @@
 package com.example.smkccovid
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -8,10 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.smkccovid.activity.LoginActivity
 import com.example.smkccovid.activity.MainActivity
+import com.google.firebase.auth.FirebaseAuth
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.fragment_settings.*
+import util.goTo
 import java.util.*
+
 
 class SettingsFragment : Fragment() {
     var locale = ""
@@ -37,7 +43,40 @@ class SettingsFragment : Fragment() {
     private fun initView() {
         bt_country.setOnClickListener { buttonCountry() }
         bt_language.setOnClickListener { buttonCountry() }
+        bt_sign_in.setOnClickListener { buttonSignIn() }
+        bt_sign_out.setOnClickListener { buttonSignOut() }
         setFlagImage()
+        setAccountInformation()
+    }
+
+    private fun buttonSignIn() {
+        goTo(context!!, LoginActivity(), false, null)
+    }
+
+    private fun buttonSignOut() {
+        FirebaseAuth.getInstance().signOut()
+        goTo(context!!, MainActivity(), true, null)
+    }
+
+    private fun setAccountInformation() {
+        val user = FirebaseAuth.getInstance().currentUser
+
+        if (user == null) {
+            tv_name_settings.visibility = View.INVISIBLE
+            tv_email_settings.visibility = View.GONE
+            rl_sign_in.visibility = View.VISIBLE
+            rl_sign_out.visibility = View.GONE
+        }
+        else {
+            tv_name_settings.visibility = View.VISIBLE
+            tv_email_settings.visibility = View.VISIBLE
+            rl_sign_in.visibility = View.GONE
+            rl_sign_out.visibility = View.VISIBLE
+
+            Glide.with(context!!).load(user.photoUrl).into(iv_account_settings)
+            tv_name_settings.text = user.displayName
+            tv_email_settings.text = user.email
+        }
     }
 
     private fun setFlagImage() {

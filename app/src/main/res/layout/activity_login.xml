@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="0dp">
                 <ImageButton
                     android:id="@+id/bt_back_login"
                     android:layout_width="30dp"
@@ -55,7 +55,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="0dp"
                 android:textColor="@color/white"
                 android:shadowColor="@color/black"
@@ -67,7 +67,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
                 android:shadowColor="@color/black"
@@ -76,23 +76,49 @@
                 android:inputType="text|textCapWords"
                 android:textSize="16sp"
                 />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_sign"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:elevation="10dp"
-                android:translationZ="10dp"
-                android:background="@drawable/gradient_blue"
-                android:backgroundTint="@color/blue"
-                android:text="@string/sign_in"
-                android:textStyle="bold"/>
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_google"
+                    android:translationZ="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:elevation="0dp"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_sign"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:elevation="10dp"
+                    android:translationZ="10dp"
+                    android:background="?selectableItemBackground"
+                    android:textColor="?onAccent"
+                    android:textSize="16sp"
+                    android:text="@string/fui_sign_in_with_google"
+                    android:textAllCaps="false"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/bt_skip"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/skip"
+                android:gravity="center"
+                style="@style/SmallLabelHint2"
+                android:clickable="true"
+                android:background="@color/transparent"
+                android:textAllCaps="true"/>
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="30dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

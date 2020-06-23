@@ -17,6 +17,7 @@ import com.example.smkccovid.activity.MainActivity
 import com.example.smkccovid.activity.WhatActivity
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.*
+import com.google.firebase.auth.FirebaseAuth
 import data.CovidService
 import data.apiRequest
 import data.httpClient
@@ -165,7 +166,14 @@ class DashboardFragment : Fragment() {
     private fun setDate() {
         tv_date_dashboard.text = getDate(context!!, Locale.getDefault().country , null)
         tv_time_dashboard.text = getTimeNow()
-        tv_greetings_dashboard.text = getGreetings(context!!)
+
+        if (FirebaseAuth.getInstance().currentUser == null) {
+            tv_greetings_dashboard.text = getGreetings(context!!)
+        }
+        else {
+            val name = FirebaseAuth.getInstance().currentUser!!.displayName!!.split(" ")[0]
+            tv_greetings_dashboard.text = getGreetings(context!!) + ", " + name
+        }
     }
 
     private fun setData(global: WorldWeeklyItem, country: CountrySummary, sharedPreferences: SharedPreferences) {

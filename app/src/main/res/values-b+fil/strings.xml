@@ -81,4 +81,5 @@
     <string name="skip">I-skip</string>
     <string name="tap">Pindutin</string>
     <string name="name">Pangalan</string>
+    <string name="account">Account</string>
 </resources>

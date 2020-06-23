@@ -80,6 +80,7 @@
     <string name="have_an_account">Have an account?</string>
     <string name="sign_in" translatable="false">Sign in</string>
     <string name="sign_up" translatable="false">Sign up</string>
+    <string name="sign_out" translatable="false">Sign out</string>
     <string name="forgot">Forgot password?</string>
     <string name="skip">Skip</string>
     <string name="tap">Tap here</string>
@@ -89,4 +90,6 @@
     <string name="name">Name</string>
     <string name="confirm" translatable="false">Confirm password</string>
     <string name="submit" translatable="false">Submit</string>
+
+    <string name="account">Account</string>
 </resources>
