@@ -9,6 +9,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smkccovid.activity.ChooseActivity
@@ -17,7 +18,12 @@ import com.example.smkccovid.activity.MainActivity
 import com.example.smkccovid.activity.WhatActivity
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.*
+import com.example.smkccovid.model.SelectedCountryModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import data.CovidService
 import data.apiRequest
 import data.httpClient
@@ -35,6 +41,7 @@ import kotlin.collections.ArrayList
 class DashboardFragment : Fragment() {
 
     lateinit var listCountry : List<NewCountryItem>
+    var dataTeman: MutableList<SelectedCountryModel> = ArrayList()
 
 //    private fun simulateNews() {
 //        var listTeman = ArrayList<Country>()
@@ -42,7 +49,7 @@ class DashboardFragment : Fragment() {
 //            listTeman.add(Country("1", "2"))
 //        }
 //        rv_news.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        rv_news.adapter = NewsAdapter(activity!!, listTeman)
+//        rv_news.adapter = NewsAdapter(requireActivity(), listTeman)
 //    }
 
     private fun callApiGetData(sharedPreferences: SharedPreferences) {
@@ -50,11 +57,11 @@ class DashboardFragment : Fragment() {
         val apiRequest = apiRequest<CovidService>(httpClient, AppConstants.COVID_URL)
         val call = apiRequest.getGlobal()
 
-        val slug = context!!.getSharedPreferences("test", 0).getString("slug", "indonesia")
+        val slug = requireContext().getSharedPreferences("test", 0).getString("slug", "indonesia")
 
         call.enqueue(object : retrofit2.Callback<Summary> {
             override fun onFailure(call: Call<Summary>, t: Throwable) {
-                tampilToast(context!!, "Gagal")
+                tampilToast(requireContext(), "Gagal")
                 callApiGetData(sharedPreferences)
             }
             override fun onResponse(call: Call<Summary>, response:
@@ -63,7 +70,7 @@ class DashboardFragment : Fragment() {
                 when {
                     response.isSuccessful -> setData(response.body()!!.globalSummary, response.body()!!.countries.find { it.slug.contains(slug!!.toLowerCase()) }!!, sharedPreferences)
                     else -> {
-                        tampilToast(context!!, response.message())
+                        tampilToast(requireContext(), response.message())
                         callApiGetData(sharedPreferences)
                     }
                 }
@@ -74,15 +81,15 @@ class DashboardFragment : Fragment() {
     private fun callApiGetNews(sharedPreferences: SharedPreferences) {
         val httpClient = httpClient()
         val apiRequest = apiRequest<CovidService>(httpClient, AppConstants.NEWSAPI_URL)
-        var call = apiRequest.getNewsFromCountry(getCountry(context!!), AppConstants.API_KEY, "covid", 20)
+        var call = apiRequest.getNewsFromCountry(getCountry(requireContext()), AppConstants.API_KEY, "covid", 20)
 
-        if (getCountry(context!!) == "us") {
+        if (getCountry(requireContext()) == "us") {
             call = apiRequest.getNewsFromSource(AppConstants.NEWSAPI_SOURCES, AppConstants.API_KEY, "covid", 20)
         }
 
         call.enqueue(object : retrofit2.Callback<NewsParent> {
             override fun onFailure(call: Call<NewsParent>, t: Throwable) {
-                tampilToast(context!!, t.message!!)
+                tampilToast(requireContext(), t.message!!)
             }
             override fun onResponse(call: Call<NewsParent>, response:
             Response<NewsParent>
@@ -90,7 +97,7 @@ class DashboardFragment : Fragment() {
                 when {
                     response.isSuccessful -> setNews(response.body()!!.articles)
                     else -> {
-                        tampilToast(context!!, response.message())
+                        tampilToast(requireContext(), response.message())
                         callApiGetNews(sharedPreferences)
                     }
                 }
@@ -116,11 +123,14 @@ class DashboardFragment : Fragment() {
         super.onConfigurationChanged(newConfig)
     }
     private fun initView() {
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            updateSelectedCountry(requireContext(), getSelectedCountry())
+        }
         setDate()
         setOnClick()
-        disableTouch(activity!!, R.id.fl_load_main, R.id.bottomNavMain, true)
+        disableTouch(requireActivity(), R.id.fl_load_main, R.id.bottomNavMain, true)
 
-        val sharedPreferences = context!!.getSharedPreferences("test", 0)
+        val sharedPreferences = requireContext().getSharedPreferences("test", 0)
 
         val edit = sharedPreferences.edit()
         edit.putInt("loaded", 0)
@@ -136,21 +146,14 @@ class DashboardFragment : Fragment() {
         bt_what.setOnClickListener { buttonWhat() }
         bt_edit.setOnClickListener { buttonCountry() }
 
-        ll_blue1.setOnClickListener { goToWithBoolean(true, 0) }
-        ll_blue2.setOnClickListener { goToWithBoolean(false, 0) }
+        ll_blue1.setOnClickListener { goToWithBoolean(requireContext(),true, 0) }
+        ll_blue2.setOnClickListener { goToWithBoolean(requireContext(),false, 0) }
 
-        ll_green1.setOnClickListener { goToWithBoolean(true, 1) }
-        ll_green2.setOnClickListener { goToWithBoolean(false, 1) }
+        ll_green1.setOnClickListener { goToWithBoolean(requireContext(),true, 1) }
+        ll_green2.setOnClickListener { goToWithBoolean(requireContext(),false, 1) }
 
-        ll_red1.setOnClickListener { goToWithBoolean(true, 2) }
-        ll_red2.setOnClickListener { goToWithBoolean(false, 2) }
-    }
-
-    private fun goToWithBoolean(boolean: Boolean, extra: Int) {
-        val edit = context!!.getSharedPreferences("test", 0).edit()
-        edit.putBoolean("global", boolean)
-        edit.apply()
-        goTo(context!!, DetailActivity(), false, extra)
+        ll_red1.setOnClickListener { goToWithBoolean(requireContext(),true, 2) }
+        ll_red2.setOnClickListener { goToWithBoolean(requireContext(),false, 2) }
     }
 
     fun changelanguage(context: Context) {
@@ -164,20 +167,20 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setDate() {
-        tv_date_dashboard.text = getDate(context!!, Locale.getDefault().country , null)
+        tv_date_dashboard.text = getDate(requireContext(), Locale.getDefault().country , null)
         tv_time_dashboard.text = getTimeNow()
 
         if (FirebaseAuth.getInstance().currentUser == null) {
-            tv_greetings_dashboard.text = getGreetings(context!!)
+            tv_greetings_dashboard.text = getGreetings(requireContext())
         }
         else {
             val name = FirebaseAuth.getInstance().currentUser!!.displayName!!.split(" ")[0]
-            tv_greetings_dashboard.text = getGreetings(context!!) + ", " + name
+            tv_greetings_dashboard.text = getGreetings(requireContext()) + ", " + name
         }
     }
 
     private fun setData(global: WorldWeeklyItem, country: CountrySummary, sharedPreferences: SharedPreferences) {
-        enableTouch(activity!!, R.id.fl_load_main, R.id.bottomNavMain, true)
+        enableTouch(requireActivity(), R.id.fl_load_main, R.id.bottomNavMain, true)
 
         val edit = sharedPreferences.edit()
         edit.putInt("confirmed", global.totalConfirmed)
@@ -186,17 +189,17 @@ class DashboardFragment : Fragment() {
 
         tv_country_dashboard.text = country.country.capitalize()
 
-        num_blue.text = prettyCount(global.totalConfirmed)
-        num_green.text = prettyCount(global.totalRecovered)
-        num_red.text = prettyCount(global.totalDeaths)
+        num_blue.text = prettyCount(requireContext(), global.totalConfirmed)
+        num_green.text = prettyCount(requireContext(), global.totalRecovered)
+        num_red.text = prettyCount(requireContext(), global.totalDeaths)
 
         num_blue2.text = "+" + global.newConfirmed
         num_green2.text = "+" + global.newRecovered
         num_red2.text = "+" + global.newDeaths
 
-        num_blue3.text = prettyCount(country.totalConfirmed)
-        num_green3.text = prettyCount(country.totalRecovered)
-        num_red3.text = prettyCount(country.totalDeaths)
+        num_blue3.text = prettyCount(requireContext(), country.totalConfirmed)
+        num_green3.text = prettyCount(requireContext(), country.totalRecovered)
+        num_red3.text = prettyCount(requireContext(), country.totalDeaths)
 
         num_blue4.text = "+" + country.newConfirmed
         num_green4.text = "+" + country.newRecovered
@@ -219,7 +222,11 @@ class DashboardFragment : Fragment() {
 
         tv_country_dashboard.invalidate()
 
-//        tampilToast(context!!, country.totalConfirmed.toString())
+        val selected = SelectedCountryModel(country.country, country.countryCode, country.date, country.newConfirmed, country.newDeaths, country.newRecovered, country.slug, country.totalConfirmed, country.totalDeaths, country.totalRecovered, "")
+
+        updateSelectedCountry(requireContext(), selected)
+
+//        tampilToast(requireContext(), country.totalConfirmed.toString())
     }
 
     fun setNews(listCountry: List<NewsItem>) {
@@ -227,33 +234,8 @@ class DashboardFragment : Fragment() {
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         rv_news.layoutManager = layoutManager
-        rv_news.adapter = NewsAdapter(context!!, list)
-        dismissLoading(context!!, sp_main)
-    }
-
-    fun prettyCount(number: Number): String? {
-        val sharedPref = context!!.getSharedPreferences("test", 0)
-        val lang = sharedPref.getString("lang", "en")
-
-        var suffix = arrayOf("", "K", "M", "B")
-
-        if (lang == "in") {
-            suffix = arrayOf("", "rb", "jt", "m")
-        }
-
-        val numValue: Long = number.toLong()
-        val value = Math.floor(Math.log10(numValue.toDouble())).toInt()
-        val base = value / 3
-        return if (value >= 3 && base < suffix.size) {
-            DecimalFormat("#0.0").format(
-                numValue / Math.pow(
-                    10.0,
-                    base * 3.toDouble()
-                )
-            ) + suffix[base]
-        } else {
-            DecimalFormat("#,##0").format(numValue)
-        }
+        rv_news.adapter = NewsAdapter(requireContext(), list)
+        dismissLoading(requireContext(), sp_main)
     }
 
     override fun onDestroy() {
@@ -264,24 +246,24 @@ class DashboardFragment : Fragment() {
     private fun buttonSync() {
         bt_sync.animate().rotation(bt_sync.rotation-360).start()
         Handler().postDelayed({
-            goTo(context!!, MainActivity(), true)
+            goTo(requireContext(), MainActivity(), true)
         }, 300)
 //
-//        val render = Render(activity!!)
+//        val render = Render(requireActivity())
 //
 //        render.setDuration(500)
 //
 //        render.setAnimation(Attention().Wobble(bt_sync))
 //        render.start()
 //
-//        val render1 = Render(activity!!)
+//        val render1 = Render(requireActivity())
 //
 //        render1.setDuration(300)
 //
 //        render1.setAnimation(Fade().OutLeft(ll_summary))
 //        render1.start()
 //
-//        val render2 = Render(activity!!)
+//        val render2 = Render(requireActivity())
 //
 //        render2.setDuration(400)
 //
@@ -289,7 +271,7 @@ class DashboardFragment : Fragment() {
 //        render2.start()
 //
 //        Handler().postDelayed({
-//            val render3 = Render(activity!!)
+//            val render3 = Render(requireActivity())
 //
 //            render3.setDuration(500)
 //
@@ -298,7 +280,7 @@ class DashboardFragment : Fragment() {
 //        }, 400)
 //
 //        Handler().postDelayed({
-//            val render4 = Render(activity!!)
+//            val render4 = Render(requireActivity())
 //
 //            render4.setDuration(500)
 //
@@ -312,16 +294,16 @@ class DashboardFragment : Fragment() {
     private fun buttonWhat() {
         val intent = Intent(activity, WhatActivity::class.java)
         startActivity(intent)
-        AcTrans.Builder(context!!).performFade()
+        AcTrans.Builder(requireContext()).performFade()
     }
 
     private fun buttonCountry() {
         val intent = Intent(activity, ChooseActivity::class.java)
         startActivity(intent)
-        AcTrans.Builder(context!!).performFade()
+        AcTrans.Builder(requireContext()).performFade()
     }
 
     private fun tampilSummary(test: List<NewCountryItem>) {
-        tampilToast(context!!, test[0].country)
+        tampilToast(requireContext(), test[0].country)
     }
 }

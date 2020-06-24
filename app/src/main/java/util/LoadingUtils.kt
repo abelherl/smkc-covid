@@ -10,13 +10,21 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.smkccovid.R
+import com.example.smkccovid.activity.DetailActivity
+import com.example.smkccovid.model.SelectedCountryModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import id.voela.actrans.AcTrans
 import render.animations.Fade
 import render.animations.Render
@@ -133,4 +141,46 @@ fun getBitmapFromView(view: View): Bitmap? {
     view.draw(canvas)
 
     return returnedBitmap
+}
+fun goToWithBoolean(context: Context, boolean: Boolean, extra: Int) {
+    val edit = context.getSharedPreferences("test", 0).edit()
+    edit.putBoolean("global", boolean)
+    edit.apply()
+    goTo(context, DetailActivity(), false, extra)
+}
+fun updateSelectedCountry(context: Context, selectedCountryModel: SelectedCountryModel) {
+    val ref = FirebaseDatabase.getInstance().reference
+    val auth = FirebaseAuth.getInstance()
+
+    ref.child(auth.currentUser?.uid.toString()).child("UserCountry").removeValue()
+    ref.child(auth.currentUser?.uid.toString()).child("UserCountry").push().setValue(selectedCountryModel)
+
+    val edit = context.getSharedPreferences("test", 0).edit()
+    edit.putString("slug", selectedCountryModel.slug)
+    edit.apply()
+}
+fun getSelectedCountry() : SelectedCountryModel {
+    val ref = FirebaseDatabase.getInstance().reference
+    val auth = FirebaseAuth.getInstance()
+    var item = SelectedCountryModel()
+
+    ref.child(auth.currentUser?.uid.toString()).child("UserCountry").addValueEventListener(object :
+        ValueEventListener {
+        override fun onCancelled(p0: DatabaseError) {
+
+        }
+
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            //Inisialisasi ArrayList
+            if (dataSnapshot.hasChildren()) {
+                for (snapshot in dataSnapshot.children) {
+                    //Mapping data pada DataSnapshot ke dalam objek mahasiswa
+                    item = snapshot.getValue(SelectedCountryModel::class.java)!!
+                    //Mengambil Primary Key, digunakan untuk proses Update dan Delete
+//                teman?.key = snapshot.key!!
+                }
+            }
+        }
+    })
+    return item
 }

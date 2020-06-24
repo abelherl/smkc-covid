@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingBottom="15dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_dashboard_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tv_country_item"
+            style="@style/SubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/bt_edit_item"
+            android:maxLines="2"
+            android:text="@string/country" />
+
+        <ImageButton
+            android:id="@+id/bt_edit_item"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:scaleType="fitEnd"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_summary_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="0dp"
+        android:layout_below="@id/rl_dashboard_item"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_blue_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_orange"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/num_blue1_item"
+                style="@style/BigLabelWhite"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="0" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/num_blue2_item"
+                style="@style/SmallLabelHint2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="+0" />
+
+            <TextView
+                style="@style/SmallLabelWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cases" />
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_green_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_green"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/num_green1_item"
+                style="@style/BigLabelWhite"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="0" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/num_green2_item"
+                style="@style/SmallLabelHint2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="+0" />
+
+            <TextView
+                style="@style/SmallLabelWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recovered" />
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_red_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_red"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/num_red1_item"
+                style="@style/BigLabelWhite"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="0" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/num_red2_item"
+                style="@style/SmallLabelHint2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="+0" />
+
+            <TextView
+                style="@style/SmallLabelWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/deaths" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

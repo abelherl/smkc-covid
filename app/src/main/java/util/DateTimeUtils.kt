@@ -2,6 +2,7 @@ package util
 
 import android.content.Context
 import com.example.smkccovid.R
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -69,5 +70,31 @@ fun getGreetings(context: Context): String {
         } else {
             return context.resources.getString(R.string.evening)
         }
+    }
+}
+
+
+fun prettyCount(context: Context, number: Number): String? {
+    val sharedPref = context.getSharedPreferences("test", 0)
+    val lang = sharedPref.getString("lang", "en")
+
+    var suffix = arrayOf("", "K", "M", "B")
+
+    if (lang == "in") {
+        suffix = arrayOf("", "rb", "jt", "m")
+    }
+
+    val numValue: Long = number.toLong()
+    val value = Math.floor(Math.log10(numValue.toDouble())).toInt()
+    val base = value / 3
+    return if (value >= 3 && base < suffix.size) {
+        DecimalFormat("#0.0").format(
+            numValue / Math.pow(
+                10.0,
+                base * 3.toDouble()
+            )
+        ) + suffix[base]
+    } else {
+        DecimalFormat("#,##0").format(numValue)
     }
 }

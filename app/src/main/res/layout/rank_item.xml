@@ -36,12 +36,13 @@
                 android:layout_marginBottom="-10dp"
                 android:backgroundTint="#00000000"
                 android:gravity="center"
-                android:text="300"
+                android:text="3"
                 android:maxLines="1"
                 style="@style/BigLabelWhite"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:layout_marginEnd="15dp"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
             <LinearLayout
                 android:id="@+id/ll_rank"
                 android:layout_toEndOf="@id/tv_rank_rank"

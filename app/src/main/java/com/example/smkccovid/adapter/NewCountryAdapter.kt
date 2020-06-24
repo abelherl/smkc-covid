@@ -10,9 +10,12 @@ import com.example.smkccovid.*
 import com.example.smkccovid.activity.MainActivity
 import com.example.smkccovid.data.AppConstants
 import com.example.smkccovid.data.NewCountryItem
+import com.example.smkccovid.model.SelectedCountryModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.choose_item.*
 import util.goTo
+import util.updateSelectedCountry
 
 class NewCountryAdapter(private val context: Context, private val items : List<NewCountryItem>, private val listener: (NewCountryItem)-> Unit) :
     RecyclerView.Adapter<NewCountryAdapter.ViewHolder> () {
@@ -45,6 +48,23 @@ class NewCountryAdapter(private val context: Context, private val items : List<N
                 edit.putBoolean("update", true)
                 edit.putString("slug", item.slug.toLowerCase())
                 edit.apply()
+
+                if (FirebaseAuth.getInstance().currentUser != null) {
+                    val selected = SelectedCountryModel(
+                        item.country,
+                        item.iSO2,
+                        "",
+                        0,
+                        0,
+                        0,
+                        item.slug,
+                        0,
+                        0,
+                        0,
+                        ""
+                    )
+                    updateSelectedCountry(context, selected)
+                }
 
                 goTo(context, MainActivity(), true)
             }

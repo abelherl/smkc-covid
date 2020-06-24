@@ -55,6 +55,9 @@ class SettingsFragment : Fragment() {
 
     private fun buttonSignOut() {
         FirebaseAuth.getInstance().signOut()
+        val edit = context!!.getSharedPreferences("test", 0).edit()
+        edit.putString("slug", "indonesia")
+        edit.apply()
         goTo(context!!, MainActivity(), true, null)
     }
 
