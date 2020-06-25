@@ -63,7 +63,7 @@ class NewCountryAdapter(private val context: Context, private val items : List<N
                         0,
                         ""
                     )
-                    updateSelectedCountry(context, selected)
+                    updateSelectedCountry(context, selected, true)
                 }
 
                 goTo(context, MainActivity(), true)

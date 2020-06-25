@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -148,24 +149,29 @@ fun goToWithBoolean(context: Context, boolean: Boolean, extra: Int) {
     edit.apply()
     goTo(context, DetailActivity(), false, extra)
 }
-fun updateSelectedCountry(context: Context, selectedCountryModel: SelectedCountryModel) {
+fun updateSelectedCountry(context: Context, selectedCountryModel: SelectedCountryModel, uploadToFirebase: Boolean) {
     val ref = FirebaseDatabase.getInstance().reference
     val auth = FirebaseAuth.getInstance()
 
-    ref.child(auth.currentUser?.uid.toString()).child("UserCountry").removeValue()
-    ref.child(auth.currentUser?.uid.toString()).child("UserCountry").push().setValue(selectedCountryModel)
+    if (uploadToFirebase) {
+        ref.child(auth.currentUser?.uid.toString()).child("UserCountry").removeValue()
+        ref.child(auth.currentUser?.uid.toString()).child("UserCountry").push()
+            .setValue(selectedCountryModel)
+    }
 
     val edit = context.getSharedPreferences("test", 0).edit()
     edit.putString("slug", selectedCountryModel.slug)
     edit.apply()
 }
-fun getSelectedCountry() : SelectedCountryModel {
+fun getSelectedCountry(context: Context) {
     val ref = FirebaseDatabase.getInstance().reference
     val auth = FirebaseAuth.getInstance()
     var item = SelectedCountryModel()
 
     ref.child(auth.currentUser?.uid.toString()).child("UserCountry").addValueEventListener(object :
         ValueEventListener {
+        val edit = context.getSharedPreferences("test", 0).edit()
+
         override fun onCancelled(p0: DatabaseError) {
 
         }
@@ -176,11 +182,19 @@ fun getSelectedCountry() : SelectedCountryModel {
                 for (snapshot in dataSnapshot.children) {
                     //Mapping data pada DataSnapshot ke dalam objek mahasiswa
                     item = snapshot.getValue(SelectedCountryModel::class.java)!!
+
+                    Log.d("TAG", "signInWithCredential:util" + " " + item)
+
+                    edit.putString("slug", item.slug)
+                    edit.apply()
+
                     //Mengambil Primary Key, digunakan untuk proses Update dan Delete
 //                teman?.key = snapshot.key!!
                 }
+            } else {
+                edit.putString("slug", "indonesia")
+                edit.apply()
             }
         }
     })
-    return item
 }

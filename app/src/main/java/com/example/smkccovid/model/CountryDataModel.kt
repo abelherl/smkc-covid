@@ -11,10 +11,11 @@ data class CountryDataModel (
     var newConfirmed: Int,
     var newDeaths: Int,
     var newRecovered: Int,
-    @PrimaryKey var slug: String,
+    var slug: String,
     var totalConfirmed: Int,
     var totalDeaths: Int,
-    var totalRecovered: Int
+    var totalRecovered: Int,
+    @PrimaryKey var key: String
 ) {
-    constructor() : this("","","",0,0,0,"",0,0,0)
+    constructor() : this("","","",0,0,0,"",0,0,0, "")
 }

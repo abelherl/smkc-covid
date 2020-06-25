@@ -6,11 +6,13 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smkccovid.activity.ChooseActivity
 import com.example.smkccovid.activity.DetailActivity
@@ -18,12 +20,11 @@ import com.example.smkccovid.activity.MainActivity
 import com.example.smkccovid.activity.WhatActivity
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.*
+import com.example.smkccovid.model.CountryDataModel
 import com.example.smkccovid.model.SelectedCountryModel
+import com.example.smkccovid.viewmodel.DashboardViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import data.CovidService
 import data.apiRequest
 import data.httpClient
@@ -40,8 +41,11 @@ import kotlin.collections.ArrayList
 
 class DashboardFragment : Fragment() {
 
+    lateinit var ref : DatabaseReference
+    lateinit var auth: FirebaseAuth
     lateinit var listCountry : List<NewCountryItem>
-    var dataTeman: MutableList<SelectedCountryModel> = ArrayList()
+    var countryData: MutableList<CountryDataModel> = ArrayList()
+    private val viewModel by viewModels<DashboardViewModel>()
 
 //    private fun simulateNews() {
 //        var listTeman = ArrayList<Country>()
@@ -56,19 +60,32 @@ class DashboardFragment : Fragment() {
         val httpClient = httpClient()
         val apiRequest = apiRequest<CovidService>(httpClient, AppConstants.COVID_URL)
         val call = apiRequest.getGlobal()
+        val slug = sharedPreferences.getString("slug", "indonesia")!!
 
-        val slug = requireContext().getSharedPreferences("test", 0).getString("slug", "indonesia")
+//        if (FirebaseAuth.getInstance().currentUser != null && sharedPreferences.getInt("reload", 1) == 0) {
+//            val edit = sharedPreferences.edit()
+//            edit.putInt("reload", 1)
+//            edit.apply()
+//            goTo(requireContext(), MainActivity(), true, null)
+//        }
 
         call.enqueue(object : retrofit2.Callback<Summary> {
             override fun onFailure(call: Call<Summary>, t: Throwable) {
                 tampilToast(requireContext(), "Gagal")
                 callApiGetData(sharedPreferences)
             }
-            override fun onResponse(call: Call<Summary>, response:
-            Response<Summary>
+
+            override fun onResponse(
+                call: Call<Summary>, response:
+                Response<Summary>
             ) {
                 when {
-                    response.isSuccessful -> setData(response.body()!!.globalSummary, response.body()!!.countries.find { it.slug.contains(slug!!.toLowerCase()) }!!, sharedPreferences)
+                    response.isSuccessful -> setData(
+                        response.body()!!.globalSummary,
+                        response.body()!!.countries,
+                        slug.toLowerCase(),
+                        sharedPreferences
+                    )
                     else -> {
                         tampilToast(requireContext(), response.message())
                         callApiGetData(sharedPreferences)
@@ -123,9 +140,6 @@ class DashboardFragment : Fragment() {
         super.onConfigurationChanged(newConfig)
     }
     private fun initView() {
-        if (FirebaseAuth.getInstance().currentUser != null) {
-            updateSelectedCountry(requireContext(), getSelectedCountry())
-        }
         setDate()
         setOnClick()
         disableTouch(requireActivity(), R.id.fl_load_main, R.id.bottomNavMain, true)
@@ -179,8 +193,19 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun setData(global: WorldWeeklyItem, country: CountrySummary, sharedPreferences: SharedPreferences) {
+    private fun setData(global: WorldWeeklyItem, countries: List<CountrySummary>, slug: String, sharedPreferences: SharedPreferences) {
         enableTouch(requireActivity(), R.id.fl_load_main, R.id.bottomNavMain, true)
+
+        viewModel.init(requireContext());
+
+        val countries2 = mutableListOf<CountryDataModel>()
+        for (item in countries) {
+            val data = CountryDataModel(item.country, item.countryCode, item.date, item.newConfirmed, item.newDeaths, item.newRecovered, item.slug, item.totalConfirmed, item.totalDeaths, item.totalRecovered, "")
+            countries2.add(data)
+        }
+        Log.d("TAG", "All Data Updated: " + countries2.size)
+        viewModel.insertAll(countries2)
+        val country = viewModel.allCountryDatas.value!!.find { it.slug.contains(slug) }!!
 
         val edit = sharedPreferences.edit()
         edit.putInt("confirmed", global.totalConfirmed)
@@ -221,10 +246,6 @@ class DashboardFragment : Fragment() {
         num_red4.invalidate()
 
         tv_country_dashboard.invalidate()
-
-        val selected = SelectedCountryModel(country.country, country.countryCode, country.date, country.newConfirmed, country.newDeaths, country.newRecovered, country.slug, country.totalConfirmed, country.totalDeaths, country.totalRecovered, "")
-
-        updateSelectedCountry(requireContext(), selected)
 
 //        tampilToast(requireContext(), country.totalConfirmed.toString())
     }
@@ -306,4 +327,5 @@ class DashboardFragment : Fragment() {
     private fun tampilSummary(test: List<NewCountryItem>) {
         tampilToast(requireContext(), test[0].country)
     }
+
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smkccovid.R
+import com.example.smkccovid.model.SelectedCountryModel
 import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,7 +17,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_login.*
+import util.getSelectedCountry
 import util.goTo
+import util.updateSelectedCountry
 
 class LoginActivity : AppCompatActivity() {
 
@@ -104,6 +107,14 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "signInWithCredential:success" + " " + auth!!.currentUser!!.displayName)
+                    Log.d("TAG", "signInWithCredential:user" + " " + FirebaseAuth.getInstance().currentUser!!.uid)
+
+                    getSelectedCountry(this)
+
+                    val edit = this.getSharedPreferences("test", 0).edit()
+                    edit.putInt("reload", 0)
+                    edit.apply()
+
                     goTo(this, MainActivity(), true, null)
                 } else {
                     Log.w("TAG", "signInWithCredential:failure", task.exception)
