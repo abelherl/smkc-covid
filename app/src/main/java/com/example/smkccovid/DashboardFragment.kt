@@ -200,11 +200,13 @@ class DashboardFragment : Fragment() {
 
         val countries2 = mutableListOf<CountryDataModel>()
         for (item in countries) {
-            val data = CountryDataModel(item.country, item.countryCode, item.date, item.newConfirmed, item.newDeaths, item.newRecovered, item.slug, item.totalConfirmed, item.totalDeaths, item.totalRecovered, "")
+            val data = CountryDataModel(item.country, item.countryCode, item.date, item.newConfirmed, item.newDeaths, item.newRecovered, item.slug, item.totalConfirmed, item.totalDeaths, item.totalRecovered)
             countries2.add(data)
+            viewModel.insert(data)
         }
         Log.d("TAG", "All Data Updated: " + countries2.size)
-        viewModel.insertAll(countries2)
+//        viewModel.insertAll(countries2)
+        Log.d("TAG", "All Data Updated: " + viewModel.allCountryDatas.value)
 
         val country = countries.find { it.slug.contains(slug) }!!
 

@@ -1,12 +1,12 @@
 package com.example.smkccovid
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -45,8 +45,15 @@ class SettingsFragment : Fragment() {
         bt_language.setOnClickListener { buttonCountry() }
         bt_sign_in.setOnClickListener { buttonSignIn() }
         bt_sign_out.setOnClickListener { buttonSignOut() }
-        setFlagImage()
+        switch1.setOnCheckedChangeListener { buttonView, isChecked -> buttonNotification(isChecked) }
+        setSettings()
         setAccountInformation()
+    }
+
+    private fun buttonNotification(isChecked: Boolean) {
+        val edit = context!!.getSharedPreferences("test", 0).edit()
+        edit.putBoolean("notification", isChecked)
+        edit.apply()
     }
 
     private fun buttonSignIn() {
@@ -82,7 +89,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun setFlagImage() {
+    private fun setSettings() {
         locale = Locale.getDefault().language
 
         if (locale == "in") {
@@ -94,6 +101,10 @@ class SettingsFragment : Fragment() {
         else {
             ib_language.setImageResource(R.drawable.philippines)
         }
+
+        val isNotificationOn = context!!.getSharedPreferences("test", 0).getBoolean("notification", true)
+
+        switch1.isChecked = isNotificationOn
     }
 
     private fun buttonCountry() {

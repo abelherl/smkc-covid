@@ -60,8 +60,7 @@ class NewCountryAdapter(private val context: Context, private val items : List<N
                         item.slug,
                         0,
                         0,
-                        0,
-                        ""
+                        0
                     )
                     updateSelectedCountry(context, selected, true)
                 }

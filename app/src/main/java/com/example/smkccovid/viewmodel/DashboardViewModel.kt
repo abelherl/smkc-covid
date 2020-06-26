@@ -32,8 +32,15 @@ class DashboardViewModel : ViewModel() {
      */
     fun insertAll(countryDatas: List<CountryDataModel>) = viewModelScope.launch(Dispatchers.IO) {
         Log.d("TAG", "All Data Updated 1: " + repository.allCountryData.value)
+        Log.d("TAG", "All Data Updated 1: " + allCountryDatas.value)
 //        repository.deleteAll()
         repository.insertAll(countryDatas)
         Log.d("TAG", "All Data Updated 2: " + repository.allCountryData.value)
+        Log.d("TAG", "All Data Updated 2: " + allCountryDatas.value)
+    }
+
+    fun insert(country: CountryDataModel) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(country)
+        Log.d("TAG", "Data Updated 2: " + allCountryDatas)
     }
 }

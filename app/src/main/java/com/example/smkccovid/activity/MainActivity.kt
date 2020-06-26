@@ -6,12 +6,17 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.smkccovid.DashboardFragment
 import com.example.smkccovid.R
 import com.example.smkccovid.SettingsFragment
 import com.example.smkccovid.StatsFragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_main.*
 import util.setLocale
@@ -28,6 +33,16 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() { }
 
     fun initView() {
+        FirebaseMessaging.getInstance().subscribeToTopic("COVID")
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("TAG", "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+            })
+
+
         setSharedPref(this.getSharedPreferences("test", 0).getString("lang", "en")!!)
         bottomNavMain.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){

@@ -128,17 +128,15 @@ class DetailActivity : AppCompatActivity() {
             list.removeAt(0)
         }
 
-        var i = 0
         var next = false
 
         while (!next) {
-            if (list[i].toInt() == list[i + 1].toInt()) {
+            if (list[0].toInt() == list[1].toInt()) {
                 list.removeAt(0)
             }
             else {
                 next = true
             }
-            i++
         }
 
         val last = list[0].toInt()
@@ -184,19 +182,17 @@ class DetailActivity : AppCompatActivity() {
             list.removeAt(0)
         }
 
-        var i = 0
         var next = false
 
         while (!next) {
-            if (list[i].toInt() == list[i + 1].toInt()) {
+            if (list[0].toInt() == list[1].toInt()) {
                 list.removeAt(0)
             }
             else {
                 next = true
             }
-            i++
         }
-        
+
         val last = list[0].toInt()
         val sub = last - list[1].toInt()
 

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.smkccovid.dao.CountryDataDao
 import com.example.smkccovid.model.CountryDataModel
 
-@Database(entities = arrayOf(CountryDataModel::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(CountryDataModel::class), version = 3, exportSchema = false)
 abstract class SMKCDatabase : RoomDatabase() {
 
     abstract fun countryDataDao(): CountryDataDao
@@ -28,7 +28,7 @@ abstract class SMKCDatabase : RoomDatabase() {
                     context.applicationContext,
                     SMKCDatabase::class.java,
                     "smkc_covid_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }
