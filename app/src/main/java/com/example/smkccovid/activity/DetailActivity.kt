@@ -2,6 +2,7 @@ package com.example.smkccovid.activity
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.smkccovid.R
@@ -123,8 +124,27 @@ class DetailActivity : AppCompatActivity() {
 
         list.sortDescending()
 
+        if (list[0].toInt() == 0) {
+            list.removeAt(0)
+        }
+
+        var i = 0
+        var next = false
+
+        while (!next) {
+            if (list[i].toInt() == list[i + 1].toInt()) {
+                list.removeAt(0)
+            }
+            else {
+                next = true
+            }
+            i++
+        }
+
         val last = list[0].toInt()
         val sub = last - list[1].toInt()
+
+        Log.d("TAG", "list: " + list)
 
         list.reverse()
 
@@ -160,8 +180,27 @@ class DetailActivity : AppCompatActivity() {
 //            }
         }
 
+        if (list[0].toInt() == 0) {
+            list.removeAt(0)
+        }
+
+        var i = 0
+        var next = false
+
+        while (!next) {
+            if (list[i].toInt() == list[i + 1].toInt()) {
+                list.removeAt(0)
+            }
+            else {
+                next = true
+            }
+            i++
+        }
+        
         val last = list[0].toInt()
         val sub = last - list[1].toInt()
+
+        Log.d("TAG", "list: " + list)
 
         list = list.asReversed()
 
@@ -190,6 +229,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun setText(total: Int, sub: Int, type: Int) {
+        Log.d("TAG", "total: " + total + " sub: " + sub + " type: " + type)
         var string = ""
         when (type) {
             0 -> rl_detail1.setBackgroundResource(R.drawable.gradient_orange)

@@ -31,8 +31,9 @@ class DashboardViewModel : ViewModel() {
      * Launching a new coroutine to insert the data in a non-blocking way
      */
     fun insertAll(countryDatas: List<CountryDataModel>) = viewModelScope.launch(Dispatchers.IO) {
-        Log.d("TAG", "All Data Updated: " + repository.allCountryData.value)
-        repository.deleteAll()
+        Log.d("TAG", "All Data Updated 1: " + repository.allCountryData.value)
+//        repository.deleteAll()
         repository.insertAll(countryDatas)
+        Log.d("TAG", "All Data Updated 2: " + repository.allCountryData.value)
     }
 }

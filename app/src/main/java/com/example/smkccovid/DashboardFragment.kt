@@ -205,7 +205,10 @@ class DashboardFragment : Fragment() {
         }
         Log.d("TAG", "All Data Updated: " + countries2.size)
         viewModel.insertAll(countries2)
-        val country = viewModel.allCountryDatas.value!!.find { it.slug.contains(slug) }!!
+
+        val country = countries.find { it.slug.contains(slug) }!!
+
+        Log.d("TAG", "Country: " + country)
 
         val edit = sharedPreferences.edit()
         edit.putInt("confirmed", global.totalConfirmed)

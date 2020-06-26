@@ -9,6 +9,7 @@ interface CountryDataDao {
     @Query("SELECT * from country_data")
 
     fun getAllCountryData(): LiveData<List<CountryDataModel>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(country: CountryDataModel)
 
