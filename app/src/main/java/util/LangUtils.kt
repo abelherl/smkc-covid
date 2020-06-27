@@ -2,11 +2,9 @@ package util
 
 import android.app.Activity
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.os.Build
-import android.os.LocaleList
+import android.content.res.Resources
 import java.util.*
 
 fun setLocale(context: Context, lang: String) {
@@ -15,6 +13,10 @@ fun setLocale(context: Context, lang: String) {
     val config = Configuration()
     config.setLocale(locale)
     context.resources.configuration.setLocale(locale)
+}
+
+fun getResources(context: Context?): Resources? {
+    return context!!.getResources()
 }
 
 fun loadLocale(context: Context) {

@@ -69,6 +69,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setSharedPref(lang: String) {
+        util.getResources(this)
+
         val locale = Locale(lang)
         Locale.setDefault(locale)
         val test by lazy { this.getSharedPreferences("test", Context.MODE_PRIVATE) }
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         edit.putString("lang", lang)
         edit.apply()
         setLocale(this, test.getString("lang", "in")!!)
+
         Log.d("SHAREDPREF3", test.getString("lang", "")!!)
         Log.d("SHAREDPREF4", Locale.getDefault().language)
         val config: Configuration = baseContext.resources.configuration
