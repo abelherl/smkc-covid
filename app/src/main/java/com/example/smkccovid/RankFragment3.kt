@@ -49,10 +49,10 @@ class RankFragment3 : Fragment() {
 
         call.enqueue(object : retrofit2.Callback<Summary> {
             override fun onFailure(call: Call<Summary>, t: Throwable) {
-//                goTo(context!!, SignalActivity(), false)
-                dismissLoading(context!!, sk_rank3)
+//                goTo(requireContext(, SignalActivity(), false)
+                dismissLoading(requireContext(), sk_rank3)
                 callApiGetData()
-//                tampilToast(context!!, "Gagal")
+//                tampilToast(requireContext(, "Gagal")
             }
             override fun onResponse(call: Call<Summary>, response:
             Response<Summary>
@@ -60,10 +60,10 @@ class RankFragment3 : Fragment() {
                 when {
                     response.isSuccessful -> setData(response.body()!!.countries, 2)
                     else -> {
-//                        goTo(context!!, SignalActivity(), false)
-                        dismissLoading(context!!, sk_rank3)
+//                        goTo(requireContext(, SignalActivity(), false)
+                        dismissLoading(requireContext(), sk_rank3)
                         callApiGetData()
-//                        tampilToast(context!!, "Gagal")
+//                        tampilToast(requireContext(, "Gagal")
                     }
                 }
             }
@@ -72,19 +72,19 @@ class RankFragment3 : Fragment() {
 
      fun setData(list: List<CountrySummary>, type: Int) {
         setAdapter(list.sortedByDescending { it.totalDeaths }, type)
-        dismissLoading(context!!, sk_rank3)
+        dismissLoading(requireContext(), sk_rank3)
 
-         val pref = context!!.getSharedPreferences("test", 0)
+         val pref = requireContext().getSharedPreferences("test", 0)
          val edit = pref.edit()
          edit.putInt("loaded", pref.getInt("loaded", 0) + 1)
          edit.apply()
 
-         enableTouch(activity!!)
+         enableTouch(requireActivity())
     }
 
     private fun setAdapter(list: List<CountrySummary>, type: Int) {
         Log.d("PAGER", type.toString())
         rv_rank3.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        rv_rank3.adapter = RankAdapter(activity!!, list, type)
+        rv_rank3.adapter = RankAdapter(requireActivity(), list, type)
     }
 }

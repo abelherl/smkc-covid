@@ -35,13 +35,13 @@ class StatsFragment : Fragment() {
     }
 
     fun initView() {
-        val edit = context!!.getSharedPreferences("test", 0).edit()
+        val edit = requireContext().getSharedPreferences("test", 0).edit()
         edit.putInt("loaded", 0)
         edit.apply()
 
-        disableTouch(activity!!, R.id.fl_load_stats, R.id.bottomNavMain, true)
+        disableTouch(requireActivity(), R.id.fl_load_stats, R.id.bottomNavMain, true)
 
-        viewPagerAdapter = ViewPagerAdapter(childFragmentManager, context!!)
+        viewPagerAdapter = ViewPagerAdapter(childFragmentManager, requireContext())
         tl_stats.setupWithViewPager(vp_stats)
         vp_stats.addOnPageChangeListener(ViewPagerListener())
         vp_stats.offscreenPageLimit = 10

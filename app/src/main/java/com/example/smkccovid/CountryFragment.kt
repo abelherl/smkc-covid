@@ -32,9 +32,9 @@ class CountryFragment : Fragment() {
     }
 
     fun initView() {
-        setData(ch_country1, test1, "Confirmed", ContextCompat.getColor(context!!, R.color.blue))
-        setData(ch_country2, test2, "Recovered", ContextCompat.getColor(context!!, R.color.green))
-        setData(ch_country3, test3, "Deaths", ContextCompat.getColor(context!!, R.color.red))
+        setData(ch_country1, test1, "Confirmed", ContextCompat.getColor(requireContext(), R.color.blue))
+        setData(ch_country2, test2, "Recovered", ContextCompat.getColor(requireContext(), R.color.green))
+        setData(ch_country3, test3, "Deaths", ContextCompat.getColor(requireContext(), R.color.red))
     }
 
     fun setData(chart: LineChart, data: Array<Float>, label: String, color: Int) {
@@ -47,12 +47,12 @@ class CountryFragment : Fragment() {
 
         val lineSet = LineDataSet(entries, label)
         lineSet.color = color
-        lineSet.setCircleColor(ContextCompat.getColor(context!!, R.color.white))
+        lineSet.setCircleColor(ContextCompat.getColor(requireContext(), R.color.white))
         lineSet.mode = LineDataSet.Mode.CUBIC_BEZIER
         lineSet.fillColor = color
         lineSet.setDrawFilled(true)
 //        lineSet.fillAlpha = 255
-        lineSet.valueTextColor = ContextCompat.getColor(context!!, R.color.transparent)
+        lineSet.valueTextColor = ContextCompat.getColor(requireContext(), R.color.transparent)
         lineSet.lineWidth = 5F
 
         val description = Description()
@@ -78,7 +78,7 @@ class CountryFragment : Fragment() {
         chart.setDrawGridBackground(false)
 
         chart.setTouchEnabled(false)
-        chart.axisLeft.textColor = ContextCompat.getColor(context!!, R.color.white)
+        chart.axisLeft.textColor = ContextCompat.getColor(requireContext(), R.color.white)
         chart.description = description
         chart.data = lineData
         chart.legend.isEnabled = false

@@ -54,14 +54,14 @@ class DetailFragment1 : Fragment() {
 ////        val call = apiRequest.getGlobal()
 ////        call.enqueue(object : retrofit2.Callback<Summary> {
 ////            override fun onFailure(call: Call<Summary>, t: Throwable) {
-////                tampilToast(context!!, "Gagal")
+////                tampilToast(requireContext(), "Gagal")
 ////            }
 ////            override fun onResponse(call: Call<Summary>, response: Response<Summary>
 ////            ) {
 ////                when {
 ////                    response.isSuccessful -> callApiGetStats(response.body()!!)
 ////                    else -> {
-////                        tampilToast(context!!, "Gagal")
+////                        tampilToast(requireContext(), "Gagal")
 ////                    }
 ////                }
 ////            }
@@ -75,14 +75,14 @@ class DetailFragment1 : Fragment() {
 //        val call2 = apiRequest.getWeeklyWorld()
 //        call2.enqueue(object : retrofit2.Callback<List<WorldWeeklyItem>> {
 //            override fun onFailure(call: Call<List<WorldWeeklyItem>>, t: Throwable) {
-//                tampilToast(context!!, "Gagal")
+//                tampilToast(requireContext(), "Gagal")
 //            }
 //            override fun onResponse(call: Call<List<WorldWeeklyItem>>, response: Response<List<WorldWeeklyItem>>
 //            ) {
 //                when {
 //                    response.isSuccessful -> setLayout(response.body()!!)
 //                    else -> {
-//                        tampilToast(context!!, "Gagal")
+//                        tampilToast(requireContext(), "Gagal")
 //                    }
 //                }
 //            }
@@ -110,7 +110,7 @@ class DetailFragment1 : Fragment() {
 //    }
 //
 //    fun dismissLoading() {
-//        val render = Render(context!!)
+//        val render = Render(requireContext())
 //
 //        render.setDuration(1300)
 //
@@ -142,13 +142,13 @@ class DetailFragment1 : Fragment() {
 //
 //        val lineSet = LineDataSet(entries, label)
 //        lineSet.color = color
-////        lineSet.setCircleColor(ContextCompat.getColor(context!!, R.color.white))
+////        lineSet.setCircleColor(ContextCompat.getColor(requireContext(), R.color.white))
 //        lineSet.setDrawCircles(false)
 //        lineSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 //        lineSet.fillColor = color
 //        lineSet.setDrawFilled(true)
 ////        lineSet.fillAlpha = 255
-//        lineSet.valueTextColor = ContextCompat.getColor(context!!, R.color.transparent)
+//        lineSet.valueTextColor = ContextCompat.getColor(requireContext(), R.color.transparent)
 //        lineSet.lineWidth = 5F
 //
 //        val description = Description()
@@ -176,7 +176,7 @@ class DetailFragment1 : Fragment() {
 //        chart.setDrawGridBackground(false)
 //
 //        chart.setTouchEnabled(false)
-//        chart.axisLeft.textColor = ContextCompat.getColor(context!!, R.color.white)
+//        chart.axisLeft.textColor = ContextCompat.getColor(requireContext(), R.color.white)
 //        chart.description = description
 //        chart.data = lineData
 //        chart.legend.isEnabled = false

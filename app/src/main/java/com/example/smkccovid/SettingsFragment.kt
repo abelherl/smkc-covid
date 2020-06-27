@@ -15,6 +15,8 @@ import com.example.smkccovid.activity.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.fragment_settings.*
+import render.animations.Fade
+import render.animations.Render
 import util.goTo
 import java.util.*
 
@@ -45,27 +47,47 @@ class SettingsFragment : Fragment() {
         bt_language.setOnClickListener { buttonCountry() }
         bt_sign_in.setOnClickListener { buttonSignIn() }
         bt_sign_out.setOnClickListener { buttonSignOut() }
-        switch1.setOnCheckedChangeListener { buttonView, isChecked -> buttonNotification(isChecked) }
+        switch1.setOnCheckedChangeListener { _, isChecked -> buttonNotification("notification", isChecked) }
+        switch_global.setOnCheckedChangeListener { _, isChecked -> buttonNotification("global", isChecked) }
+        switch_country.setOnCheckedChangeListener { _, isChecked -> buttonNotification("country", isChecked) }
         setSettings()
         setAccountInformation()
     }
 
-    private fun buttonNotification(isChecked: Boolean) {
-        val edit = context!!.getSharedPreferences("test", 0).edit()
-        edit.putBoolean("notification", isChecked)
+    private fun buttonNotification(type: String, isChecked: Boolean) {
+        val edit = requireContext().getSharedPreferences("test", 0).edit()
+        edit.putBoolean(type, isChecked)
         edit.apply()
+
+        if (type == "notification") {
+            val render = Render(requireActivity())
+            render.setDuration(500)
+
+            if (isChecked) {
+                render.setAnimation(Fade().InDown(ll_notification))
+                ll_notification.visibility = View.VISIBLE
+            }
+            else {
+                render.setAnimation(Fade().Out(ll_notification))
+                Handler().postDelayed({
+                    ll_notification.visibility = View.GONE
+                }, 400)
+            }
+
+            render.start()
+        }
     }
 
     private fun buttonSignIn() {
-        goTo(context!!, LoginActivity(), false, null)
+        goTo(requireContext(), LoginActivity(), false, null)
     }
 
     private fun buttonSignOut() {
         FirebaseAuth.getInstance().signOut()
-        val edit = context!!.getSharedPreferences("test", 0).edit()
+        val edit = requireContext().getSharedPreferences("test", 0).edit()
         edit.putString("slug", "indonesia")
         edit.apply()
-        goTo(context!!, MainActivity(), true, null)
+        goTo(requireContext(), MainActivity(), true, null)
     }
 
     private fun setAccountInformation() {
@@ -83,7 +105,7 @@ class SettingsFragment : Fragment() {
             rl_sign_in.visibility = View.GONE
             rl_sign_out.visibility = View.VISIBLE
 
-            Glide.with(context!!).load(user.photoUrl).into(iv_account_settings)
+            Glide.with(requireContext()).load(user.photoUrl).into(iv_account_settings)
             tv_name_settings.text = user.displayName
             tv_email_settings.text = user.email
         }
@@ -102,9 +124,20 @@ class SettingsFragment : Fragment() {
             ib_language.setImageResource(R.drawable.philippines)
         }
 
-        val isNotificationOn = context!!.getSharedPreferences("test", 0).getBoolean("notification", true)
+        val isNotificationOn = requireContext().getSharedPreferences("test", 0).getBoolean("notification", true)
+        val isGlobalOn = requireContext().getSharedPreferences("test", 0).getBoolean("global", true)
+        val isCountryOn = requireContext().getSharedPreferences("test", 0).getBoolean("country", true)
+
+        if (!isNotificationOn) {
+            ll_notification.visibility = View.GONE
+        }
+        else {
+            ll_notification.visibility = View.VISIBLE
+        }
 
         switch1.isChecked = isNotificationOn
+        switch_global.isChecked = isGlobalOn
+        switch_country.isChecked = isCountryOn
     }
 
     private fun buttonCountry() {
@@ -117,21 +150,21 @@ class SettingsFragment : Fragment() {
 
     private fun showLanguageChangeDialog() {
         val languages = arrayOf("English", "Bahasa Indonesia", "Filipino")
-        val mBuilder = AlertDialog.Builder(context!!)
+        val mBuilder = AlertDialog.Builder(requireContext())
         mBuilder.setTitle(getString(R.string.select_language))
         mBuilder.setSingleChoiceItems(
             languages, -1
         ) { dialog, which ->
             if (which == 1) {
-                val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
+                val edit = requireActivity().baseContext.getSharedPreferences("test", 0).edit()
                 edit.putString("lang", "in")
                 edit.apply()
             } else if (which == 0) {
-                val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
+                val edit = requireActivity().baseContext.getSharedPreferences("test", 0).edit()
                 edit.putString("lang", "en")
                 edit.apply()
             } else {
-                val edit = activity!!.baseContext.getSharedPreferences("test", 0).edit()
+                val edit = requireActivity().baseContext.getSharedPreferences("test", 0).edit()
                 edit.putString("lang", "fil")
                 edit.apply()
             }
@@ -147,7 +180,7 @@ class SettingsFragment : Fragment() {
             val intent = Intent(context, MainActivity()::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-            AcTrans.Builder(context!!).performFade()
+            AcTrans.Builder(requireContext()).performFade()
         }
     }
 }

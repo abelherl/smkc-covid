@@ -270,7 +270,7 @@ class DetailActivity : AppCompatActivity() {
 
         val lineSet = LineDataSet(entries, label)
         lineSet.color = color
-//        lineSet.setCircleColor(ContextCompat.getColor(context!!, R.color.white))
+//        lineSet.setCircleColor(ContextCompat.getColor(requireContext(), R.color.white))
         lineSet.setDrawCircles(false)
         lineSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
         lineSet.fillColor = color

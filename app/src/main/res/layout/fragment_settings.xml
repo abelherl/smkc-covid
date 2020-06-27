@@ -135,7 +135,6 @@
                         android:layout_alignParentEnd="true"
                         style="@style/BodyWhite"/>
                 </RelativeLayout>
-
                 <Switch
                     android:id="@+id/switch1"
                     android:layout_width="match_parent"
@@ -143,6 +142,33 @@
                     android:text="@string/notification"
                     style="@style/BodyWhite"
                     android:layout_marginTop="10dp"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/notification"
+                        style="@style/SmallLabelHint"/>
+                    <Switch
+                        android:id="@+id/switch_global"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/global"
+                        style="@style/BodyWhite"
+                        android:layout_marginTop="10dp"/>
+                    <Switch
+                        android:id="@+id/switch_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/country"
+                        style="@style/BodyWhite"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/rl_sign_out"
