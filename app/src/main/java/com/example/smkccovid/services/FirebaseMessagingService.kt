@@ -39,12 +39,12 @@ class FirebaseMessagingService() : FirebaseMessagingService() {
 
         val isNotificationOn = this.getSharedPreferences("test", 0).getBoolean("notification", true)
 
-        if (p0.notification != null && isNotificationOn) {
-            val notification = p0.notification!!
+        if (p0.data.isNotEmpty() && isNotificationOn) {
+            val notification = p0.data
 
-            val title = notification.title
-            val body = notification.body
-            val id = notification.channelId
+            val title = notification.get("title")
+            val body = notification.get("body")
+            val id = notification.get("channel_id")
             val sharedPreferences = this.getSharedPreferences("test", 0)
 //            var bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
 
@@ -55,8 +55,8 @@ class FirebaseMessagingService() : FirebaseMessagingService() {
 //                println(e)
 //            }
 
-            Log.d("TAG", "Message title: " + notification.title)
-            Log.d("TAG", "Message body: " + notification.body)
+            Log.d("TAG", "Message title: " + title)
+            Log.d("TAG", "Message body: " + body)
 
             if (sharedPreferences.getBoolean("notification", true)) {
                 when (id) {
