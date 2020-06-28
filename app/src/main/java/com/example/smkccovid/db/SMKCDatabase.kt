@@ -5,12 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.smkccovid.dao.CountryDataDao
+import com.example.smkccovid.dao.SettingsDataDao
 import com.example.smkccovid.model.CountryDataModel
+import com.example.smkccovid.model.SettingsDataModel
 
-@Database(entities = arrayOf(CountryDataModel::class), version = 3, exportSchema = false)
+@Database(entities = arrayOf(CountryDataModel::class, SettingsDataModel::class), version = 3, exportSchema = false)
 abstract class SMKCDatabase : RoomDatabase() {
 
     abstract fun countryDataDao(): CountryDataDao
+    abstract fun settingsDataDao(): SettingsDataDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the

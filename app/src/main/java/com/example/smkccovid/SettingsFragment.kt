@@ -9,9 +9,13 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.smkccovid.activity.LoginActivity
 import com.example.smkccovid.activity.MainActivity
+import com.example.smkccovid.model.SettingsDataModel
+import com.example.smkccovid.viewmodel.DashboardViewModel
+import com.example.smkccovid.viewmodel.SettingsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -23,6 +27,8 @@ import java.util.*
 
 class SettingsFragment : Fragment() {
     var locale = ""
+    private val viewModel by viewModels<SettingsViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +49,7 @@ class SettingsFragment : Fragment() {
 //    }
 
     private fun initView() {
+        viewModel.init(requireContext())
         bt_country.setOnClickListener { buttonCountry() }
         bt_language.setOnClickListener { buttonCountry() }
         bt_sign_in.setOnClickListener { buttonSignIn() }
@@ -58,6 +65,35 @@ class SettingsFragment : Fragment() {
         val edit = requireContext().getSharedPreferences("test", 0).edit()
         edit.putBoolean(type, isChecked)
         edit.apply()
+
+//        var settings: SettingsDataModel?
+//
+//        if (FirebaseAuth.getInstance().currentUser != null) {
+//            val user = FirebaseAuth.getInstance().currentUser!!
+//
+//            if (viewModel.allSettingsDatas.value?.find { it.id == user.uid } == null) {
+//                settings = SettingsDataModel(user.uid, "en", true, true, true)
+//                viewModel.insert(settings)
+//            }
+//            else {
+//                settings = viewModel.allSettingsDatas.value?.find { it.id == user.uid }
+//            }
+//        }
+//        else {
+//            if (viewModel.allSettingsDatas.value?.find { it.id == "offline" } == null) {
+//                viewModel.insert(SettingsDataModel("offline", "en", true, true, true))
+//            }
+//
+//            settings = viewModel.allSettingsDatas.value?.find { it.id == "offline" }
+//        }
+//
+//        when (type) {
+//            "notification" -> settings!!.notification = isChecked
+//            "global" -> settings!!.global = isChecked
+//            "bountry" -> settings!!.country = isChecked
+//        }
+//
+//        viewModel.update(settings!!)
 
         if (type == "notification") {
             val render = Render(requireActivity())
@@ -112,21 +148,34 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setSettings() {
-        locale = Locale.getDefault().language
+//        locale = Locale.getDefault().language
 
-        if (locale == "in") {
-            ib_language.setImageResource(R.drawable.indonesia)
-        }
-        else if (locale == "en") {
-            ib_language.setImageResource(R.drawable.usa)
-        }
-        else {
-            ib_language.setImageResource(R.drawable.philippines)
-        }
+//        var settings : SettingsDataModel?
+//
+//        if (FirebaseAuth.getInstance().currentUser != null) {
+//            val user = FirebaseAuth.getInstance().currentUser!!
+//
+//            if (viewModel.allSettingsDatas.value?.find { it.id == user.uid } == null) {
+//                viewModel.insert(SettingsDataModel(user.uid, "en", true, true, true))
+//            }
+//
+//            settings = viewModel.allSettingsDatas.value?.find { it.id == user.uid }
+//        }
+//        else {
+//            if (viewModel.allSettingsDatas.value?.find { it.id == "offline" } == null) {
+//                viewModel.insert(SettingsDataModel("offline", "en", true, true, true))
+//            }
+//
+//            settings = viewModel.allSettingsDatas.value?.find { it.id == "offline" }
+//        }
 
         val isNotificationOn = requireContext().getSharedPreferences("test", 0).getBoolean("notification", true)
         val isGlobalOn = requireContext().getSharedPreferences("test", 0).getBoolean("global", true)
         val isCountryOn = requireContext().getSharedPreferences("test", 0).getBoolean("country", true)
+
+//        val isNotificationOn = settings.notification
+//        val isGlobalOn = settings.global
+//        val isCountryOn = settings.country
 
         if (!isNotificationOn) {
             ll_notification.visibility = View.GONE

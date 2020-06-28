@@ -19,6 +19,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.smkccovid.R
 import com.example.smkccovid.activity.DetailActivity
 import com.example.smkccovid.model.SelectedCountryModel
+import com.example.smkccovid.model.SettingsDataModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -148,6 +149,41 @@ fun goToWithBoolean(context: Context, boolean: Boolean, extra: Int) {
     edit.putBoolean("global", boolean)
     edit.apply()
     goTo(context, DetailActivity(), false, extra)
+}
+fun updateSettings(settingsDataModel: SettingsDataModel, uploadToFirebase: Boolean) {
+    val ref = FirebaseDatabase.getInstance().reference
+    val auth = FirebaseAuth.getInstance()
+
+    if (uploadToFirebase) {
+        ref.child(auth.currentUser?.uid.toString()).child("UserSettings").removeValue()
+        ref.child(auth.currentUser?.uid.toString()).child("UserSettings").push()
+            .setValue(settingsDataModel)
+    }
+}
+fun getSettings() {
+    val ref = FirebaseDatabase.getInstance().reference
+    val auth = FirebaseAuth.getInstance()
+    var item = SettingsDataModel()
+
+    ref.child(auth.currentUser?.uid.toString()).child("UserSettings").addValueEventListener(object :
+        ValueEventListener {
+
+        override fun onCancelled(p0: DatabaseError) {
+
+        }
+
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            //Inisialisasi ArrayList
+            if (dataSnapshot.hasChildren()) {
+                for (snapshot in dataSnapshot.children) {
+                    //Mapping data pada DataSnapshot ke dalam objek mahasiswa
+                    item = snapshot.getValue(SettingsDataModel::class.java)!!
+
+                    Log.d("TAG", "signInWithCredential:util" + " " + item)
+                }
+            }
+        }
+    })
 }
 fun updateSelectedCountry(context: Context, selectedCountryModel: SelectedCountryModel, uploadToFirebase: Boolean) {
     val ref = FirebaseDatabase.getInstance().reference

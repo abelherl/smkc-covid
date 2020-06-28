@@ -64,9 +64,6 @@ class FirebaseMessagingService() : FirebaseMessagingService() {
                     "COUNTRY" -> countryNotification(title!!, sharedPreferences)
                 }
             }
-            else {
-                sendNotification(title!!, body!!)
-            }
         }
     }
 
