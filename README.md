@@ -27,9 +27,9 @@ or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_J
 ## 
 
 ### Challenge 3 (NEW)
-<img src="https://github.com/abelherl/smkc-covid/blob/master/qr.png" alt="qr" width="200" height="200">
+<img src="https://github.com/abelherl/smkc-covid/blob/master/qr2.png" alt="qr" width="200" height="200">
 
-or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)** 
+or [use this link instead](https://drive.google.com/file/d/1B4dzXiAwO6rDSNtv4LFdl3bbf6jvfok1/view?usp=sharing) **(Only for Android Lollipop or above)** 
 
 ## Acknowledgments
 * Hat tip to anyone who's code and illustration was used
