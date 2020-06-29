@@ -83,8 +83,8 @@
     <string name="name">Pangalan</string>
     <string name="account">Account</string>
 
-    <string name="maps_title">Gamitin ang mapa upang alamin ang pagkalat ng COVID-19</string>
-    <string name="maps_body">Gamitin ang mapa upang alamin ang pagkalat ng COVID-19 sa buong mundo.</string>
+    <string name="maps_title">Tingnan ang Status ng iyong Lugar Gamit ang Mapa</string>
+    <string name="maps_body">Gamitin ang mapa upang alamin ang status ng  COVID-19 sa buong mundo</string>
 
     <string name="information">Impormasyon</string>
 </resources>

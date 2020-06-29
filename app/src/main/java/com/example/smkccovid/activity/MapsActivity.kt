@@ -1,32 +1,32 @@
 package com.example.smkccovid.activity
 
-import android.graphics.Bitmap
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.util.Log
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.example.smkccovid.R
-import com.example.smkccovid.data.Country
-import com.example.smkccovid.data.CountrySummary
-import com.example.smkccovid.data.CountryTotal
-import com.example.smkccovid.data.NewCountryItem
-
-import com.google.android.gms.maps.CameraUpdateFactory
+import com.example.smkccovid.data.MapsCountry
+import com.example.smkccovid.viewmodel.DashboardViewModel
+import com.example.smkccovid.viewmodel.SettingsViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.opencsv.CSVReader
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_maps.*
-import kotlinx.android.synthetic.main.activity_web_view.*
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private val viewModel by viewModels<DashboardViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initView() {
+        viewModel.init(this)
+
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
@@ -56,18 +58,57 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun buttonSearch() {
-        //aw
+        //
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
 
-        val countries = listOf<CountryTotal>()
+        val inputStream = InputStreamReader(assets.open("countries.csv"))
+
+        val reader = BufferedReader(inputStream)
+
+        val countries = reader.readLines()
+        var i = 0
 
         for (country in countries) {
-            val marker = LatLng(country.lat.toDouble(), country.lon.toDouble())
-            mMap.addMarker(MarkerOptions().position(marker).title(country.country.capitalize()))
+            if (i != 0) {
+                val item = country.split(",")
+                if (item[0] != "UM") {
+                    Log.d("TAG", "reader: " + item[0])
+                    val mapsCountry = MapsCountry(item[0], item[1].toDouble(), item[2].toDouble(), item[3])
+                    val dataCountry = viewModel.allCountryDatas.value!!.find { it.countryCode == mapsCountry.id }!!
+                    val marker = LatLng(mapsCountry.lat, mapsCountry.lon)
+
+//                    mMap.addMarker(
+//                        MarkerOptions().position(marker).title(mapsCountry.country.capitalize()).snippet(
+//                            getString(R.string.cases) + ": " + dataCountry.totalConfirmed + "\n"
+//                                + getString(R.string.recovered) + ": " + dataCountry.totalRecovered + "\n"
+//                                + getString(R.string.deaths) + ": " + dataCountry.totalDeaths)
+//                    )
+
+                    Log.d("TAG", "reader: " + mapsCountry.country)
+                }
+            }
+            i++
+        }
+//        for (reader.readLine()) {
+//
+//        }
+
+        try {
+            val reader = CSVReader(FileReader(resources.getResourceName(R.raw.countries)), '\t')
+            Log.d("TAG", "reader: " + reader.readAll()[0])
+
+            val countries = reader.readAll()
+
+            for (country in countries) {
+                val marker = LatLng(country[1].toDouble(), country[2].toDouble())
+                mMap.addMarker(MarkerOptions().position(marker).title(country[3].capitalize()))
+            }
+        } catch (e: IOException) {
+            Log.d("TAG", "reader: " + e.message)
         }
 //
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))

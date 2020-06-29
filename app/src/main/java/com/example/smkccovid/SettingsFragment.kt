@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 import render.animations.Fade
 import render.animations.Render
 import util.goTo
+import util.updateSettings
 import java.util.*
 
 
@@ -150,17 +151,19 @@ class SettingsFragment : Fragment() {
     private fun setSettings() {
 //        locale = Locale.getDefault().language
 
-//        var settings : SettingsDataModel?
-//
-//        if (FirebaseAuth.getInstance().currentUser != null) {
-//            val user = FirebaseAuth.getInstance().currentUser!!
+        var settings : SettingsDataModel?
+
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            val user = FirebaseAuth.getInstance().currentUser!!
 //
 //            if (viewModel.allSettingsDatas.value?.find { it.id == user.uid } == null) {
 //                viewModel.insert(SettingsDataModel(user.uid, "en", true, true, true))
 //            }
 //
 //            settings = viewModel.allSettingsDatas.value?.find { it.id == user.uid }
-//        }
+            settings = SettingsDataModel(user.uid, "en", true, true, true)
+            updateSettings(settings, true)
+        }
 //        else {
 //            if (viewModel.allSettingsDatas.value?.find { it.id == "offline" } == null) {
 //                viewModel.insert(SettingsDataModel("offline", "en", true, true, true))

@@ -566,7 +566,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 autofit:cardCornerRadius="15dp"
@@ -656,7 +656,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/maps_title"
-                            android:maxLines="1"
+                            android:maxLines="2"
                             style="@style/SubTitle"/>
                         <me.grantland.widget.AutofitTextView
                             android:layout_width="wrap_content"
