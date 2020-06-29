@@ -12,6 +12,8 @@ An android app to monitor and get information about COVID-19 and its growth in n
   * Fragments, ViewPager, TabLayout, BottomNav
   * Implementing RecyclerView
   * Taking data from REST API
+  * Firebase authentication, database, and notification
+  * Room and LiveData
   * Glide, Retrofit, and Gson
   * MPAndroidChart
   * Localization (Multiple languages)
@@ -19,14 +21,20 @@ An android app to monitor and get information about COVID-19 and its growth in n
 
 ## APK
 
+#### Challenge 2 (OLD)
 <img src="https://github.com/abelherl/smkc-covid/blob/master/qr.png" alt="qr" width="200" height="200">
 
-or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)**
+or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)** 
+
+#### Challenge 3 (NEW)
+<img src="https://github.com/abelherl/smkc-covid/blob/master/qr.png" alt="qr" width="200" height="200">
+
+or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)** 
 
 ## Acknowledgments
 * Hat tip to anyone who's code and illustration was used
 * Icons by <i>Kiran Shastry</i> and <i>Freepik</i>
-* Mimi ko for the testing and some ideas (and translation lol)
+* Mimi ko for the testing and some ideas (and translation :))
 
 ## License
 [MIT License](https://github.com/abelherl/smkc-covid/blob/master/LICENSE)
