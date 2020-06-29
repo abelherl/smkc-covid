@@ -34,7 +34,7 @@ or [use this link instead](https://drive.google.com/file/d/1B4dzXiAwO6rDSNtv4LFd
 ## Acknowledgments
 * Hat tip to anyone who's code and illustration was used
 * Icons by <i>Kiran Shastry</i> and <i>Freepik</i>
-* Mimi ko for the testing and some ideas (and translation :))
+* Mimi ko for the testing and some ideas (and translation ofc)
 
 ## License
 [MIT License](https://github.com/abelherl/smkc-covid/blob/master/LICENSE)
