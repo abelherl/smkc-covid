@@ -92,4 +92,9 @@
     <string name="submit" translatable="false">Submit</string>
 
     <string name="account">Account</string>
+    <string name="maps_title">Check the spread with maps</string>
+    <string name="maps_body">Tap here to use maps to check COVID-19 spread around the globe.</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+
+    <string name="information">Information</string>
 </resources>

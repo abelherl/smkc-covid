@@ -169,6 +169,7 @@ class SettingsFragment : Fragment() {
 //            settings = viewModel.allSettingsDatas.value?.find { it.id == "offline" }
 //        }
 
+        val language = requireContext().getSharedPreferences("test", 0).getString("lang", "in")
         val isNotificationOn = requireContext().getSharedPreferences("test", 0).getBoolean("notification", true)
         val isGlobalOn = requireContext().getSharedPreferences("test", 0).getBoolean("global", true)
         val isCountryOn = requireContext().getSharedPreferences("test", 0).getBoolean("country", true)
@@ -176,6 +177,12 @@ class SettingsFragment : Fragment() {
 //        val isNotificationOn = settings.notification
 //        val isGlobalOn = settings.global
 //        val isCountryOn = settings.country
+
+        when (language) {
+            "in" -> ib_language.setImageResource(R.drawable.indonesia)
+            "en" -> ib_language.setImageResource(R.drawable.usa)
+            "fil" -> ib_language.setImageResource(R.drawable.philippines)
+        }
 
         if (!isNotificationOn) {
             ll_notification.visibility = View.GONE

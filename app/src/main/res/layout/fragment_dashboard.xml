@@ -63,9 +63,8 @@
             android:gravity="end">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
+                android:layout_height="155dp"
                 android:layout_marginTop="-30dp"
-                android:layout_marginBottom="-50dp"
                 android:layout_marginStart="-30dp"
                 android:layout_marginEnd="-30dp"
                 android:background="@drawable/gradient_transparent"
@@ -125,58 +124,6 @@
                     android:background="@color/transparent"
                     android:src="@drawable/ic_sync_black_24dp"/>
             </RelativeLayout>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginTop="10dp"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"
-                autofit:cardCornerRadius="15dp"
-                android:clipToPadding="false"
-                android:clipChildren="false"
-                android:gravity="bottom"
-                android:elevation="20dp">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/gradient">
-                    <ImageView
-                        android:id="@+id/iv_what"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/bg_art2"
-                        android:scaleType="fitXY"
-                        android:alpha="0.6"
-                        android:adjustViewBounds="true"/>
-                    <Button
-                        android:id="@+id/bt_what"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clickable="true"
-                        android:background="?selectableItemBackground"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/gradient_transparent"
-                        android:backgroundTint="?primaryColor"
-                        android:padding="20dp"
-                        android:layout_alignParentBottom="true">
-                        <me.grantland.widget.AutofitTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/what_is_covid"
-                            android:maxLines="1"
-                            style="@style/SubTitle"/>
-                        <me.grantland.widget.AutofitTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/learn"
-                            android:maxLines="4"
-                            style="@style/BodyWhiteSmall"/>
-                    </LinearLayout>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -608,17 +555,130 @@
                         style="@style/BodyWhite"/>
                 </LinearLayout>
             </LinearLayout>
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/tv_information_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:maxLines="2"
+                android:text="@string/information"
+                style="@style/SubTitle"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                autofit:cardCornerRadius="15dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:gravity="bottom"
+                android:elevation="20dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient">
+                    <ImageView
+                        android:id="@+id/iv_what"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/bg_art2"
+                        android:scaleType="fitXY"
+                        android:alpha="0.6"
+                        android:adjustViewBounds="true"/>
+                    <Button
+                        android:id="@+id/bt_what"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="?selectableItemBackground"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/gradient_transparent"
+                        android:backgroundTint="?primaryColor"
+                        android:padding="20dp"
+                        android:layout_alignParentBottom="true">
+                        <me.grantland.widget.AutofitTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/what_is_covid"
+                            android:maxLines="1"
+                            style="@style/SubTitle"/>
+                        <me.grantland.widget.AutofitTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/learn"
+                            android:maxLines="4"
+                            style="@style/BodyWhiteSmall"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="15dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                autofit:cardCornerRadius="15dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:gravity="bottom"
+                android:elevation="20dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_green">
+                    <ImageView
+                        android:id="@+id/iv_maps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/maps_bg_small"
+                        android:scaleType="fitXY"
+                        android:alpha="0.6"
+                        android:adjustViewBounds="true"/>
+                    <Button
+                        android:id="@+id/bt_maps"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="?selectableItemBackground"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/gradient_transparent"
+                        android:backgroundTint="@color/green"
+                        android:padding="20dp"
+                        android:layout_alignParentBottom="true">
+                        <me.grantland.widget.AutofitTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/maps_title"
+                            android:maxLines="1"
+                            style="@style/SubTitle"/>
+                        <me.grantland.widget.AutofitTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/maps_body"
+                            android:maxLines="4"
+                            style="@style/BodyWhiteSmall"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/latest_news"
                 style="@style/SubTitle"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="30dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-20dp"
                 android:layout_marginEnd="-20dp"
+                android:layout_marginBottom="60dp"
                 android:clipChildren="false"
                 android:clipToPadding="false">
                 <View
@@ -631,7 +691,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="50dp"
                     android:paddingStart="20dp"
                     android:clipToPadding="false"
                     android:clipChildren="false"/>

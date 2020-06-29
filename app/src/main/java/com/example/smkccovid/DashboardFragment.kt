@@ -10,18 +10,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smkccovid.activity.ChooseActivity
-import com.example.smkccovid.activity.DetailActivity
 import com.example.smkccovid.activity.MainActivity
+import com.example.smkccovid.activity.MapsActivity
 import com.example.smkccovid.activity.WhatActivity
 import com.example.smkccovid.adapter.NewsAdapter
 import com.example.smkccovid.data.*
 import com.example.smkccovid.model.CountryDataModel
-import com.example.smkccovid.model.SelectedCountryModel
 import com.example.smkccovid.viewmodel.DashboardViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -34,7 +32,6 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
 import retrofit2.Response
 import util.*
-import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -158,7 +155,8 @@ class DashboardFragment : Fragment() {
     private fun setOnClick() {
         bt_sync.setOnClickListener { buttonSync() }
         bt_what.setOnClickListener { buttonWhat() }
-        bt_edit.setOnClickListener { buttonCountry() }
+        bt_edit.setOnClickListener { buttonEdit() }
+        bt_maps.setOnClickListener { buttonMaps() }
 
         ll_blue1.setOnClickListener { goToWithBoolean(requireContext(),true, 0) }
         ll_blue2.setOnClickListener { goToWithBoolean(requireContext(),false, 0) }
@@ -323,8 +321,14 @@ class DashboardFragment : Fragment() {
         AcTrans.Builder(requireContext()).performFade()
     }
 
-    private fun buttonCountry() {
+    private fun buttonEdit() {
         val intent = Intent(activity, ChooseActivity::class.java)
+        startActivity(intent)
+        AcTrans.Builder(requireContext()).performFade()
+    }
+
+    private fun buttonMaps() {
+        val intent = Intent(activity, MapsActivity::class.java)
         startActivity(intent)
         AcTrans.Builder(requireContext()).performFade()
     }
