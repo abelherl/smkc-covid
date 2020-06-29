@@ -87,4 +87,5 @@
     <string name="maps_body">Gamitin ang mapa upang alamin ang status ng  COVID-19 sa buong mundo</string>
 
     <string name="information">Impormasyon</string>
+    <string name="search">Search for country name…</string>
 </resources>

@@ -36,12 +36,21 @@
         android:paddingBottom="10dp">
         <ImageButton
             android:id="@+id/bt_back_maps"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="0dp"
             android:layout_alignParentBottom="true"
             android:src="@drawable/ic_close_black_24dp"
+            android:scaleType="fitCenter"
             style="@style/Widget.AppCompat.Button.Borderless"/>
+        <SearchView
+            android:id="@+id/sv_maps"
+            android:layout_toEndOf="@id/bt_back_maps"
+            android:layout_toStartOf="@id/bt_search_maps"
+            android:layout_alignTop="@id/bt_back_maps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="@string/search"/>
         <ImageButton
             android:id="@+id/bt_search_maps"
             android:layout_width="30dp"
