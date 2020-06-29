@@ -6,8 +6,6 @@ An android app to monitor and get information about COVID-19 and its growth in n
 * Bahasa Indonesia
 * Filipino
 
-###### *And oh I believe the pic above is a self-explanatory about what pages are in the app
-
 #### What can you learn from this app?
   * Fragments, ViewPager, TabLayout, BottomNav
   * Implementing RecyclerView
@@ -21,12 +19,14 @@ An android app to monitor and get information about COVID-19 and its growth in n
 
 ## APK
 
-#### Challenge 2 (OLD)
+### Challenge 2 (OLD)
 <img src="https://github.com/abelherl/smkc-covid/blob/master/qr.png" alt="qr" width="200" height="200">
 
 or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)** 
 
-#### Challenge 3 (NEW)
+## 
+
+### Challenge 3 (NEW)
 <img src="https://github.com/abelherl/smkc-covid/blob/master/qr.png" alt="qr" width="200" height="200">
 
 or [use this link instead](https://drive.google.com/file/d/1OiuCPtfR6QHSGdlhjK_JoE1v3sV1FNSB/view?usp=sharing) **(Only for Android Lollipop or above)** 
